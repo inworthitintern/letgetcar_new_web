@@ -7,7 +7,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   // output: "export",
-  distDir: "_next",
+  // distDir: "_next",
   images: {
     domains: ["res.cloudinary.com"],
     unoptimized: true, // remove
