@@ -65,7 +65,7 @@ const BuyCarsList: React.FC = () => {
             <div className="w-3/4">
               <div className="flex items-center justify-between">
                 <Heading
-                  text={`${buyCarLists?.total || 0} Used Cars Available`}
+                  text={`${buyCarLists?.total || 0} Available Cars`}
                   type="h4"
                   fontWeight="bold"
                   textAlign="left"

@@ -15,5 +15,6 @@ import sellcarBgImage from '../public/images/sellcar-bg.jpg'
 import rentCarBgImage from '../public/images/rent-car-bg-image.jpg'
 import garageBookingImage from '../public/images/garagebookingbg.jpg'
 import rentCarLimousineImage from '../public/images/rentcar-limousine-bg.jpg'
+import logo from '../public/letgetcar-logo.png'
 
-export {slide1Image, carImage, onlineBookingImage, presenceBgImage, locationDubaiImage, loanCalculatorImage, loginBg, featureIcon, carConditionImage, bannerLoanImage, buycarCheckoutImage, hiredriverBgImage, hireDriveAboutusImg, sellcarBgImage, rentCarBgImage, garageBookingImage, rentCarLimousineImage}
+export {slide1Image, carImage, onlineBookingImage, presenceBgImage, locationDubaiImage, loanCalculatorImage, loginBg, featureIcon, carConditionImage, bannerLoanImage, buycarCheckoutImage, hiredriverBgImage, hireDriveAboutusImg, sellcarBgImage, rentCarBgImage, garageBookingImage, rentCarLimousineImage, logo}

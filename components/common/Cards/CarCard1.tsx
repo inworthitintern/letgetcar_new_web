@@ -1,5 +1,8 @@
+"use client";
+
 import { NormalText } from "@/components/UI";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 interface ICarCard1Props {
@@ -7,11 +10,22 @@ interface ICarCard1Props {
   name: string;
   price: number;
   emi: number;
+  slug: string;
 }
 
-const CarCard1: React.FC<ICarCard1Props> = ({ image, name, price, emi }) => {
+const CarCard1: React.FC<ICarCard1Props> = ({
+  image,
+  name,
+  price,
+  emi,
+  slug,
+}) => {
+  const router = useRouter();
   return (
-    <div className="group bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden cursor-pointer">
+    <div
+      className="group bg-white border border-gray-200 shadow-sm rounded-lg overflow-hidden cursor-pointer"
+      onClick={() => router.push(`/buycarslist/${slug}`)}
+    >
       <div className="overflow-hidden">
         <img
           src={image}

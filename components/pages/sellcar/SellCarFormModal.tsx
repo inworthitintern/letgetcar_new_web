@@ -96,6 +96,7 @@ const SellCarFormModal: React.FC<ISellCarFormModal> = ({ open, setOpen }) => {
     );
 
     if (sentEnquiry) {
+      setOpen(false);
       toast.success(
         "You have Successfully Submitted the Sell Car Equiry. We Will Contact You Soon"
       );

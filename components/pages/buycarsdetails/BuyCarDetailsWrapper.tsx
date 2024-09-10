@@ -45,6 +45,7 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
   const [openBuyCarReport, setOpenBuyCarReport] = useState(false);
   const [openCarCheckout, setOpenCarCheckout] = useState(false);
   const [carWishListedId, setCarWishListedId] = useState(null);
+  const [relatedCars, setRelatedCars] = useState([]);
 
   const router = useRouter();
 
@@ -57,6 +58,10 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
   useEffect(() => {
     if (buyCarDetails?.wishlist_id) {
       setCarWishListedId(buyCarDetails?.wishlist_id);
+    }
+
+    if (buyCarDetails?.brand_id) {
+      relatedCarsFetch(buyCarDetails?.brand_id);
     }
   }, [buyCarDetails]);
 
@@ -101,6 +106,18 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
       setCarWishListedId(null);
     }
   };
+
+  const relatedCarsFetch = async (brandId: number) => {
+    const fetchedRelatedCars = await buyCarServices.getBuyCars({
+      brand_id: brandId,
+    });
+
+    if (fetchedRelatedCars.data) {
+      setRelatedCars(fetchedRelatedCars.data.data);
+    }
+  };
+
+  console.log(relatedCars, "jeej");
 
   return (
     <Section className="mt-10">
@@ -352,11 +369,11 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
                       </div>
                     </div>
                     <Spacer spacing="md" />
-                    <Button
+                    {/* <Button
                       text="View All Features"
                       // className="w-full"
                       htmlType="submit"
-                    />
+                    /> */}
                   </div>
 
                   {/* Car Condition */}
@@ -585,9 +602,20 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
             <div>
               <PresenceLocationsSection />
             </div>
-            <div>
-              <TestimonialSlider />
-            </div>
+            <Section>
+              <Container>
+                <TestimonialSlider />
+              </Container>
+            </Section>
+            {relatedCars?.length > 0 && (
+              <Section bgType="gray">
+                <Container>
+                  <Heading text="Related Cars" type="h3" textAlign="left" />
+                  <Spacer spacing="md" />
+                  <CarsSlider carsData={relatedCars} />
+                </Container>
+              </Section>
+            )}
 
             {buyCarDetails?.condition_checks?.length && (
               <CarReportDetails

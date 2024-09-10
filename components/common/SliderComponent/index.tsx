@@ -7,9 +7,13 @@ import { useRouter } from "next/navigation";
 
 interface ISliderComponent {
   items: any;
+  type: "brand_id" | "category_id" | "body_type_id";
 }
 
-const SliderComponent: React.FC<ISliderComponent> = ({ items }) => {
+const SliderComponent: React.FC<ISliderComponent> = ({
+  items,
+  type = "brand_id",
+}) => {
   const router = useRouter();
 
   const settings = {
@@ -46,11 +50,11 @@ const SliderComponent: React.FC<ISliderComponent> = ({ items }) => {
         <div
           key={index}
           className="px-2"
-          onClick={() => router.push(`/buycarslist?brand_id=${item.id}`)}
+          onClick={() => router.push(`/buycarslist?${type}=${item.id}`)}
         >
           <div className="bg-white border border-gray-200 shadow-sm p-3 flex flex-col items-center rounded-lg">
             <img
-              style={{ height: "60px", objectFit: "cover" }}
+              style={{ height: "60px", objectFit: "contain" }}
               src={item.image}
               alt="image"
               //   height={40}

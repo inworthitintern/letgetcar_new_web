@@ -24,6 +24,8 @@ const BuyCarFilters: React.FC<BuyCarFiltersProps> = ({
   const [filters, setFilters] = useState({
     types: [] as string[],
     brand_id: [] as string[],
+    body_type_id: [] as string[],
+    category_id: [] as string[],
     sale_price: 350000,
     emi_price: 7000,
     on_discount: false,
@@ -69,6 +71,8 @@ const BuyCarFilters: React.FC<BuyCarFiltersProps> = ({
 
     const typesParam = params.get("types");
     const brandsParam = params.get("brand_id");
+    const bodyTypeParam = params.get("body_type_id");
+    const categoryParam = params.get("category_id");
     const budgetParam = params.get("sale_price");
     const emiParam = params.get("emi_price");
     const onDiscountParam = params.get("on_discount");
@@ -97,6 +101,8 @@ const BuyCarFilters: React.FC<BuyCarFiltersProps> = ({
       ...prevFilters,
       types: typesParam ? typesParam.split(",") : [],
       brand_id: brandsParam ? brandsParam.split(",") : [],
+      body_type_id: bodyTypeParam ? bodyTypeParam.split(",") : [],
+      category_id: categoryParam ? categoryParam.split(",") : [],
       sale_price: budgetParam ? Number(budgetParam) : budgetRange[1],
       emi_price: emiParam ? Number(emiParam) : emiRange[1],
       on_discount: onDiscountParam === "true",
@@ -127,6 +133,10 @@ const BuyCarFilters: React.FC<BuyCarFiltersProps> = ({
     if (filters.types.length > 0) params.set("types", filters.types.join(","));
     if (filters.brand_id.length > 0)
       params.set("brand_id", filters.brand_id.join(","));
+    if (filters.body_type_id.length > 0)
+      params.set("body_type_id", filters.body_type_id.join(","));
+    if (filters.category_id.length > 0)
+      params.set("category_id", filters.category_id.join(","));
     if (filters.sale_price !== budgetRange[1])
       params.set("sale_price", filters.sale_price.toString());
     if (filters.emi_price !== emiRange[1])
@@ -304,7 +314,7 @@ const BuyCarFilters: React.FC<BuyCarFiltersProps> = ({
           </div>
 
           <div className="p-4 bg-white shadow-md rounded-lg mb-4 max-h-96 overflow-y-scroll">
-            <h2 className="text-lg font-bold mt-4 mb-4">Brand</h2>
+            <h2 className="text-lg font-bold mt-4 mb-4">Brands</h2>
             {filterHostingData?.brands?.map((brand) => (
               <label key={brand.id} className="flex items-center mb-2">
                 <Checkbox
@@ -316,6 +326,42 @@ const BuyCarFilters: React.FC<BuyCarFiltersProps> = ({
                   color="yellow"
                 />
                 <NormalText text={brand.name} size="sm" />
+              </label>
+            ))}
+          </div>
+
+          <div className="p-4 bg-white shadow-md rounded-lg mb-4 max-h-96 overflow-y-scroll">
+            <h2 className="text-lg font-bold mt-4 mb-4">Body types</h2>
+            {filterHostingData?.bodyTypes?.map((bodyType) => (
+              <label key={bodyType.id} className="flex items-center mb-2">
+                <Checkbox
+                  checked={filters.body_type_id.includes(
+                    bodyType.id.toString()
+                  )}
+                  onChange={() =>
+                    handleCheckboxChange("body_type_id", bodyType.id.toString())
+                  }
+                  className="mr-2"
+                  color="yellow"
+                />
+                <NormalText text={bodyType.name} size="sm" />
+              </label>
+            ))}
+          </div>
+
+          <div className="p-4 bg-white shadow-md rounded-lg mb-4 max-h-96 overflow-y-scroll">
+            <h2 className="text-lg font-bold mt-4 mb-4">Categories</h2>
+            {filterHostingData?.categories?.map((category) => (
+              <label key={category.id} className="flex items-center mb-2">
+                <Checkbox
+                  checked={filters.category_id.includes(category.id.toString())}
+                  onChange={() =>
+                    handleCheckboxChange("category_id", category.id.toString())
+                  }
+                  className="mr-2"
+                  color="yellow"
+                />
+                <NormalText text={category.name} size="sm" />
               </label>
             ))}
           </div>

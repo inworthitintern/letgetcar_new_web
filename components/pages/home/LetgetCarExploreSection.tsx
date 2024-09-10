@@ -26,8 +26,8 @@ const LetgetCarExploreSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-4  gap-4">
           <ExploreCard Icon={FinanceIcon} path="/carloan" />
           <ExploreCard Icon={InsuranceIcon} path="/" />
-          <ExploreCard Icon={RentcarIcon} path="/rentcar" />
-          <ExploreCard Icon={LimousineIcon} path="/rentcar" />
+          <ExploreCard Icon={RentcarIcon} path="/rentcar-limousine" />
+          <ExploreCard Icon={LimousineIcon} path="/rentcar-limousine" />
           <ExploreCard Icon={LuxuaryCarsIcon} path="/buycarslist" />
           <ExploreCard Icon={HireDriverIcon} path="/hiredriver" />
           <ExploreCard Icon={ModifyCarIcon} path="/garagebooking" />

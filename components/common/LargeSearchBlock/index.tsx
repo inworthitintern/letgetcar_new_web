@@ -1,7 +1,36 @@
+"use client";
 import { Button } from "@/components/UI";
-import React from "react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 const LargeSearchBlock = () => {
+  const [name, setName] = useState("");
+  const [type, setType] = useState("buynewcar");
+
+  const router = useRouter();
+
+  const onSubmit = () => {
+    let queryBuilder = "";
+
+    if (name) {
+      queryBuilder += `name=${name}`;
+    }
+
+    if (type === "buynewcar") {
+      queryBuilder += `is_new_car=1`;
+    } else if (type === "buyusedcar") {
+      queryBuilder += `is_new_car=0`;
+    } else if (type === "buyluxuarycar") {
+      queryBuilder += `is_luxury_car=1`;
+    }
+    if (type || name) {
+      router.push(`/buycarslist?${queryBuilder}`);
+    } else {
+      toast.warn("Please select any inputs");
+    }
+  };
+
   return (
     // py-16 px-8
     <div className="md:block hidden max-w-screen-xl mx-auto">
@@ -11,6 +40,7 @@ const LargeSearchBlock = () => {
             type="text"
             placeholder="Try Mustang..."
             className="h-24 border-none focus:ring-0 px-8"
+            onChange={(e) => setName(e.target.value)}
           />
           <div className="h-[60%] bg-gray-25 w-[1px] ml-4"></div>
         </div>
@@ -19,6 +49,7 @@ const LargeSearchBlock = () => {
             name="type"
             id="cars"
             className="h-24 border-none focus:ring-0 px-8 w-full"
+            onChange={(e) => setType(e.target.value)}
           >
             <option value="buynewcar">Buy New Car</option>
             <option value="buyusedcar">Buy Used Car</option>
@@ -42,6 +73,7 @@ const LargeSearchBlock = () => {
           <button
             type="button"
             className="text-dark bg-primary hover:bg-primary-text focus:outline-none w-full h-full text-lg font-semibold"
+            onClick={onSubmit}
           >
             Search Car
           </button>

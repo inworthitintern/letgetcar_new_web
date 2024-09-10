@@ -17,12 +17,28 @@ import {
   onlineBookingImage,
   sellcarBgImage,
 } from "@/constants/images";
+import { RootState } from "@/GlobalRedux/store";
 import { Card, List } from "flowbite-react";
+import { useRouter } from "next/navigation";
 
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const SellCarScreen = () => {
   const [openSellCarForm, setOpenSellCarForm] = useState(false);
+  const { user } = useSelector((state: RootState) => state.auth);
+  const router = useRouter();
+
+  const onSellCarBtnHandler = async () => {
+    if (user) {
+      setOpenSellCarForm(true);
+    } else {
+      toast.warn("You have Login Before Sell Car Enquiry");
+      router.push("/login");
+    }
+  };
+
   return (
     <div>
       <div
@@ -47,7 +63,7 @@ const SellCarScreen = () => {
               <Button
                 text={"Sell Your Car Now"}
                 type="primary"
-                onClick={() => setOpenSellCarForm(true)}
+                onClick={onSellCarBtnHandler}
                 //   onClick={() => {}}
               />
             </div>
@@ -85,7 +101,7 @@ const SellCarScreen = () => {
             <Button
               text="Get best price"
               type="primary"
-              onClick={() => setOpenSellCarForm(true)}
+              onClick={onSellCarBtnHandler}
             />
           </Card>
         </div>
@@ -152,7 +168,7 @@ const SellCarScreen = () => {
           <Button
             text={"SELL YOUR CAR NOW"}
             type="dark"
-            onClick={() => setOpenSellCarForm(true)}
+            onClick={onSellCarBtnHandler}
             //   onClick={() => {}}
           />
         </Container>

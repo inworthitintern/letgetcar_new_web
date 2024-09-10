@@ -47,7 +47,7 @@ export const phoneNumberLogin = createAsyncThunk(
 
       if(phoneNumberLogin) {
         if(noRedirectEnable) {
-          router.replace(`/otp-verification?phone_number=${phone_number}`)
+          router.replace(`/otp-verification/${phone_number}`)
        }
 
         return {phone_number, noRedirectEnable}
@@ -119,12 +119,12 @@ export const updateProfileDetails = createAsyncThunk(
 );
 
 
-export const signOut = createAsyncThunk("auth/signOut", async () => {
-//   const response = await FirebaseService.signOutRequest();
+// export const signOut = createAsyncThunk("auth/signOut", async () => {
+
 //   localStorage.removeItem(AUTH_TOKEN);
 //   localStorage.removeItem("User");
-//   return response.data;
-});
+//   return 'success'
+// });
 
 
 
@@ -145,6 +145,10 @@ export const authSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
+    setLogout: (state, action) => {
+      state.user = null;
+      state.token = null;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -232,6 +236,7 @@ export const authSlice = createSlice({
 export const {
   authenticated,
   setToken,
+  setLogout
 } = authSlice.actions;
 
 export default authSlice.reducer;

@@ -6,15 +6,15 @@ const LetGetCarExclusiveSection: React.FC = () => {
   const exclusiveDatas = [
     {
       name: "Hire Driver",
-      link: "#",
+      link: "/hiredriver",
     },
     {
       name: "Luxury Cars Modification",
-      link: "#",
+      link: "/garagebooking",
     },
     {
       name: "Loan Calculator",
-      link: "#",
+      link: "/carloan",
     },
     {
       name: "Car Subscription",
@@ -25,8 +25,8 @@ const LetGetCarExclusiveSection: React.FC = () => {
       link: "#",
     },
     {
-      name: "Buy/Sell Your Luxuary Cars",
-      link: "#",
+      name: "Sell Your Cars",
+      link: "/sellcar",
     },
   ];
 

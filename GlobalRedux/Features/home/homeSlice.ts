@@ -27,7 +27,7 @@ interface homeState {
 
 
 export const initialState: homeState = {
-  loading: false,
+  loading: true,
   homeData: [],
 };
 

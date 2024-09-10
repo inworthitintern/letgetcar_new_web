@@ -66,7 +66,7 @@ const HireDriverForm = () => {
   });
 
   return (
-    <div className="mx-auto p-5 bg-white shadow-md rounded-lg w-full mt-10">
+    <div className="mx-auto p-5 bg-white shadow-md rounded-lg w-full mt-40">
       <Heading text="Service Booking Form" type="h4" textAlign="left" />
       <hr className="my-4" />
       <form onSubmit={formik.handleSubmit} className="space-y-4">

@@ -293,7 +293,14 @@ import {
 import SearchPopup from "../SearchPopup";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/GlobalRedux/store";
-import { getProfileDetails } from "@/GlobalRedux/Features/auth/authSlice";
+import {
+  getProfileDetails,
+  setLogout,
+  signOut,
+} from "@/GlobalRedux/Features/auth/authSlice";
+import { logo } from "@/constants/images";
+import { AUTH_TOKEN } from "@/constants/variables";
+import { toast } from "react-toastify";
 
 const CustomNavbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -316,10 +323,10 @@ const CustomNavbar = () => {
       className="bg-white dark:bg-gray-900 fixed top-0 w-full z-50 border-b dark:border-gray-700"
     >
       <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto p-4">
-        <Link href="#" className="flex items-center">
+        <Link href="/" className="flex items-center">
           <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
+            src={logo.src}
+            style={{ width: "40px", objectFit: "cover" }}
             alt="Logo"
           />
         </Link>
@@ -386,7 +393,7 @@ const CustomNavbar = () => {
 
             {user ? (
               <Link
-                href="/account"
+                href="#"
                 className="flex items-center text-dark hover:text-primary-text"
               >
                 <ProfileIcon height={20} width={20} />
@@ -413,21 +420,19 @@ const CustomNavbar = () => {
               )}
             >
               <Dropdown.Item>
-                <Link href="#" className="block px-4 py-2 text-sm">
-                  Dashboard
+                <Link href="/garagebooking" className="block px-4 py-2 text-sm">
+                  Garage Booking
                 </Link>
               </Dropdown.Item>
-              <Dropdown.Item>
-                <Link href="#" className="block px-4 py-2 text-sm">
-                  Settings
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item>
-                <Link href="#" className="block px-4 py-2 text-sm">
-                  Earnings
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item>
+              <Dropdown.Item
+                onClick={() => {
+                  if (typeof window !== "undefined") {
+                    window.localStorage.removeItem(AUTH_TOKEN);
+                    toast.success("Logout Success");
+                    dispatch(setLogout());
+                  }
+                }}
+              >
                 <Link href="#" className="block px-4 py-2 text-sm">
                   Sign out
                 </Link>

@@ -42,6 +42,7 @@ const CarsSlider = ({ carsData }) => {
         <div key={index} className="px-2">
           <CarCard1
             key={index}
+            slug={item.slug}
             emi={item.emi_price}
             image={item?.images?.length > 0 ? item.images[0]?.url : null}
             name={item.name}

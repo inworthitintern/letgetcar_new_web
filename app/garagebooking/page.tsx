@@ -28,13 +28,13 @@ const HireDriver = () => {
           backgroundSize: "cover", // Ensure the image covers the whole div
           backgroundPosition: "center", // Center the background image
           backgroundRepeat: "no-repeat", // Ensure the image does not repeat
-          height: "100vh", // You can adjust this as needed (e.g., 100vh for full viewport height)
+          // height: "100vh", // You can adjust this as needed (e.g., 100vh for full viewport height)
           width: "100%", // Ensure it takes full width
         }}
       >
         <Container>
-          <div className="h-screen max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
-            <div className="grid grid-cols-2 gap-x-4 items-center">
+          <div className="max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4 items-center">
               <div>
                 <h1
                   className="font-poppins text-2xl md:text-5xl font-bold text-white"

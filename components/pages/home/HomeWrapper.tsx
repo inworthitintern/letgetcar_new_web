@@ -20,6 +20,7 @@ import LargeSearchBlock from "@/components/common/LargeSearchBlock";
 import { getHomePageData } from "@/GlobalRedux/Features/home/homeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/GlobalRedux/store";
+import { LoadingSpinner } from "@/components/common";
 
 const HomeWrapper: React.FC = () => {
   const dispatch = useDispatch();
@@ -34,7 +35,7 @@ const HomeWrapper: React.FC = () => {
   return (
     <>
       {loading ? (
-        <h2>Loading...</h2>
+        <LoadingSpinner />
       ) : (
         homeData?.length > 0 && (
           <div>
@@ -80,35 +81,11 @@ const HomeWrapper: React.FC = () => {
 
             {/* <RecentlyViewedSection /> */}
 
-            <RecommentedCarsSection
-              carsData={[
-                ...homeData[3].data.data,
-                ...homeData[3].data.data,
-                ...homeData[3].data.data,
-                ...homeData[3].data.data,
-                ...homeData[3].data.data,
-              ]}
-            />
+            <RecommentedCarsSection carsData={[...homeData[3].data.data]} />
 
-            <LetgetcarsTrustedSection
-              carsData={[
-                ...homeData[4].data.data,
-                ...homeData[4].data.data,
-                ...homeData[4].data.data,
-                ...homeData[4].data.data,
-                ...homeData[4].data.data,
-              ]}
-            />
+            <LetgetcarsTrustedSection carsData={[...homeData[4].data.data]} />
 
-            <NewArrivalsSection
-              carsData={[
-                ...homeData[5].data.data,
-                ...homeData[5].data.data,
-                ...homeData[5].data.data,
-                ...homeData[5].data.data,
-                ...homeData[5].data.data,
-              ]}
-            />
+            <NewArrivalsSection carsData={[...homeData[5].data.data]} />
 
             <LetGetCarFeaturesSection />
 
