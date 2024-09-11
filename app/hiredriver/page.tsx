@@ -1,6 +1,7 @@
 import {
   Container,
   ExploreCard,
+  HowItWorks,
   LetGetCarFeatureCard,
   Section,
   Spacer,
@@ -12,12 +13,33 @@ import {
   hireDriveAboutusImg,
   hiredriverBgImage,
   onlineBookingImage,
+  sellcarCashImg,
+  sellcarEnterDetailsImg,
+  sellcarInspectionImg,
 } from "@/constants/images";
 import { List } from "flowbite-react";
 
 import React from "react";
 
 const HireDriver = () => {
+  const howItWorksContents = [
+    {
+      img: sellcarEnterDetailsImg,
+      title: "Enter car details",
+      desc: "Call  +971 52 894 8931 or Whatsapp and let us know when and where you want the Driver to pick you up from, or book online and we’ll call you back to confirm your booking.",
+    },
+    {
+      img: sellcarCashImg,
+      title: "STEP 2: MEET YOUR DESIGNATED DRIVER",
+      desc: "Our team leader will drop your designated driver to your required location usually 15 minutes before pickup time and will give you a call.",
+    },
+    {
+      img: sellcarInspectionImg,
+      title: "STEP 3: SAFE JOURNEY WITH AWESOME DRIVE",
+      desc: "Have a safe journey to your destination in the comfort of your own car with our professional chauffeur.",
+    },
+  ];
+
   return (
     <div>
       <div
@@ -39,7 +61,9 @@ const HireDriver = () => {
                   <span className="text-primary">@AED 1200</span>
                 </h1>
                 <p className="text-sm md:text-base text-white font-normal  py-6">
-                  Car Maintenance Has Never Been Easier! GET ESTIMATE NOW
+                  We provides safe driving services at an affordable price. You
+                  can hire a safe driver Dubai for your trip from Awesome Drive
+                  Dubai to Abu Dhabi, Sharjah, and other Emirates.
                 </p>
                 <Button
                   text={"Hire Driver Now"}
@@ -67,7 +91,7 @@ const HireDriver = () => {
               <NormalText
                 size="sm"
                 color="gray"
-                text="Are you not in a position to drive your car? Hiring a safe driver Dubai is the best thing to do if you are in Dubai and Awesome Drive is the best safe Driver Company. Awesome Drive welcomes you to a chauffeur-driven service. It is a driver company operating in Dubai."
+                text="If you're unable to drive in Dubai, LetGetCar provides reliable and professional chauffeur services for a seamless travel experience. Our experienced drivers are available around the clock for personal, private, and corporate needs, including airport transfers, business trips, and special events. We make booking easy—simply call us, message via WhatsApp, or use our website to schedule your driver. Authorized by the RTA, LetGetCar ensures safe, efficient, and affordable transportation, offering peace of mind and convenience for all your travel needs."
               />
               <NormalText
                 size="sm"
@@ -79,8 +103,15 @@ const HireDriver = () => {
         </Container>
       </Section>
 
-      <Section bgType="gray">
+      <Section>
         <Container>
+          <HowItWorks data={howItWorksContents} />
+        </Container>
+      </Section>
+
+      {/* <Section bgType="gray">
+        <Container>
+          <HowItWorks data={howItWorksContents} />
           <div>
             <Heading text="How it Works?" type="h4" textAlign="left" />
             <Spacer spacing="sm" />
@@ -93,23 +124,23 @@ const HireDriver = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <LetGetCarFeatureCard
                 image={onlineBookingImage}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-                title="Online Booking"
+                description="Call +9719999999999999 or Whatsapp and let us know when and where you want the Driver to pick you up from, or book online and we’ll call you back to confirm your booking."
+                title="STEP 1 : BOOK YOUR DESIGNATED DRIVER"
               />
               <LetGetCarFeatureCard
                 image={onlineBookingImage}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-                title="Online Booking"
+                description="Our team leader will drop your designated driver to your required location usually 15 minutes before pickup time and will give you a call."
+                title="STEP 2: MEET YOUR DESIGNATED DRIVER"
               />
               <LetGetCarFeatureCard
                 image={onlineBookingImage}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-                title="Online Booking"
+                description="Have a safe journey to your destination in the comfort of your own car with our professional chauffeur."
+                title="STEP 3: SAFE JOURNEY WITH AWESOME DRIVE"
               />
             </div>
           </div>
         </Container>
-      </Section>
+      </Section> */}
 
       <Section>
         <Container>

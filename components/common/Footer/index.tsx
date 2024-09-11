@@ -14,13 +14,14 @@ const Footer = () => {
             <div>
               <h4 className="text-lg font-bold mb-4">Who we are?</h4>
               <p className="text-gray-400 mb-4">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-                quis sollicitudin felis, sed imperdiet justo. Duis volutpat ac
-                urna non mattis.
+                LetGetCar is your all-in-one automotive platform offering a
+                seamless experience for buying, selling, and renting cars. We
+                also provide driver hiring services, garage bookings, and more,
+                ensuring a hassle-free journey from start to finish.
               </p>
               <div>
                 <h5 className="text-lg font-bold mb-2">Contact</h5>
-                <p className="text-gray-400">hello@company.com</p>
+                <p className="text-gray-400">hello@letgetcar.com</p>
                 <p className="text-gray-400">+9719999999999999</p>
               </div>
             </div>
@@ -53,24 +54,32 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li className="mb-2">
-                  <Link href="/cars" className="hover:text-white transition">
-                    Cars
+                  <Link
+                    href="/buycarslist"
+                    className="hover:text-white transition"
+                  >
+                    Buy Cars
                   </Link>
                 </li>
                 <li className="mb-2">
-                  <Link href="/loan" className="hover:text-white transition">
-                    Loan
+                  <Link href="/carloan" className="hover:text-white transition">
+                    Apply Loan
                   </Link>
-                </li>
-                <li className="mb-2">
-                  <Link href="/emi">EMI</Link>
                 </li>
                 <li className="mb-2">
                   <Link
-                    href="/popular-cars"
+                    href="/rentcar-limousine"
                     className="hover:text-white transition"
                   >
-                    Popular Cars
+                    Rent Car & Limousine
+                  </Link>
+                </li>
+                <li className="mb-2">
+                  <Link
+                    href="/garagebooking"
+                    className="hover:text-white transition"
+                  >
+                    Garage Booking
                   </Link>
                 </li>
               </ul>

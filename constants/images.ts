@@ -17,4 +17,22 @@ import garageBookingImage from '../public/images/garagebookingbg.jpg'
 import rentCarLimousineImage from '../public/images/rentcar-limousine-bg.jpg'
 import logo from '../public/letgetcar-logo.png'
 
-export {slide1Image, carImage, onlineBookingImage, presenceBgImage, locationDubaiImage, loanCalculatorImage, loginBg, featureIcon, carConditionImage, bannerLoanImage, buycarCheckoutImage, hiredriverBgImage, hireDriveAboutusImg, sellcarBgImage, rentCarBgImage, garageBookingImage, rentCarLimousineImage, logo}
+
+// EX
+import hireDriverEx from '../public/images/hiredriver-ex.jpg'
+import luxuarycarEx from '../public/images/luxuary-car-ex.jpg'
+import carInsuranceEx from '../public/images/car-insurance-ex.jpg'
+import loanCalculatorEx from '../public/images/loan-calculator-ex.jpg'
+import sellCarEx from '../public/images/sell-car-ex.jpg'
+import carSubscriptionEx from '../public/images/car-subscription-ex.jpg'
+
+// Sellcar
+
+import sellcarEnterDetailsImg from '../public/images/sell-enter-details-img.jpg'
+import sellcarInspectionImg from '../public/images/sell-inspection-img.jpg'
+import sellcarCashImg from '../public/images/sell-cash-img.jpg'
+
+
+
+
+export {slide1Image, carImage, onlineBookingImage, presenceBgImage, locationDubaiImage, loanCalculatorImage, loginBg, featureIcon, carConditionImage, bannerLoanImage, buycarCheckoutImage, hiredriverBgImage, hireDriveAboutusImg, sellcarBgImage, rentCarBgImage, garageBookingImage, rentCarLimousineImage, logo, carInsuranceEx, carSubscriptionEx,hireDriverEx,loanCalculatorEx,luxuarycarEx,sellCarEx, sellcarEnterDetailsImg, sellcarCashImg, sellcarInspectionImg}

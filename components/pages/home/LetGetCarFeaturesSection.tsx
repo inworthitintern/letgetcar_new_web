@@ -13,28 +13,28 @@ const LetGetCarFeaturessection = () => {
   return (
     <Section>
       <Container>
-        <Heading
-          text="Explore Letgetcar"
-          type="h2"
-          color="dark"
-          fontWeight="bold"
-        />
+        <Heading text="How It Works" type="h2" color="dark" fontWeight="bold" />
         <Spacer />
-        <div className="grid grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <LetGetCarFeatureCard
             image={onlineBookingImage}
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-            title="Online Booking"
+            description="Come visit us or arrange a test drive from the comfort of home."
+            title="Test Drive Any Vehicle, Anytime"
           />
           <LetGetCarFeatureCard
             image={onlineBookingImage}
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-            title="Online Booking"
+            description="Return your car for a full value refund. Terms apply."
+            title="7 Day Trial"
           />
           <LetGetCarFeatureCard
             image={onlineBookingImage}
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-            title="Online Booking"
+            description="Get premium insurance plans with unbeatable discounts."
+            title="Easy Insurance Purchase"
+          />
+          <LetGetCarFeatureCard
+            image={onlineBookingImage}
+            description="Service every 10,000 km and enjoy extended warranty options."
+            title="Upto 6 Month Warranty"
           />
         </div>
       </Container>

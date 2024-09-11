@@ -16,7 +16,11 @@ const LetGetCarFeatureCard: React.FC<ILetGetCarFeatureCardProps> = ({
 }) => {
   return (
     <Card>
-      <Image src={image} alt="feature-image" />
+      <Image
+        src={image}
+        alt="feature-image"
+        style={{ height: "210px", objectFit: "cover" }}
+      />
       <Heading text={title} type="h5" textAlign="left" />
       <NormalText text={description} textAlign="left" color="gray" />
     </Card>

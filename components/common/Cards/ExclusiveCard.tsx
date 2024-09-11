@@ -1,5 +1,4 @@
 import { Heading } from "@/components/UI";
-import { loanCalculatorImage } from "@/constants/images";
 import { Card } from "flowbite-react";
 import React from "react";
 
@@ -7,20 +6,22 @@ interface IExclusiveCardProps {
   name: string;
   link: string;
   isOdd: boolean;
+  img: any;
 }
 
 const ExclusiveCard: React.FC<IExclusiveCardProps> = ({
   name,
   link = "#",
   isOdd,
+  img,
 }) => {
   return (
     <Card
       href={link}
       className=""
       style={{
-        background: `url(${loanCalculatorImage.src})`,
-        backgroundSize: "cover",
+        background: `url(${img.src})`,
+        backgroundSize: "contain",
         backgroundPosition: "center",
         height: "250px",
         position: "relative",

@@ -1,5 +1,13 @@
 import { Container, ExclusiveCard, Section, Spacer } from "@/components/common";
 import { Heading } from "@/components/UI";
+import {
+  carInsuranceEx,
+  carSubscriptionEx,
+  hireDriverEx,
+  loanCalculatorEx,
+  luxuarycarEx,
+  sellCarEx,
+} from "@/constants/images";
 import React from "react";
 
 const LetGetCarExclusiveSection: React.FC = () => {
@@ -7,26 +15,32 @@ const LetGetCarExclusiveSection: React.FC = () => {
     {
       name: "Hire Driver",
       link: "/hiredriver",
+      img: hireDriverEx,
     },
     {
       name: "Luxury Cars Modification",
       link: "/garagebooking",
+      img: luxuarycarEx,
     },
     {
       name: "Loan Calculator",
       link: "/carloan",
+      img: loanCalculatorEx,
     },
     {
       name: "Car Subscription",
       link: "#",
+      img: carSubscriptionEx,
     },
     {
       name: "Renew Your Car Insurance",
       link: "#",
+      img: carInsuranceEx,
     },
     {
       name: "Sell Your Cars",
       link: "/sellcar",
+      img: sellCarEx,
     },
   ];
 
@@ -49,6 +63,7 @@ const LetGetCarExclusiveSection: React.FC = () => {
               key={index}
               name={data.name}
               link={data.link}
+              img={data.img}
             />
           ))}
         </div>

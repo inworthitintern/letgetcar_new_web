@@ -42,7 +42,7 @@ const PresenceLocationsSection = () => {
                   alt="location-dubai"
                   className="mb-2"
                 />
-                <NormalText text="Dubai" fontWeight="semiBold" />
+                <NormalText text="Sharjah" fontWeight="semiBold" />
               </div>
               <div className="flex flex-col items-center">
                 <Image
@@ -50,7 +50,7 @@ const PresenceLocationsSection = () => {
                   alt="location-dubai"
                   className="mb-2"
                 />
-                <NormalText text="Dubai" fontWeight="semiBold" />
+                <NormalText text="Abu Dhabi" fontWeight="semiBold" />
               </div>
               <div className="flex flex-col items-center">
                 <Image
@@ -58,7 +58,7 @@ const PresenceLocationsSection = () => {
                   alt="location-dubai"
                   className="mb-2"
                 />
-                <NormalText text="Dubai" fontWeight="semiBold" />
+                <NormalText text="Ajman" fontWeight="semiBold" />
               </div>
             </div>
           </div>

@@ -2,12 +2,13 @@ import { Button } from "@/components/UI";
 import React from "react";
 
 interface IHeroSliderSectionProps {
-  image: string;
+  image: any;
   headingFirst: string;
   headingLast: string;
   paragraph: string;
   btnText: string;
   btnOnClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  ctnRedirect: string;
 }
 
 const HeroSliderSection: React.FC<IHeroSliderSectionProps> = ({
@@ -21,7 +22,7 @@ const HeroSliderSection: React.FC<IHeroSliderSectionProps> = ({
   return (
     <div
       style={{
-        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url(${image})`,
+        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url(${image.src})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100vh",
