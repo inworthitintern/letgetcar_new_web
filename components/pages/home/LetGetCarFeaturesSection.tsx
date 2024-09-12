@@ -6,7 +6,12 @@ import {
   Section,
   Spacer,
 } from "@/components/common";
-import { onlineBookingImage } from "@/constants/images";
+import {
+  onlineBookingImage,
+  hireDriverEx,
+  hireDriveAboutusImg,
+  sellCarEx,
+} from "@/constants/images";
 import { Heading } from "@/components/UI";
 
 const LetGetCarFeaturessection = () => {
@@ -17,12 +22,12 @@ const LetGetCarFeaturessection = () => {
         <Spacer />
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
           <LetGetCarFeatureCard
-            image={onlineBookingImage}
+            image={hireDriverEx}
             description="Come visit us or arrange a test drive from the comfort of home."
             title="Test Drive Any Vehicle, Anytime"
           />
           <LetGetCarFeatureCard
-            image={onlineBookingImage}
+            image={hireDriveAboutusImg}
             description="Return your car for a full value refund. Terms apply."
             title="7 Day Trial"
           />
@@ -32,7 +37,7 @@ const LetGetCarFeaturessection = () => {
             title="Easy Insurance Purchase"
           />
           <LetGetCarFeatureCard
-            image={onlineBookingImage}
+            image={sellCarEx}
             description="Service every 10,000 km and enjoy extended warranty options."
             title="Upto 6 Month Warranty"
           />

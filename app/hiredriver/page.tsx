@@ -1,9 +1,11 @@
 import {
   Container,
+  CtnSection,
   ExploreCard,
   HowItWorks,
   LetGetCarFeatureCard,
   Section,
+  SectionPoints,
   Spacer,
   TestimonialsSection,
 } from "@/components/common";
@@ -16,6 +18,7 @@ import {
   sellcarCashImg,
   sellcarEnterDetailsImg,
   sellcarInspectionImg,
+  hireDriverEx,
 } from "@/constants/images";
 import { List } from "flowbite-react";
 
@@ -25,16 +28,16 @@ const HireDriver = () => {
   const howItWorksContents = [
     {
       img: sellcarEnterDetailsImg,
-      title: "Enter car details",
+      title: "STEP 1 : BOOK YOUR DESIGNATED DRIVER",
       desc: "Call  +971 52 894 8931 or Whatsapp and let us know when and where you want the Driver to pick you up from, or book online and we’ll call you back to confirm your booking.",
     },
     {
-      img: sellcarCashImg,
+      img: hireDriverEx,
       title: "STEP 2: MEET YOUR DESIGNATED DRIVER",
       desc: "Our team leader will drop your designated driver to your required location usually 15 minutes before pickup time and will give you a call.",
     },
     {
-      img: sellcarInspectionImg,
+      img: hireDriveAboutusImg,
       title: "STEP 3: SAFE JOURNEY WITH AWESOME DRIVE",
       desc: "Have a safe journey to your destination in the comfort of your own car with our professional chauffeur.",
     },
@@ -142,29 +145,30 @@ const HireDriver = () => {
         </Container>
       </Section> */}
 
-      <Section>
+      <Section bgType="gray">
         <Container>
-          <Heading
-            text="Benefits of Hiring Monthly Driver From Awesome Drive"
-            type="h4"
-            textAlign="left"
+          <SectionPoints
+            lists={[
+              " Professional Drivers: Our drivers are highly trained, experienced, and committed to ensuring your safety and comfort",
+              "24/7 Availability: We provide reliable driver services any time of day or night, whenever you need them",
+              "Affordable Rates: Enjoy competitive pricing with no hidden fees, ensuring value for your money",
+              "Flexible Booking: Easily book your driver via phone, WhatsApp, or our website for a hassle-free experience",
+              "RTA-Authorized Service: Our drivers are licensed and authorized by the Roads and Transport Authority (RTA) for your peace of mind.",
+              "Corporate and Personal Options: Whether it's for business trips, airport transfers, or special events, we cater to both personal and corporate needs.",
+            ]}
+            title="Benefits of Hiring a Driver with Us"
           />
-          <Spacer spacing="sm" />
-          <List>
-            <List.Item>
-              At least 10 characters (and up to 100 characters)
-            </List.Item>
-            <List.Item>At least one lowercase character</List.Item>
-            <List.Item>
-              Inclusion of at least one special character, e.g., ! @ # ?
-            </List.Item>
-          </List>
         </Container>
       </Section>
 
       <Section bgType="primary">
         <Container>
-          <Heading text="HIRE DRIVER NOW" type="h3" textAlign="left" />
+          <CtnSection
+            ctnText="Download Our App Now"
+            desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
+            title="Download From Playstore"
+          />
+          {/* <Heading text="HIRE DRIVER NOW" type="h3" textAlign="left" />
           <Spacer spacing="sm" />
           <NormalText
             size="sm"
@@ -176,7 +180,7 @@ const HireDriver = () => {
             text={"GET YOUR DRIVE NOW"}
             type="dark"
             //   onClick={() => {}}
-          />
+          /> */}
         </Container>
       </Section>
 

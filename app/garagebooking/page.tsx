@@ -1,25 +1,53 @@
 import {
+  AboutUsSection,
   Container,
+  CtnSection,
   ExploreCard,
+  FeatureCard,
+  HowItWorks,
   LetGetCarFeatureCard,
   Section,
+  SectionPoints,
   Spacer,
   TestimonialsSection,
 } from "@/components/common";
 import { GarageBookingForm } from "@/components/pages/garagebooking";
 import { HireDriverForm } from "@/components/pages/hireDriver";
 import { Button, Heading, NormalText } from "@/components/UI";
+import { FilledLocationIcon } from "@/constants/icons";
 import {
   hireDriveAboutusImg,
   hiredriverBgImage,
   onlineBookingImage,
   garageBookingImage,
+  sellcarBgImage,
+  sellcarEnterDetailsImg,
+  sellcarCashImg,
+  sellcarInspectionImg,
 } from "@/constants/images";
 import { List } from "flowbite-react";
 
 import React from "react";
 
-const HireDriver = () => {
+const howItWorksContents = [
+  {
+    img: sellcarEnterDetailsImg,
+    title: "Let Us Know What You Need",
+    desc: "Share your garage service requirements with us, and we'll take care of the rest.",
+  },
+  {
+    img: sellcarCashImg,
+    title: "Pick a Convenient Date and Time",
+    desc: "Choose a time that suits you for our garage service appointment.",
+  },
+  {
+    img: sellcarInspectionImg,
+    title: "Drive It Over and We’ll Handle It for You",
+    desc: "Bring your vehicle to our garage, and we’ll take care of all the necessary services.",
+  },
+];
+
+const GarageBookingScreen = () => {
   return (
     <div>
       <div
@@ -60,98 +88,53 @@ const HireDriver = () => {
 
       <Section>
         <Container>
-          <div className="grid grid-cols-2 gap-4">
-            <img src={hireDriveAboutusImg.src} alt="hire Driver" />
-            <div>
-              <Heading
-                text="Hire a Safe driver Dubai Most Trusted Private Driver Service in UAE"
-                type="h4"
-                textAlign="left"
-              />
-              <Spacer spacing="sm" />
-              <NormalText
-                size="sm"
-                color="gray"
-                text="Are you not in a position to drive your car? Hiring a safe driver Dubai is the best thing to do if you are in Dubai and Awesome Drive is the best safe Driver Company. Awesome Drive welcomes you to a chauffeur-driven service. It is a driver company operating in Dubai."
-              />
-              <NormalText
-                size="sm"
-                color="gray"
-                text="When you are in search of hiring a  driver in Dubai then awesome drive is your one stop solution. We have a lot of experience that provides an innovative and unique chauffeur service to the people in the UAE public. When you are looking for a safe driver who is reliable and can take you to your loved ones and with comfort, we have the best private drivers you will find anywhere in Dubai. We are specialists when it comes to offering safe driver services. We will not let you down in your hunt for the best driver service in Dubai."
-              />
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <FeatureCard
+              title="Expert Service"
+              description="Benefit from our experienced technicians who provide top-notch care and maintenance for your vehicle."
+              // Icon={FilledLocationIcon}
+            />
+            <FeatureCard
+              title="Convenient Booking"
+              description="Easily schedule your garage services online or by phone, with flexible appointment options to suit your schedule."
+              // Icon={FilledLocationIcon}
+            />
+            <FeatureCard
+              title="Reliable Results"
+              description="Count on us for high-quality repairs and maintenance that keep your vehicle running smoothly and efficiently."
+              // Icon={FilledLocationIcon}
+            />
           </div>
         </Container>
       </Section>
 
       <Section bgType="gray">
-        <Container>
-          <div>
-            <Heading text="How it Works?" type="h4" textAlign="left" />
-            <Spacer spacing="sm" />
-            <NormalText
-              size="sm"
-              color="gray"
-              text="Awesome Drive provides monthly driver service in Dubai. A professional driver with many years of experience will take you any corner of the city.we are registered with Dubai Roads and Transport Authority (RTA) to outsource private, personal & corporate Drivers to Customer. with an honest objective to assist everybody to reach their destination,safety,comfortably and above all, cost-effectively"
-            />
-            <Spacer spacing="md" />
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <LetGetCarFeatureCard
-                image={onlineBookingImage}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-                title="Online Booking"
-              />
-              <LetGetCarFeatureCard
-                image={onlineBookingImage}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-                title="Online Booking"
-              />
-              <LetGetCarFeatureCard
-                image={onlineBookingImage}
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nost"
-                title="Online Booking"
-              />
-            </div>
-          </div>
-        </Container>
+        <AboutUsSection
+          img={sellcarBgImage}
+          title="Expert Care for Your Vehicle"
+          desc="At LetGetCar, we offer comprehensive garage services designed to keep your vehicle in peak condition. Our skilled technicians provide a range of services, from routine maintenance to complex repairs, ensuring your car runs smoothly and reliably. With our user-friendly booking system, you can easily schedule a convenient time for your service, whether it's an oil change, brake repair, or any other need. We prioritize quality and efficiency, handling every job with precision and care. Trust LetGetCar for all your garage service needs and experience exceptional service that keeps your vehicle performing at its best."
+        />
+      </Section>
+
+      <Section bgType="gray">
+        <HowItWorks data={howItWorksContents} />
       </Section>
 
       <Section>
         <Container>
-          <Heading
-            text="Benefits of Hiring Monthly Driver From Awesome Drive"
-            type="h4"
-            textAlign="left"
+          <SectionPoints
+            title="What We Provide for You"
+            lists={["Garage Booking", "Car Services", "car Modification"]}
           />
-          <Spacer spacing="sm" />
-          <List>
-            <List.Item>
-              At least 10 characters (and up to 100 characters)
-            </List.Item>
-            <List.Item>At least one lowercase character</List.Item>
-            <List.Item>
-              Inclusion of at least one special character, e.g., ! @ # ?
-            </List.Item>
-          </List>
         </Container>
       </Section>
 
-      <Section bgType="primary">
-        <Container>
-          <Heading text="Book Garage Now" type="h3" textAlign="left" />
-          <Spacer spacing="sm" />
-          <NormalText
-            size="sm"
-            color="gray"
-            text="When you are in search of hiring a  driver in Dubai then awesome drive is your one stop solution. We have a lot of experience that provides an innovative and unique chauffeur service to the people in the UAE public. When you are looking for a safe driver who is reliable and can take you to your loved ones and with comfort, we have the best private drivers you will find anywhere in Dubai. We are specialists when it comes to offering safe driver services. We will not let you down in your hunt for the best driver service in Dubai."
-          />
-          <Spacer spacing="sm" />
-          <Button
-            text={"Book Garage Now"}
-            type="dark"
-            //   onClick={() => {}}
-          />
-        </Container>
+      <Section>
+        <CtnSection
+          ctnText="Download Our App Now"
+          desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
+          title="Download From Playstore"
+        />
       </Section>
 
       <Section>
@@ -163,4 +146,4 @@ const HireDriver = () => {
   );
 };
 
-export default HireDriver;
+export default GarageBookingScreen;

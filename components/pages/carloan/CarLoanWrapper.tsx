@@ -4,13 +4,21 @@ import {
   AboutUsSection,
   Container,
   CtnSection,
+  FaqSection,
   HowItWorks,
   Section,
   SectionPoints,
   Spacer,
+  TestimonialsSection,
 } from "@/components/common";
 import { Button, Heading, NormalText } from "@/components/UI";
-import { onlineBookingImage, sellcarBgImage } from "@/constants/images";
+import {
+  onlineBookingImage,
+  sellcarBgImage,
+  sellcarEnterDetailsImg,
+  sellCarEx,
+  hireDriverEx,
+} from "@/constants/images";
 
 import React, { useState } from "react";
 import CarLoanApplyForm from "./CarLoanApplyForm";
@@ -21,19 +29,19 @@ import { useRouter } from "next/navigation";
 
 const howItWorksContents = [
   {
-    img: onlineBookingImage,
-    title: "Select a car you wish to purchase",
-    desc: "Once your test drive is completed pay token amount to reserve that car.",
+    img: sellCarEx,
+    title: "Choose Your Car",
+    desc: "Select the car you want to purchase and, after your test drive, pay a small token amount to reserve it.",
   },
   {
     img: onlineBookingImage,
-    title: "Select a car you wish to purchase",
-    desc: "Once your test drive is completed pay token amount to reserve that car.",
+    title: "Upload Your Documents",
+    desc: "Easily upload the required documents to complete your loan application with the bank.",
   },
   {
-    img: onlineBookingImage,
-    title: "Select a car you wish to purchase",
-    desc: "Once your test drive is completed pay token amount to reserve that car.",
+    img: hireDriverEx,
+    title: "Track Your Loan Progress",
+    desc: "Stay updated with daily notifications as our finance team works with your bank to expedite the approval process.",
   },
 ];
 
@@ -67,7 +75,7 @@ const CarLoan = () => {
       <Section>
         <HowItWorks
           data={howItWorksContents}
-          mainDescription="Awesome Drive provides monthly driver service in Dubai. A professional driver with many years of experience will take you any corner of the city.we are registered with Dubai Roads and Transport Authority (RTA) to outsource private, personal & corporate Drivers to Customer. with an honest objective to assist everybody to reach their destination,safety,comfortably and above all, cost-effectively"
+          // mainDescription="Awesome Drive provides monthly driver service in Dubai. A professional driver with many years of experience will take you any corner of the city.we are registered with Dubai Roads and Transport Authority (RTA) to outsource private, personal & corporate Drivers to Customer. with an honest objective to assist everybody to reach their destination,safety,comfortably and above all, cost-effectively"
         />
       </Section>
 
@@ -75,7 +83,7 @@ const CarLoan = () => {
         <AboutUsSection
           img={sellcarBgImage}
           title="Zero Downpayment With Our Loan"
-          desc="Awesome Drive provides monthly driver service in Dubai. A professional driver with many years of experience will take you any corner of the city.we are registered with Dubai Roads and Transport Authority (RTA) to outsource private, personal & corporate Drivers to Customer. with an honest objective to assist everybody to reach their destination,safety,comfortably and above all, cost-effectively"
+          desc="Enjoy the convenience of owning your dream car without the burden of an upfront payment. With our zero downpayment car loan option, you can drive away without paying anything upfront. Our hassle-free financing solutions make car ownership more accessible, offering flexible repayment plans tailored to your budget. Whether you're buying a new or used car, our zero downpayment option ensures you can get behind the wheel faster. LetGetCar partners with trusted banks to provide fast approvals and competitive interest rates, giving you peace of mind as you enjoy a smooth and affordable car-buying experience."
         />
       </Section>
 
@@ -83,7 +91,12 @@ const CarLoan = () => {
         <Container>
           <SectionPoints
             title="What's Required To Apply Car Loan"
-            lists={["Passport", "Emirates ID", "Visa"]}
+            lists={[
+              "Passport Copy",
+              "Emirates ID",
+              "Visa Page",
+              "Salary Certificate",
+            ]}
             // desc="Awesome Drive provides monthly driver service in Dubai. A professional driver with many years of experience will take you any corner of the city.we are registered with Dubai Roads and Transport Authority (RTA) to outsource private, personal & corporate Drivers to Customer. with an honest objective to assist everybody to reach their destination,safety,comfortably and above all, cost-effectively"
           />
         </Container>
@@ -91,10 +104,22 @@ const CarLoan = () => {
 
       <Section>
         <CtnSection
-          ctnText="Apply Car Loan Now"
-          desc="Awesome Drive provides monthly driver service in Dubai. A professional driver with many years of experience will take you any corner of the city.we are registered with Dubai Roads and Transport Authority (RTA) to outsource private, personal & corporate Drivers to Customer. with an honest objective to assist everybody to reach their destination,safety,comfortably and above all, cost-effectively"
-          title="Apply Car Loan Now"
+          ctnText="Download Our App Now"
+          desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
+          title="Download From Playstore"
         />
+      </Section>
+
+      {/* <Section> */}
+      <Container>
+        <TestimonialsSection />
+      </Container>
+      {/* </Section> */}
+
+      <Section>
+        <Container className="mb-9">
+          <FaqSection />
+        </Container>
       </Section>
 
       <CarLoanApplyForm setOpen={setOpenCarLoanForm} open={openCarLoanForm} />

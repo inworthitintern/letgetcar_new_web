@@ -68,7 +68,7 @@ const ExploreCarFilterSection: React.FC<IExploreCarFilterSectionProps> = ({
             </Slider> */}
           </Tabs.Item>
           <Tabs.Item title="Price Range">
-            <div className="flex gap-4 justify-center">
+            <div className="flex gap-4 flex-wrap justify-center">
               <Card
                 className="hover:bg-primary transition-all cursor-pointer"
                 onClick={() => router.push(`/buycarslist?sale_price=20000`)}

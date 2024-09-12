@@ -34,6 +34,24 @@ const CarDetailsSlider: React.FC<ICarDetailsSliderProps> = ({ images }) => {
     arrows: true,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow className="hidden" />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: images.length > 5 ? 5 : images.length,
+          slidesToScroll: images.length > 5 ? 5 : images.length,
+          infinite: images.length > 5, // Adjust infinite for this breakpoint as well
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: images.length > 3 ? 3 : images.length,
+          slidesToScroll: images.length > 3 ? 3 : images.length,
+          infinite: images.length > 3, // Adjust infinite for this breakpoint as well
+        },
+      },
+    ],
   };
 
   console.log;

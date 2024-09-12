@@ -24,14 +24,38 @@ const LetgetCarExploreSection = () => {
         />
         <Spacer />
         <div className="grid grid-cols-1 md:grid-cols-4  gap-4">
-          <ExploreCard Icon={FinanceIcon} path="/carloan" />
-          <ExploreCard Icon={InsuranceIcon} path="/" />
-          <ExploreCard Icon={RentcarIcon} path="/rentcar-limousine" />
-          <ExploreCard Icon={LimousineIcon} path="/rentcar-limousine" />
-          <ExploreCard Icon={LuxuaryCarsIcon} path="/buycarslist" />
-          <ExploreCard Icon={HireDriverIcon} path="/hiredriver" />
-          <ExploreCard Icon={ModifyCarIcon} path="/garagebooking" />
-          <ExploreCard Icon={GarageCarIcon} path="/garagebooking" />
+          <ExploreCard text="Finance" Icon={FinanceIcon} path="/carloan" />
+          <ExploreCard text="Insurance" Icon={InsuranceIcon} path="/" />
+          <ExploreCard
+            text="Rent Car"
+            Icon={RentcarIcon}
+            path="/rentcar-limousine"
+          />
+          <ExploreCard
+            text="Limousine"
+            Icon={LimousineIcon}
+            path="/rentcar-limousine"
+          />
+          <ExploreCard
+            text="Luxuary Cars"
+            Icon={LuxuaryCarsIcon}
+            path="/buycarslist"
+          />
+          <ExploreCard
+            text="Hire Driver"
+            Icon={HireDriverIcon}
+            path="/hiredriver"
+          />
+          <ExploreCard
+            text="Modify Your Car"
+            Icon={ModifyCarIcon}
+            path="/garagebooking"
+          />
+          <ExploreCard
+            text="Garage Booking"
+            Icon={GarageCarIcon}
+            path="/garagebooking"
+          />
         </div>
       </Container>
     </Section>

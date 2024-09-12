@@ -296,15 +296,16 @@ import { RootState } from "@/GlobalRedux/store";
 import {
   getProfileDetails,
   setLogout,
-  signOut,
 } from "@/GlobalRedux/Features/auth/authSlice";
 import { logo } from "@/constants/images";
 import { AUTH_TOKEN } from "@/constants/variables";
 import { toast } from "react-toastify";
+import { usePathname } from "next/navigation";
 
 const CustomNavbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const dispatch = useDispatch();
+  const pathname = usePathname(); // Use usePathname to get the current pathname
 
   const { user } = useSelector((state: RootState) => state.auth);
 
@@ -314,7 +315,7 @@ const CustomNavbar = () => {
 
   useEffect(() => {
     dispatch(getProfileDetails());
-  }, []);
+  }, [dispatch]);
 
   return (
     <Navbar
@@ -343,44 +344,70 @@ const CustomNavbar = () => {
         <div className="hidden md:flex md:space-x-4">
           <Link
             href="/"
-            className="py-1 px-3 text-dark bg-primary rounded hover:bg-opacity-70 font-medium"
+            className={`py-1 px-3 rounded-sm ${
+              pathname === "/" ? "bg-primary text-dark" : "text-dark"
+            } rounded hover:bg-opacity-70 font-medium`}
             aria-current="page"
           >
             Home
           </Link>
           <Link
             href="/buycarslist?is_new_car=1"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+            className={`py-1 px-3 rounded-sm ${
+              pathname.includes("/buycarslist") &&
+              new URLSearchParams(window.location.search).get("is_new_car") ===
+                "1"
+                ? "bg-primary text-dark"
+                : "text-gray-75"
+            } hover:text-primary-text`}
           >
             Buy New Car
           </Link>
           <Link
             href="/buycarslist?is_new_car=0"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+            className={`py-1 px-3 rounded-sm ${
+              pathname.includes("/buycarslist") &&
+              new URLSearchParams(window.location.search).get("is_new_car") ===
+                "0"
+                ? "bg-primary text-dark"
+                : "text-gray-75"
+            } hover:text-primary-text`}
           >
             Buy Used Car
           </Link>
           <Link
             href="/sellcar"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+            className={`py-1 px-3 rounded-sm ${
+              pathname === "/sellcar" ? "bg-primary text-dark" : "text-gray-75"
+            } hover:text-primary-text`}
           >
             Sell Car
           </Link>
           <Link
             href="/rentcar-limousine"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+            className={`py-1 px-3 rounded-sm ${
+              pathname === "/rentcar-limousine"
+                ? "bg-primary text-dark"
+                : "text-gray-75"
+            } hover:text-primary-text`}
           >
             Rent Car & Limousine
           </Link>
           <Link
             href="/carloan"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+            className={`py-1 px-3 rounded-sm ${
+              pathname === "/carloan" ? "bg-primary text-dark" : "text-gray-75"
+            } hover:text-primary-text`}
           >
             Finance
           </Link>
           <Link
             href="/hiredriver"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+            className={`py-1 px-3 rounded-sm ${
+              pathname === "/hiredriver"
+                ? "bg-primary text-dark"
+                : "text-gray-75"
+            } hover:text-primary-text`}
           >
             Hire Driver
           </Link>
@@ -457,7 +484,9 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/"
-                className="block py-2 px-4 rounded text-dark bg-primary"
+                className={`block py-2 px-4 rounded ${
+                  pathname === "/" ? "bg-primary text-dark" : "text-dark"
+                }`}
                 aria-current="page"
               >
                 Home
@@ -466,7 +495,14 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/buycarslist?is_new_car=1"
-                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+                className={`block py-2 px-4 rounded ${
+                  pathname.includes("/buycarslist") &&
+                  new URLSearchParams(window.location.search).get(
+                    "is_new_car"
+                  ) === "1"
+                    ? "bg-primary text-dark"
+                    : "text-gray-75"
+                } hover:text-primary-text`}
               >
                 Buy New Car
               </Link>
@@ -474,7 +510,14 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/buycarslist?is_new_car=0"
-                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+                className={`block py-2 px-4 rounded ${
+                  pathname.includes("/buycarslist") &&
+                  new URLSearchParams(window.location.search).get(
+                    "is_new_car"
+                  ) === "0"
+                    ? "bg-primary text-dark"
+                    : "text-gray-75"
+                } hover:text-primary-text`}
               >
                 Buy Used Car
               </Link>
@@ -482,7 +525,11 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/sellcar"
-                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+                className={`block py-2 px-4 rounded ${
+                  pathname === "/sellcar"
+                    ? "bg-primary text-dark"
+                    : "text-gray-75"
+                } hover:text-primary-text`}
               >
                 Sell Car
               </Link>
@@ -490,7 +537,11 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/rentcar-limousine"
-                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+                className={`block py-2 px-4 rounded ${
+                  pathname === "/rentcar-limousine"
+                    ? "bg-primary text-dark"
+                    : "text-gray-75"
+                } hover:text-primary-text`}
               >
                 Rent Car & Limousine
               </Link>
@@ -498,7 +549,11 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/carloan"
-                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+                className={`block py-2 px-4 rounded ${
+                  pathname === "/carloan"
+                    ? "bg-primary text-dark"
+                    : "text-gray-75"
+                } hover:text-primary-text`}
               >
                 Finance
               </Link>
@@ -506,7 +561,11 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/hiredriver"
-                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+                className={`block py-2 px-4 rounded ${
+                  pathname === "/hiredriver"
+                    ? "bg-primary text-dark"
+                    : "text-gray-75"
+                } hover:text-primary-text`}
               >
                 Hire Driver
               </Link>
@@ -526,3 +585,251 @@ const CustomNavbar = () => {
 };
 
 export default CustomNavbar;
+
+// "use client";
+
+// import { useEffect, useState } from "react";
+// import { Navbar, Dropdown, Button } from "flowbite-react";
+// import Link from "next/link";
+// import {
+//   HamburgerIcon,
+//   HeartOutlinedIcon,
+//   ProfileIcon,
+//   SearchIcon,
+// } from "@/components/svgs";
+// import SearchPopup from "../SearchPopup";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "@/GlobalRedux/store";
+// import {
+//   getProfileDetails,
+//   setLogout,
+//   signOut,
+// } from "@/GlobalRedux/Features/auth/authSlice";
+// import { logo } from "@/constants/images";
+// import { AUTH_TOKEN } from "@/constants/variables";
+// import { toast } from "react-toastify";
+
+// const CustomNavbar = () => {
+//   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+//   const dispatch = useDispatch();
+
+//   const { user } = useSelector((state: RootState) => state.auth);
+
+//   const toggleSidebar = () => {
+//     setIsSidebarOpen(!isSidebarOpen);
+//   };
+
+//   useEffect(() => {
+//     dispatch(getProfileDetails());
+//   }, []);
+
+//   return (
+//     <Navbar
+//       fluid={true}
+//       rounded={false}
+//       className="bg-white dark:bg-gray-900 fixed top-0 w-full z-50 border-b dark:border-gray-700"
+//     >
+//       <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto p-4">
+//         <Link href="/" className="flex items-center">
+//           <img
+//             src={logo.src}
+//             style={{ width: "40px", objectFit: "cover" }}
+//             alt="Logo"
+//           />
+//         </Link>
+
+//         <div className="flex items-center md:hidden">
+//           <Button
+//             onClick={toggleSidebar}
+//             className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+//           >
+//             <HamburgerIcon className="w-5 h-5" />
+//           </Button>
+//         </div>
+
+//         <div className="hidden md:flex md:space-x-4">
+//           <Link
+//             href="/"
+//             className="py-1 px-3 text-dark bg-primary rounded hover:bg-opacity-70 font-medium"
+//             aria-current="page"
+//           >
+//             Home
+//           </Link>
+//           <Link
+//             href="/buycarslist?is_new_car=1"
+//             className="py-1 px-3 text-gray-75 hover:text-primary-text"
+//           >
+//             Buy New Car
+//           </Link>
+//           <Link
+//             href="/buycarslist?is_new_car=0"
+//             className="py-1 px-3 text-gray-75 hover:text-primary-text"
+//           >
+//             Buy Used Car
+//           </Link>
+//           <Link
+//             href="/sellcar"
+//             className="py-1 px-3 text-gray-75 hover:text-primary-text"
+//           >
+//             Sell Car
+//           </Link>
+//           <Link
+//             href="/rentcar-limousine"
+//             className="py-1 px-3 text-gray-75 hover:text-primary-text"
+//           >
+//             Rent Car & Limousine
+//           </Link>
+//           <Link
+//             href="/carloan"
+//             className="py-1 px-3 text-gray-75 hover:text-primary-text"
+//           >
+//             Finance
+//           </Link>
+//           <Link
+//             href="/hiredriver"
+//             className="py-1 px-3 text-gray-75 hover:text-primary-text"
+//           >
+//             Hire Driver
+//           </Link>
+//           <div className="flex items-center space-x-8">
+//             <Link href="/wishlist">
+//               <HeartOutlinedIcon height={20} width={20} />
+//             </Link>
+
+//             <SearchPopup />
+
+//             {user ? (
+//               <Link
+//                 href="#"
+//                 className="flex items-center text-dark hover:text-primary-text"
+//               >
+//                 <ProfileIcon height={20} width={20} />
+//                 <span className="ml-2">{user.name || "Customer"}</span>
+//               </Link>
+//             ) : (
+//               <Link
+//                 href="/login"
+//                 className="flex items-center text-dark hover:text-primary-text"
+//               >
+//                 <ProfileIcon height={20} width={20} />
+//                 <span className="ml-2">Login</span>
+//               </Link>
+//             )}
+//           </div>
+//           {user && (
+//             <Dropdown
+//               label=""
+//               dismissOnClick={false}
+//               renderTrigger={() => (
+//                 <div className="flex items-center pl-4">
+//                   <HamburgerIcon height={20} width={20} />
+//                 </div>
+//               )}
+//             >
+//               <Dropdown.Item>
+//                 <Link href="/garagebooking" className="block px-4 py-2 text-sm">
+//                   Garage Booking
+//                 </Link>
+//               </Dropdown.Item>
+//               <Dropdown.Item
+//                 onClick={() => {
+//                   if (typeof window !== "undefined") {
+//                     window.localStorage.removeItem(AUTH_TOKEN);
+//                     toast.success("Logout Success");
+//                     dispatch(setLogout());
+//                   }
+//                 }}
+//               >
+//                 <Link href="#" className="block px-4 py-2 text-sm">
+//                   Sign out
+//                 </Link>
+//               </Dropdown.Item>
+//             </Dropdown>
+//           )}
+//         </div>
+//       </div>
+
+//       {/* Sidebar for mobile */}
+//       <div
+//         className={`fixed top-0 right-0 w-64 h-full bg-white dark:bg-gray-900 transition-transform duration-300 ease-in-out transform ${
+//           isSidebarOpen ? "translate-x-0" : "translate-x-full"
+//         }`}
+//         style={{ zIndex: 100 }}
+//       >
+//         <div className="p-4">
+//           <Button onClick={toggleSidebar} className="mb-4">
+//             Close
+//           </Button>
+//           <ul className="space-y-2">
+//             <li>
+//               <Link
+//                 href="/"
+//                 className="block py-2 px-4 rounded text-dark bg-primary"
+//                 aria-current="page"
+//               >
+//                 Home
+//               </Link>
+//             </li>
+//             <li>
+//               <Link
+//                 href="/buycarslist?is_new_car=1"
+//                 className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+//               >
+//                 Buy New Car
+//               </Link>
+//             </li>
+//             <li>
+//               <Link
+//                 href="/buycarslist?is_new_car=0"
+//                 className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+//               >
+//                 Buy Used Car
+//               </Link>
+//             </li>
+//             <li>
+//               <Link
+//                 href="/sellcar"
+//                 className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+//               >
+//                 Sell Car
+//               </Link>
+//             </li>
+//             <li>
+//               <Link
+//                 href="/rentcar-limousine"
+//                 className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+//               >
+//                 Rent Car & Limousine
+//               </Link>
+//             </li>
+//             <li>
+//               <Link
+//                 href="/carloan"
+//                 className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+//               >
+//                 Finance
+//               </Link>
+//             </li>
+//             <li>
+//               <Link
+//                 href="/hiredriver"
+//                 className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
+//               >
+//                 Hire Driver
+//               </Link>
+//             </li>
+//           </ul>
+//         </div>
+//       </div>
+
+//       {isSidebarOpen && (
+//         <div
+//           className="fixed inset-0 bg-black opacity-50 z-40"
+//           onClick={toggleSidebar}
+//         ></div>
+//       )}
+//     </Navbar>
+//   );
+// };
+
+// export default CustomNavbar;

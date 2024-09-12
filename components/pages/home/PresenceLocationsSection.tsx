@@ -15,7 +15,7 @@ const PresenceLocationsSection = () => {
     >
       <Container className="h-full">
         <div className="grid grid-cols-7 gap-4 h-full items-center">
-          <div className="col-span-3">
+          <div className="col-span-12 lg:col-span-3 ">
             <Heading
               text="Our Presence in 4 regions in UAE"
               type="h3"
@@ -25,8 +25,44 @@ const PresenceLocationsSection = () => {
               className="mb-3"
             />
             <NormalText text="Browse By Location" fontWeight="semiBold" />
+            <div className="col-span-4 block lg:hidden">
+              <div className="grid grid-cols-4 gap-4">
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={locationDubaiImage}
+                    alt="location-dubai"
+                    className="mb-2"
+                  />
+                  <NormalText text="Dubai" fontWeight="semiBold" />
+                </div>
+                <div className="flex flex-col flex-wrap items-center">
+                  <Image
+                    src={locationDubaiImage}
+                    alt="location-dubai"
+                    className="mb-2"
+                  />
+                  <NormalText text="Sharjah" fontWeight="semiBold" />
+                </div>
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={locationDubaiImage}
+                    alt="location-dubai"
+                    className="mb-2"
+                  />
+                  <NormalText text="Abu Dhabi" fontWeight="semiBold" />
+                </div>
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={locationDubaiImage}
+                    alt="location-dubai"
+                    className="mb-2"
+                  />
+                  <NormalText text="Ajman" fontWeight="semiBold" />
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="col-span-4">
+          <div className="col-span-4 hidden lg:block">
             <div className="grid grid-cols-4 gap-4">
               <div className="flex flex-col items-center">
                 <Image
@@ -36,7 +72,7 @@ const PresenceLocationsSection = () => {
                 />
                 <NormalText text="Dubai" fontWeight="semiBold" />
               </div>
-              <div className="flex flex-col items-center">
+              <div className="flex flex-col flex-wrap items-center">
                 <Image
                   src={locationDubaiImage}
                   alt="location-dubai"

@@ -55,14 +55,14 @@ const BuyCarsList: React.FC = () => {
       <Container>
         <div className="py-16">
           <div className="flex justify-between gap-8 relative">
-            <div className="w-1/4 top-0 z-10">
+            <div className="hidden lg:block w-1/4 top-0 z-10">
               <BuyCarFilters
                 budgetRange={[0, 410000]}
                 emiRange={[0, 410000]}
                 setApiParameters={setApiParameters}
               />
             </div>
-            <div className="w-3/4">
+            <div className="w-full lg:w-3/4">
               <div className="flex items-center justify-between">
                 <Heading
                   text={`${buyCarLists?.total || 0} Available Cars`}
@@ -88,7 +88,7 @@ const BuyCarsList: React.FC = () => {
               <>
                 {!loading && buyCarLists?.data?.length > 0 ? (
                   <>
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                       {buyCarLists?.data?.map((car, index) => (
                         <CarCard2
                           id={car.id}

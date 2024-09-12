@@ -128,8 +128,116 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
           <>
             <Container>
               <div className="grid grid-cols-12 gap-8 h-full">
-                <div className="col-span-8">
+                <div className="col-span-12 lg:col-span-8">
                   <CarDetailsSlider images={buyCarDetails?.images} />
+
+                  <div className="block lg:hidden">
+                    <div className="sticky top-28">
+                      <Heading
+                        text={buyCarDetails?.name}
+                        type="h4"
+                        textAlign="left"
+                      />
+                      {/*  */}
+                      <div className="flex items-center mt-2 mb-2">
+                        <NormalText
+                          text={buyCarDetails?.option}
+                          color="gray"
+                          fontWeight="medium"
+                          size="sm"
+                          className="mr-2"
+                        />{" "}
+                        <span className="text-primary">|</span>
+                        <NormalText
+                          text={buyCarDetails?.kilometers}
+                          color="gray"
+                          fontWeight="medium"
+                          size="sm"
+                          className="mx-2"
+                        />{" "}
+                        <span className="text-primary">|</span>
+                        <NormalText
+                          text={buyCarDetails?.specification}
+                          color="gray"
+                          fontWeight="medium"
+                          size="sm"
+                          className="ml-2"
+                        />
+                      </div>
+                      {/*  */}
+                      <div>
+                        <div className="flex items-center gap-x-2 mb-2 mt-2">
+                          <LocationIcon />{" "}
+                          <NormalText
+                            text="Free Hub test drive in Jebel Ali, Dubai"
+                            color="gray"
+                          />
+                        </div>
+                        <div className="flex items-center gap-x-2">
+                          <HomeIcon />{" "}
+                          <NormalText
+                            text="Home test drive at your preferred location"
+                            color="gray"
+                          />
+                        </div>
+                      </div>
+
+                      {/*  */}
+                      <div className="flex justify-between items-center mt-4">
+                        <Heading
+                          text={"AED " + buyCarDetails?.sale_price}
+                          color="primary"
+                          type="h4"
+                        />
+                        {/* <NormalText
+                  text="Understand Price"
+                  fontWeight="regular"
+                  textUnderline
+                  color="dark"
+                  cursorEnabled
+                  hoverColor="primary"
+                /> */}
+                      </div>
+
+                      {/*  */}
+
+                      <div className="flex flex-col gap-1 mt-4">
+                        <NormalText
+                          text={`EMI AED ${buyCarDetails?.emi_price}/mo for 5 years`}
+                          color="dark"
+                          size="md"
+                          fontWeight="medium"
+                        />
+                        <NormalText
+                          text="For 5 yrs with Zero downpayment options available"
+                          color="gray"
+                          size="xs"
+                        />
+                      </div>
+
+                      <Spacer spacing="md" />
+                      <div className="flex gap-x-2">
+                        <Button
+                          text="Book Free Test Drive"
+                          className="w-full"
+                          htmlType="submit"
+                          onClick={carBookingCheckoutHandler}
+                        />
+                        <div className="cursor-pointer">
+                          {carWishListedId ? (
+                            <div onClick={removeWishListHandler}>
+                              <WishListFilledIcon width={60} height={60} />
+                            </div>
+                          ) : (
+                            <div onClick={addToWishListHandler}>
+                              <WishListNonFilledIcon width={60} height={60} />
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   <Spacer spacing="lg" />
                   {/*  */}
                   <div className="border-gray-25 border p-6 rounded-lg">
@@ -490,7 +598,7 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
 
                   {/*  */}
                 </div>
-                <div className="col-span-4">
+                <div className="hidden lg:block col-span-12 lg:col-span-4">
                   <div className="sticky top-28">
                     <Heading
                       text={buyCarDetails?.name}

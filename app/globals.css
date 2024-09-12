@@ -29,6 +29,11 @@
     rgb(var(--background-start-rgb));
 } */
 
+body,
+html {
+  overflow-x: hidden !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

@@ -1,20 +1,51 @@
 "use client";
 
 import {
+  AboutUsSection,
   CarCard1,
   CarCard2,
   CarRentCard,
   Container,
+  CtnSection,
+  FaqSection,
   FeatureCard,
+  HowItWorks,
   LoadingSpinner,
   Section,
   Spacer,
+  TestimonialsSection,
 } from "@/components/common";
 import { Button, Heading } from "@/components/UI";
-import { rentCarLimousineImage } from "@/constants/images";
+import {
+  rentCarLimousineImage,
+  sellcarCashImg,
+  sellcarEnterDetailsImg,
+  sellcarInspectionImg,
+  sellCarEx,
+} from "@/constants/images";
 import rentCarLimousineService from "@/services/rentCarLimousineService";
 import React, { useEffect, useState } from "react";
 import RentCarBookingForm from "./RentCarBookingForm";
+import { FilledLocationIcon } from "@/constants/icons";
+import { hireDriverEx } from "@/constants/images";
+
+const howItWorksContents = [
+  {
+    img: sellcarEnterDetailsImg,
+    title: "Choose Your Vehicle",
+    desc: "Browse our wide selection of cars and luxury limousines, and pick the one that suits your needs. Whether for business, leisure, or special events, we have the perfect vehicle for you.",
+  },
+  {
+    img: sellcarCashImg,
+    title: "Select Rental Duration",
+    desc: "Choose from flexible rental options—daily, weekly, or monthly—based on your schedule. We offer tailored plans to ensure you have the vehicle for as long as you need it.",
+  },
+  {
+    img: sellCarEx,
+    title: "Book and Drive",
+    desc: "Complete your booking online or via phone, and you're ready to go. Enjoy a seamless experience, with optional chauffeur services available for ultimate convenience.",
+  },
+];
 
 const RentCarLimousineWrapper = () => {
   const [rentCarsData, setRentCarsData] = useState([]);
@@ -74,8 +105,10 @@ const RentCarLimousineWrapper = () => {
           <div className="h-screen max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
             <div>
               <h1 className="font-poppins text-2xl md:text-5xl font-bold text-white">
-                Rent Car Or{" "}
-                <span className="text-primary">Limousine Booking</span>
+                Your Go-To for Car <br />
+                <span className="text-primary">
+                  Rentals & Limousine Bookings
+                </span>
               </h1>
               <p className="text-sm md:text-base text-white font-normal  py-6">
                 Experience luxury on the roads of dubai with our premium car
@@ -93,10 +126,26 @@ const RentCarLimousineWrapper = () => {
 
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 -mt-12">
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
-          <FeatureCard />
+          <FeatureCard
+            title="Wide Vehicle Selection"
+            description="Choose from a range of well-maintained cars and luxury limousines to suit your needs, ensuring comfort, style, and convenience for every occasion."
+            // Icon={FilledLocationIcon}
+          />
+          <FeatureCard
+            title="Flexible Rental Plans"
+            description="We offer daily, weekly, and monthly rental options to match your schedule, giving you the freedom to rent on your own terms without any hassle."
+            // Icon={FilledLocationIcon}
+          />
+          <FeatureCard
+            title="Professional Chauffeurs"
+            description="Our expert drivers provide a safe, comfortable, and professional driving experience, ensuring you arrive at your destination in style and on time."
+            // Icon={FilledLocationIcon}
+          />
+          <FeatureCard
+            title="Affordable Pricing"
+            description="Enjoy competitive rates and transparent pricing with no hidden fees, offering you the best value for both car rentals and limousine services."
+            // Icon={FilledLocationIcon}
+          />
         </div>
       </Container>
       {!loading && rentCarsData?.data?.length && (
@@ -164,6 +213,64 @@ const RentCarLimousineWrapper = () => {
           />
         </Section>
       )}
+
+      <Section>
+        <Container>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <FeatureCard
+              title="Corporate Rental"
+              description="Efficient and flexible car rental solutions for businesses, perfect for meetings, business trips, or long-term needs."
+            />
+            <FeatureCard
+              title="Individual Rental"
+              description="Personalized car rental options for daily, weekly, or monthly use, tailored to fit your lifestyle and travel needs."
+            />
+            <FeatureCard
+              title="Luxury Car Rental"
+              description="Experience high-end comfort and style with our premium luxury car rentals, ideal for special occasions or indulgent trips."
+            />
+          </div>
+        </Container>
+      </Section>
+
+      <Section>
+        <Container>
+          <AboutUsSection
+            img={hireDriverEx}
+            title="About Our Car Rental & Limousine Booking Service"
+            desc="LetGetCar offers premium car rental and limousine booking services, tailored to meet your every need. Whether you're looking for a reliable vehicle for a short trip, a luxurious limousine for a special event, or a long-term rental for business purposes, we provide a diverse range of well-maintained vehicles to suit any occasion. Our fleet includes everything from compact cars to high-end limousines, ensuring you travel in style, comfort, and safety. We pride ourselves on flexibility, offering daily, weekly, and monthly rental plans to accommodate your schedule, no matter the length of your stay or the nature of your journey. In addition to our exceptional vehicles, our professional chauffeurs guarantee a smooth and punctual driving experience, ensuring that you reach your destination with ease and comfort. At LetGetCar, customer satisfaction is our priority. We offer competitive, transparent pricing without any hidden fees, so you know you're getting the best deal. Whether you need a rental for business, leisure, or a special occasion, our seamless booking process and dedicated service make LetGetCar your trusted partner for car rental and limousine services."
+          />
+        </Container>
+      </Section>
+
+      <Section bgType="gray">
+        <Container>
+          <HowItWorks
+            data={howItWorksContents}
+            mainDescription="Renting a car or booking a limousine with LetGetCar is simple and hassle-free. Our streamlined process ensures you get the right vehicle with minimal effort and maximum convenience. Just follow these three easy steps:"
+          />
+        </Container>
+      </Section>
+
+      <Section bgType="primary">
+        <Container>
+          <CtnSection
+            ctnText="Download Our App Now"
+            desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
+            title="Download From Playstore"
+          />
+        </Container>
+      </Section>
+
+      <Section bgType="gray">
+        <Container>
+          <TestimonialsSection />
+        </Container>
+      </Section>
+
+      <Container className="mb-9">
+        <FaqSection />
+      </Container>
     </>
   );
 };
