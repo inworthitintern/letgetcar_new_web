@@ -296,16 +296,17 @@ import { RootState } from "@/GlobalRedux/store";
 import {
   getProfileDetails,
   setLogout,
+  signOut,
 } from "@/GlobalRedux/Features/auth/authSlice";
 import { logo } from "@/constants/images";
 import { AUTH_TOKEN } from "@/constants/variables";
 import { toast } from "react-toastify";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const CustomNavbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const dispatch = useDispatch();
-  const pathname = usePathname(); // Use usePathname to get the current pathname
+  const router = useRouter(); // Access the router object to get the current pathname
 
   const { user } = useSelector((state: RootState) => state.auth);
 
@@ -315,7 +316,7 @@ const CustomNavbar = () => {
 
   useEffect(() => {
     dispatch(getProfileDetails());
-  }, [dispatch]);
+  }, []);
 
   return (
     <Navbar
@@ -344,8 +345,8 @@ const CustomNavbar = () => {
         <div className="hidden md:flex md:space-x-4">
           <Link
             href="/"
-            className={`py-1 px-3 rounded-sm ${
-              pathname === "/" ? "bg-primary text-dark" : "text-dark"
+            className={`py-1 px-3 ${
+              router.pathname === "/" ? "bg-primary text-white" : "text-dark"
             } rounded hover:bg-opacity-70 font-medium`}
             aria-current="page"
           >
@@ -353,11 +354,11 @@ const CustomNavbar = () => {
           </Link>
           <Link
             href="/buycarslist?is_new_car=1"
-            className={`py-1 px-3 rounded-sm ${
-              pathname.includes("/buycarslist") &&
+            className={`py-1 px-3 ${
+              router.pathname.includes("/buycarslist") &&
               new URLSearchParams(window.location.search).get("is_new_car") ===
                 "1"
-                ? "bg-primary text-dark"
+                ? "bg-primary text-white"
                 : "text-gray-75"
             } hover:text-primary-text`}
           >
@@ -365,11 +366,11 @@ const CustomNavbar = () => {
           </Link>
           <Link
             href="/buycarslist?is_new_car=0"
-            className={`py-1 px-3 rounded-sm ${
-              pathname.includes("/buycarslist") &&
+            className={`py-1 px-3 ${
+              router.pathname.includes("/buycarslist") &&
               new URLSearchParams(window.location.search).get("is_new_car") ===
                 "0"
-                ? "bg-primary text-dark"
+                ? "bg-primary text-white"
                 : "text-gray-75"
             } hover:text-primary-text`}
           >
@@ -377,17 +378,19 @@ const CustomNavbar = () => {
           </Link>
           <Link
             href="/sellcar"
-            className={`py-1 px-3 rounded-sm ${
-              pathname === "/sellcar" ? "bg-primary text-dark" : "text-gray-75"
+            className={`py-1 px-3 ${
+              router.pathname === "/sellcar"
+                ? "bg-primary text-white"
+                : "text-gray-75"
             } hover:text-primary-text`}
           >
             Sell Car
           </Link>
           <Link
             href="/rentcar-limousine"
-            className={`py-1 px-3 rounded-sm ${
-              pathname === "/rentcar-limousine"
-                ? "bg-primary text-dark"
+            className={`py-1 px-3 ${
+              router.pathname === "/rentcar-limousine"
+                ? "bg-primary text-white"
                 : "text-gray-75"
             } hover:text-primary-text`}
           >
@@ -395,17 +398,19 @@ const CustomNavbar = () => {
           </Link>
           <Link
             href="/carloan"
-            className={`py-1 px-3 rounded-sm ${
-              pathname === "/carloan" ? "bg-primary text-dark" : "text-gray-75"
+            className={`py-1 px-3 ${
+              router.pathname === "/carloan"
+                ? "bg-primary text-white"
+                : "text-gray-75"
             } hover:text-primary-text`}
           >
             Finance
           </Link>
           <Link
             href="/hiredriver"
-            className={`py-1 px-3 rounded-sm ${
-              pathname === "/hiredriver"
-                ? "bg-primary text-dark"
+            className={`py-1 px-3 ${
+              router.pathname === "/hiredriver"
+                ? "bg-primary text-white"
                 : "text-gray-75"
             } hover:text-primary-text`}
           >
@@ -484,9 +489,7 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/"
-                className={`block py-2 px-4 rounded ${
-                  pathname === "/" ? "bg-primary text-dark" : "text-dark"
-                }`}
+                className="block py-2 px-4 rounded text-dark bg-primary"
                 aria-current="page"
               >
                 Home
@@ -495,14 +498,7 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/buycarslist?is_new_car=1"
-                className={`block py-2 px-4 rounded ${
-                  pathname.includes("/buycarslist") &&
-                  new URLSearchParams(window.location.search).get(
-                    "is_new_car"
-                  ) === "1"
-                    ? "bg-primary text-dark"
-                    : "text-gray-75"
-                } hover:text-primary-text`}
+                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
               >
                 Buy New Car
               </Link>
@@ -510,14 +506,7 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/buycarslist?is_new_car=0"
-                className={`block py-2 px-4 rounded ${
-                  pathname.includes("/buycarslist") &&
-                  new URLSearchParams(window.location.search).get(
-                    "is_new_car"
-                  ) === "0"
-                    ? "bg-primary text-dark"
-                    : "text-gray-75"
-                } hover:text-primary-text`}
+                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
               >
                 Buy Used Car
               </Link>
@@ -525,11 +514,7 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/sellcar"
-                className={`block py-2 px-4 rounded ${
-                  pathname === "/sellcar"
-                    ? "bg-primary text-dark"
-                    : "text-gray-75"
-                } hover:text-primary-text`}
+                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
               >
                 Sell Car
               </Link>
@@ -537,11 +522,7 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/rentcar-limousine"
-                className={`block py-2 px-4 rounded ${
-                  pathname === "/rentcar-limousine"
-                    ? "bg-primary text-dark"
-                    : "text-gray-75"
-                } hover:text-primary-text`}
+                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
               >
                 Rent Car & Limousine
               </Link>
@@ -549,11 +530,7 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/carloan"
-                className={`block py-2 px-4 rounded ${
-                  pathname === "/carloan"
-                    ? "bg-primary text-dark"
-                    : "text-gray-75"
-                } hover:text-primary-text`}
+                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
               >
                 Finance
               </Link>
@@ -561,11 +538,7 @@ const CustomNavbar = () => {
             <li>
               <Link
                 href="/hiredriver"
-                className={`block py-2 px-4 rounded ${
-                  pathname === "/hiredriver"
-                    ? "bg-primary text-dark"
-                    : "text-gray-75"
-                } hover:text-primary-text`}
+                className="block py-2 px-4 rounded text-gray-75 hover:text-primary-text"
               >
                 Hire Driver
               </Link>
