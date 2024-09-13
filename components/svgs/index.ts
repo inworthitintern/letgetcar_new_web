@@ -4,4 +4,3 @@ export {default as ProfileIcon} from './Profile.svg';
 export {default as SearchIcon} from './Search.svg';
 export {default as BmwIcon} from './Bmw.svg';
 export {default as LeftChevronIcon } from './LeftChevron.svg'
-export {default as FinanceIcon } from './Finance.svg'

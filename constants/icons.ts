@@ -18,8 +18,9 @@ import HireDriverIcon from '../public/icons/hiredriver-icon.svg';
 import ModifyCarIcon from '../public/icons/modifycar-icon.svg';
 import GarageCarIcon from '../public/icons/garage-booking-icon.svg';
 import FilledLocationIcon from '../public/icons/filled-location-icon.svg';
+import FinaceIcon from '../public/icons/finance-icon.svg';
 
 
 
 
-export {LocationIcon, SortIcon, ChevronDown, HomeIcon, CheckIcon, WishListNonFilledIcon, WishListFilledIcon, CheckOutCloseIcon, WishlistNonFilledPrimaryIcon, WishlistFilledPrimaryIcon, GarageCarIcon,HireDriverIcon, InsuranceIcon, LimousineIcon, LuxuaryCarsIcon, ModifyCarIcon, RentcarIcon, FilledLocationIcon}
+export {LocationIcon, SortIcon, ChevronDown, HomeIcon, CheckIcon, WishListNonFilledIcon, WishListFilledIcon, CheckOutCloseIcon, WishlistNonFilledPrimaryIcon, WishlistFilledPrimaryIcon, GarageCarIcon,HireDriverIcon, InsuranceIcon, LimousineIcon, LuxuaryCarsIcon, ModifyCarIcon, RentcarIcon, FilledLocationIcon, FinaceIcon}
