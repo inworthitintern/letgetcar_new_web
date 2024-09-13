@@ -10,7 +10,6 @@ const ExploreCard = ({
   iconH = 100,
   iconW = 100,
   className,
-  textMt = 24,
 }: any) => {
   return (
     <Link href={path}>
@@ -18,7 +17,7 @@ const ExploreCard = ({
         <div className={`absolute ${className}`}>
           <Icon height={iconH} width={iconW} />
         </div>
-        <div className={`mt-${textMt}`}>
+        <div className={`mt-28`}>
           <Heading text={text} textAlign="center" type="h4" />
         </div>
       </div>

@@ -31,14 +31,12 @@ const LetgetCarExploreSection = () => {
             iconH={90}
             iconW={90}
             className="top-12 "
-            textMt={28}
           />
           <ExploreCard
             text="Insurance"
             Icon={InsuranceIcon}
             path="/"
             className="top-10"
-            textMt={28}
           />
           <ExploreCard
             text="Rent Car"
@@ -47,7 +45,6 @@ const LetgetCarExploreSection = () => {
             iconH={130}
             iconW={130}
             className="top-6"
-            textMt={28}
           />
           <ExploreCard
             text="Limousine"
@@ -56,7 +53,6 @@ const LetgetCarExploreSection = () => {
             iconH={140}
             iconW={140}
             className="top-10"
-            textMt={28}
           />
           <ExploreCard
             text="Luxuary Cars"
