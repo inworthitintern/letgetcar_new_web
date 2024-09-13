@@ -2,7 +2,10 @@ import slide1Image from '../public/images/slide-1.jpg'
 import carImage from '../public/images/car.png'
 import onlineBookingImage from '../public/images/online-booking.png'
 import presenceBgImage from '../public/images/presence-bg.jpg'
-import locationDubaiImage from '../public/images/location-dubai.png'
+import locationDubaiImage from '../public/images/location-dubai.webp'
+import locationAbuDhabiImage from '../public/images/location-abudhabi.jpg'
+import locationAjmanImage from '../public/images/location-ajman.png'
+import locationSharjahImage from '../public/images/location-sharjah.jpg'
 import loanCalculatorImage from '../public/images/loan-calculator.png'
 import loginBg from '../public/images/login-bg.png'
 import featureIcon from '../public/icons/feature-icon.png'
@@ -16,6 +19,8 @@ import rentCarBgImage from '../public/images/rent-car-bg-image.jpg'
 import garageBookingImage from '../public/images/garagebookingbg.jpg'
 import rentCarLimousineImage from '../public/images/rentcar-limousine-bg.jpg'
 import logo from '../public/letgetcar-logo.png'
+
+
 
 
 // EX
@@ -35,4 +40,4 @@ import sellcarCashImg from '../public/images/sell-cash-img.jpg'
 
 
 
-export {slide1Image, carImage, onlineBookingImage, presenceBgImage, locationDubaiImage, loanCalculatorImage, loginBg, featureIcon, carConditionImage, bannerLoanImage, buycarCheckoutImage, hiredriverBgImage, hireDriveAboutusImg, sellcarBgImage, rentCarBgImage, garageBookingImage, rentCarLimousineImage, logo, carInsuranceEx, carSubscriptionEx,hireDriverEx,loanCalculatorEx,luxuarycarEx,sellCarEx, sellcarEnterDetailsImg, sellcarCashImg, sellcarInspectionImg}
+export {locationAbuDhabiImage, locationAjmanImage, locationSharjahImage ,slide1Image, carImage, onlineBookingImage, presenceBgImage, locationDubaiImage, loanCalculatorImage, loginBg, featureIcon, carConditionImage, bannerLoanImage, buycarCheckoutImage, hiredriverBgImage, hireDriveAboutusImg, sellcarBgImage, rentCarBgImage, garageBookingImage, rentCarLimousineImage, logo, carInsuranceEx, carSubscriptionEx,hireDriverEx,loanCalculatorEx,luxuarycarEx,sellCarEx, sellcarEnterDetailsImg, sellcarCashImg, sellcarInspectionImg}

@@ -1,6 +1,12 @@
 import { Container } from "@/components/common";
 import { Heading, NormalText } from "@/components/UI";
-import { locationDubaiImage, presenceBgImage } from "@/constants/images";
+import {
+  locationDubaiImage,
+  presenceBgImage,
+  locationAbuDhabiImage,
+  locationAjmanImage,
+  locationSharjahImage,
+} from "@/constants/images";
 import Image from "next/image";
 
 const PresenceLocationsSection = () => {
@@ -30,6 +36,12 @@ const PresenceLocationsSection = () => {
                 <div className="flex flex-col items-center">
                   <Image
                     src={locationDubaiImage}
+                    style={{
+                      height: 150,
+                      width: 150,
+                      objectFit: "cover",
+                      borderRadius: 4,
+                    }}
                     alt="location-dubai"
                     className="mb-2"
                   />
@@ -37,7 +49,14 @@ const PresenceLocationsSection = () => {
                 </div>
                 <div className="flex flex-col flex-wrap items-center">
                   <Image
-                    src={locationDubaiImage}
+                    src={locationSharjahImage}
+                    style={{
+                      height: 150,
+                      width: 150,
+                      objectFit: "cover",
+                      outline: "4px solid #fff",
+                      borderRadius: 10,
+                    }}
                     alt="location-dubai"
                     className="mb-2"
                   />
@@ -45,16 +64,28 @@ const PresenceLocationsSection = () => {
                 </div>
                 <div className="flex flex-col items-center">
                   <Image
-                    src={locationDubaiImage}
+                    src={locationAbuDhabiImage}
                     alt="location-dubai"
+                    style={{
+                      height: 150,
+                      width: 150,
+                      objectFit: "cover",
+                      borderRadius: 4,
+                    }}
                     className="mb-2"
                   />
                   <NormalText text="Abu Dhabi" fontWeight="semiBold" />
                 </div>
                 <div className="flex flex-col items-center">
                   <Image
-                    src={locationDubaiImage}
+                    src={locationAjmanImage}
                     alt="location-dubai"
+                    style={{
+                      height: 150,
+                      width: 150,
+                      objectFit: "cover",
+                      borderRadius: 4,
+                    }}
                     className="mb-2"
                   />
                   <NormalText text="Ajman" fontWeight="semiBold" />
@@ -69,29 +100,53 @@ const PresenceLocationsSection = () => {
                   src={locationDubaiImage}
                   alt="location-dubai"
                   className="mb-2"
+                  style={{
+                    height: 150,
+                    width: 150,
+                    objectFit: "cover",
+                    borderRadius: 4,
+                  }}
                 />
                 <NormalText text="Dubai" fontWeight="semiBold" />
               </div>
               <div className="flex flex-col flex-wrap items-center">
                 <Image
-                  src={locationDubaiImage}
+                  src={locationSharjahImage}
                   alt="location-dubai"
                   className="mb-2"
+                  style={{
+                    height: 150,
+                    width: 150,
+                    objectFit: "cover",
+                    borderRadius: 4,
+                  }}
                 />
                 <NormalText text="Sharjah" fontWeight="semiBold" />
               </div>
               <div className="flex flex-col items-center">
                 <Image
-                  src={locationDubaiImage}
+                  src={locationAbuDhabiImage}
                   alt="location-dubai"
+                  style={{
+                    height: 150,
+                    width: 150,
+                    objectFit: "cover",
+                    borderRadius: 4,
+                  }}
                   className="mb-2"
                 />
                 <NormalText text="Abu Dhabi" fontWeight="semiBold" />
               </div>
               <div className="flex flex-col items-center">
                 <Image
-                  src={locationDubaiImage}
+                  src={locationAjmanImage}
                   alt="location-dubai"
+                  style={{
+                    height: 150,
+                    width: 150,
+                    objectFit: "cover",
+                    borderRadius: 4,
+                  }}
                   className="mb-2"
                 />
                 <NormalText text="Ajman" fontWeight="semiBold" />
