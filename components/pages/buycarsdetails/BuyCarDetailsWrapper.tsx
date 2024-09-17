@@ -27,6 +27,7 @@ import { PresenceLocationsSection } from "@/components/pages/home";
 import TestimonialSlider from "@/components/common/TestimonalsSection";
 import {
   BuyCarCheckout,
+  BuyCarFeature,
   CarReportDetails,
 } from "@/components/pages/buycarsdetails";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,6 +47,8 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
   const [openCarCheckout, setOpenCarCheckout] = useState(false);
   const [carWishListedId, setCarWishListedId] = useState(null);
   const [relatedCars, setRelatedCars] = useState([]);
+  const [faetureDetails, setFeatureDetails] = useState([]);
+  const [openFeatureModal, setOpenFeatureModal] = useState(false);
 
   const router = useRouter();
 
@@ -62,6 +65,10 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
 
     if (buyCarDetails?.brand_id) {
       relatedCarsFetch(buyCarDetails?.brand_id);
+    }
+
+    if (buyCarDetails?.id) {
+      getFeatureDetails(buyCarDetails?.id);
     }
   }, [buyCarDetails]);
 
@@ -117,7 +124,14 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
     }
   };
 
-  console.log(relatedCars, "jeej");
+  const getFeatureDetails = async () => {
+    const fetchedFeatureDetails = await buyCarServices.getFeaturesData(
+      buyCarDetails?.id
+    );
+    if (fetchedFeatureDetails.data) {
+      setFeatureDetails(fetchedFeatureDetails.data);
+    }
+  };
 
   return (
     <Section className="mt-10">
@@ -452,37 +466,27 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
 
                   {/* Feature */}
 
-                  <div className="border-gray-25 border p-6 rounded-lg mt-6">
-                    <Heading text="Features" type="h4" textAlign="left" />
-                    <Spacer spacing="md" />
+                  {faetureDetails?.length > 0 && (
+                    <div className="border-gray-25 border p-6 rounded-lg mt-6">
+                      <Heading text="Features" type="h4" textAlign="left" />
+                      <Spacer spacing="md" />
 
-                    <div className="grid grid-cols-2 gap-5">
-                      <div className="flex gap-2 items-center">
-                        <CheckIcon /> <NormalText text="Fog Light Front" />
+                      <div className="grid grid-cols-2 gap-5">
+                        {faetureDetails?.slice(0, 6).map((feature) => (
+                          <div className="flex gap-2 items-center">
+                            <CheckIcon /> <NormalText text={feature.name} />
+                          </div>
+                        ))}
                       </div>
-                      <div className="flex gap-2 items-center">
-                        <CheckIcon /> <NormalText text="Fog Light Front" />
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <CheckIcon /> <NormalText text="Fog Light Front" />
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <CheckIcon /> <NormalText text="Fog Light Front" />
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <CheckIcon /> <NormalText text="Fog Light Front" />
-                      </div>
-                      <div className="flex gap-2 items-center">
-                        <CheckIcon /> <NormalText text="Fog Light Front" />
-                      </div>
+                      <Spacer spacing="md" />
+                      <Button
+                        text="View All Features"
+                        // className="w-full"
+                        onClick={() => setOpenFeatureModal(true)}
+                        htmlType="submit"
+                      />
                     </div>
-                    <Spacer spacing="md" />
-                    {/* <Button
-                      text="View All Features"
-                      // className="w-full"
-                      htmlType="submit"
-                    /> */}
-                  </div>
+                  )}
 
                   {/* Car Condition */}
                   {buyCarDetails?.condition_checks?.length ? (
@@ -739,6 +743,12 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
               setOpenCarCheckout={setOpenCarCheckout}
               carName={buyCarDetails?.name}
               carId={buyCarDetails?.id}
+            />
+
+            <BuyCarFeature
+              data={faetureDetails}
+              isOpen={openFeatureModal}
+              setIsOpen={setOpenFeatureModal}
             />
           </>
         )

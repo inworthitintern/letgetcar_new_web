@@ -92,6 +92,13 @@ const buyCarServices = {
             data: sendingData
         });
         return data 
+    },
+    getFeaturesData: async (carId:number) => {
+        const data = await fetchApi({
+            url: `/buycars/features/public?car_id=${carId}`,
+            method: "get",
+        });
+        return data 
     }
 
 }
