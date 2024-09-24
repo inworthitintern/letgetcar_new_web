@@ -103,22 +103,28 @@ const Footer = () => {
             <p className="text-gray-400">&copy; 2024 All Rights Reserved</p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link
-                href="/terms"
+                href="/policies/privacy_policy"
                 className="text-gray-400 hover:text-white transition"
               >
-                Terms
+                Privacy Policy
               </Link>
               <Link
                 className="text-gray-400 hover:text-white transition"
-                href="/privacy"
+                href="/policies/terms_condition"
               >
-                Privacy
+                Terms & Condition
               </Link>
               <Link
                 className="text-gray-400 hover:text-white transition"
-                href="/cookies"
+                href="/policies/return_and_refund"
               >
-                Cookies
+                Return & Refund
+              </Link>
+              <Link
+                className="text-gray-400 hover:text-white transition"
+                href="/policies/customer_care_policy"
+              >
+                Customer Care Policy
               </Link>
             </div>
             <div className="flex space-x-4 mt-4 md:mt-0">

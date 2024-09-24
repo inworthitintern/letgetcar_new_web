@@ -15,6 +15,7 @@ import { Heading, NormalText } from "@/components/UI";
 import React from "react";
 import Slider from "react-slick";
 import { carImage } from "@/constants/images";
+import { useRouter } from "next/navigation";
 
 const RecommentedCarsSection = ({ carsData }: { carsData: any }) => {
   // const settings = {
@@ -44,6 +45,8 @@ const RecommentedCarsSection = ({ carsData }: { carsData: any }) => {
   //   ],
   // };
 
+  const router = useRouter();
+
   return (
     <Section bgType="gray">
       <Container>
@@ -62,6 +65,7 @@ const RecommentedCarsSection = ({ carsData }: { carsData: any }) => {
             color="gray"
             cursorEnabled
             hoverColor="primary"
+            onClick={() => router.push(`/buycarslist?is_recommended_car=1`)}
           />
         </div>
 
