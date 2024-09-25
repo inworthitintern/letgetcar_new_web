@@ -14,7 +14,7 @@ import { TextInput } from "flowbite-react";
 import { RootState } from "@/GlobalRedux/store";
 import { useRouter } from "next/navigation";
 
-const AuthDetailsForm = () => {
+const AuthDetailsForm = ({ redirect = true }) => {
   const [submitted, setSubmitted] = useState(false);
   const { user } = useSelector((state: RootState) => state.auth);
   const router = useRouter();
@@ -40,7 +40,7 @@ const AuthDetailsForm = () => {
         password: "123456",
       };
 
-      dispatch(updateProfileDetails({ sendingData, router }));
+      dispatch(updateProfileDetails({ sendingData, router, redirect }));
 
       //   dispatch(otpVerification({ email: values.email, name: values.name }));
 

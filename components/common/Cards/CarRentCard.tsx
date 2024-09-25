@@ -8,39 +8,43 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 interface CarRentCardProps {
-  id: number;
-  name: string;
-  location: string;
-  price: string;
-  year: number;
-  imageUrl: string;
-  status: string;
-  transmission: string;
-  brand: string;
-  kmsDriven: number;
+  // id: number;
+  // name: string;
+  // location: string;
+  // price: string;
+  // year: number;
+  // imageUrl: string;
+  // status: string;
+  // transmission: string;
+  // brand: string;
+  // kmsDriven: number;
   setBookingOpen: (arg: boolean) => void;
   setSelectedCar: (arg: any) => void;
-  type: ["rentcar", "limousine"];
+  car: any;
+  // type: ["rentcar", "limousine"];
 }
 
 const CarRentCard: React.FC<CarRentCardProps> = ({
-  id,
-  name,
-  location,
-  price,
-  year,
-  imageUrl,
-  status,
-  transmission,
-  brand,
-  kmsDriven,
+  // id,
+  // name,
+  // location,
+  // price,
+  // year,
+  // imageUrl,
+  // status,
+  // transmission,
+  // brand,
+  // kmsDriven,
+  car,
   setBookingOpen,
   setSelectedCar,
-  type,
+  // type,
 }) => {
   const { user } = useSelector((state: RootState) => state.auth);
 
   const router = useRouter();
+
+  console.log(car, "heteetet");
 
   return (
     <div
@@ -48,24 +52,33 @@ const CarRentCard: React.FC<CarRentCardProps> = ({
       //   onClick={() => router.push(`/buycarslist/${id}`)}
     >
       <div className="relative">
-        <img src={imageUrl} alt={name} className="w-full h-40 object-cover" />
+        <img
+          src={car.images[0].url}
+          alt={name}
+          className="w-full h-40 object-cover"
+        />
         <div className="bg-primary py-2 px-4 w-fit absolute bottom-0 rounded">
           <span className="text-xs font-medium flex items-center gap-2">
-            <LocationIcon height={20} /> {location}
+            <LocationIcon height={20} /> {car.situated_location}
           </span>
         </div>
         <div className="bg-success-medium pt-0 pb-1 px-4 w-fit absolute top-0 right-0 rounded">
-          <span className="text-xs font-medium text-white">{status}</span>
+          <span className="text-xs font-medium text-white">{car.status}</span>
         </div>
       </div>
       <div className="p-4">
         <div className="flex justify-between">
-          <NormalText text={name} color="dark" fontWeight="medium" size="md" />
+          <NormalText
+            text={car.name}
+            color="dark"
+            fontWeight="medium"
+            size="md"
+          />
           {/* <h3 className="text-lg font-bold mb-2">{}</h3> */}
         </div>
         <div className="flex items-center mt-1 mb-2">
           <NormalText
-            text={brand}
+            text={car.brand}
             color="gray"
             fontWeight="medium"
             size="xs"
@@ -73,7 +86,7 @@ const CarRentCard: React.FC<CarRentCardProps> = ({
           />{" "}
           <span className="text-primary">|</span>
           <NormalText
-            text={transmission}
+            text={car.transmission}
             color="gray"
             fontWeight="medium"
             size="xs"
@@ -81,7 +94,7 @@ const CarRentCard: React.FC<CarRentCardProps> = ({
           />{" "}
           <span className="text-primary">|</span>
           <NormalText
-            text={kmsDriven}
+            text={`Driven ${car.driven_kms} Km`}
             color="gray"
             fontWeight="medium"
             size="xs"
@@ -90,14 +103,14 @@ const CarRentCard: React.FC<CarRentCardProps> = ({
         </div>
         <div className="flex justify-between items-end">
           <NormalText
-            text={`${year}`}
+            text={`${car.year}`}
             color="dark"
             size="md"
             fontWeight="medium"
           />
           <div className="flex gap-1">
             <NormalText
-              text={price}
+              text={`AED ${car.price_per_day}`}
               color="primary"
               fontWeight="bold"
               size="md"
@@ -106,11 +119,11 @@ const CarRentCard: React.FC<CarRentCardProps> = ({
           </div>
         </div>
         <Button
-          text="Book Now"
+          text="View Details"
           className="w-full mt-2"
           onClick={() => {
             setBookingOpen(true);
-            setSelectedCar({ id, name, location, type });
+            setSelectedCar(car);
           }}
         />
       </div>

@@ -2,6 +2,7 @@
 
 import {
   AboutUsSection,
+  BannerImage,
   Container,
   CtnSection,
   FaqSection,
@@ -20,12 +21,13 @@ import {
   hireDriverEx,
 } from "@/constants/images";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CarLoanApplyForm from "./CarLoanApplyForm";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/GlobalRedux/store";
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
 
 const howItWorksContents = [
   {
@@ -49,6 +51,17 @@ const CarLoan = () => {
   const [openCarLoanForm, setOpenCarLoanForm] = useState(false);
   const { user } = useSelector((state: RootState) => state.auth);
   const router = useRouter();
+  const dispatch = useDispatch();
+
+  const { banners } = useSelector((state: RootState) => state.banner);
+
+  useEffect(() => {
+    dispatch(getBanners({ type: "buycar" }));
+  }, []);
+
+  const topBanner = banners?.filter((banner) => banner.priority === 1);
+  const middleBanner = banners?.filter((banner) => banner.priority === 2);
+  const bottomBanner = banners?.filter((banner) => banner.priority === 3);
 
   const applyCarLoan = () => {
     if (user) {
@@ -79,6 +92,24 @@ const CarLoan = () => {
         />
       </Section>
 
+      {topBanner?.length > 0 && (
+        <>
+          {topBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
+
       <Section bgType="gray">
         <AboutUsSection
           img={sellcarBgImage}
@@ -86,6 +117,24 @@ const CarLoan = () => {
           desc="Enjoy the convenience of owning your dream car without the burden of an upfront payment. With our zero downpayment car loan option, you can drive away without paying anything upfront. Our hassle-free financing solutions make car ownership more accessible, offering flexible repayment plans tailored to your budget. Whether you're buying a new or used car, our zero downpayment option ensures you can get behind the wheel faster. LetGetCar partners with trusted banks to provide fast approvals and competitive interest rates, giving you peace of mind as you enjoy a smooth and affordable car-buying experience."
         />
       </Section>
+
+      {middleBanner?.length > 0 && (
+        <>
+          {middleBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
 
       <Section>
         <Container>
@@ -109,6 +158,24 @@ const CarLoan = () => {
           title="Download From Playstore"
         />
       </Section>
+
+      {bottomBanner?.length > 0 && (
+        <>
+          {bottomBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
 
       {/* <Section> */}
       <Container>

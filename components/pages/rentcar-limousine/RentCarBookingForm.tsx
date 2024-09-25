@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { Button, NormalText } from "@/components/UI";
 import rentCarLimousineService from "@/services/rentCarLimousineService";
 import { toast } from "react-toastify";
+import { Spacer } from "@/components/common";
 
 interface IRentCarBookingForm {
   open: boolean;
@@ -65,13 +66,47 @@ const RentCarBookingForm: React.FC<IRentCarBookingForm> = ({
   });
 
   return (
-    <Modal show={open} onClose={() => setOpen(false)} size="xl">
+    <Modal show={open} onClose={() => setOpen(false)} size="4xl">
       <Modal.Header>
         {selectedCar.type === "rentcar"
           ? `Book Rent Car - ${selectedCar.name}`
-          : `Book Limousine - ${selectedCar.name}`}
+          : selectedCar.type === "limousine"
+          ? `Book Limousine - ${selectedCar.name}`
+          : `Corperate Rental Car - ${selectedCar.name}`}
       </Modal.Header>
       <Modal.Body>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-4">
+          <Card>
+            <NormalText text="Per Day" size="sm" color="gray" />
+            <NormalText
+              text={"AED " + selectedCar.price_per_day}
+              size="md"
+              fontWeight="bold"
+              color="primary"
+            />
+          </Card>
+          <Card>
+            <NormalText text="Per Hour" size="sm" color="gray" />
+            <NormalText
+              text={"AED " + selectedCar.hourly}
+              size="md"
+              fontWeight="bold"
+              color="primary"
+            />
+          </Card>
+          <Card>
+            <NormalText text="Per Month" size="sm" color="gray" />
+            <NormalText
+              text={"AED " + selectedCar.monthly}
+              size="md"
+              fontWeight="bold"
+              color="primary"
+            />
+          </Card>
+        </div>
+
+        <Spacer spacing="md" />
+
         {selectedCar.type === "limousine" && (
           <Card className={`features-card bg-primary mb-6`}>
             <NormalText text={"For Every Limousine We will Give Your Driver"} />
@@ -83,6 +118,9 @@ const RentCarBookingForm: React.FC<IRentCarBookingForm> = ({
             />
           </Card>
         )}
+        <Spacer spacing="md" />
+        <NormalText text="Booking Form" fontWeight="bold" size="lg" />
+        <Spacer spacing="sm" />
         <form onSubmit={formik.handleSubmit}>
           {/* Pick Up Date Field */}
           <div className="mb-4">

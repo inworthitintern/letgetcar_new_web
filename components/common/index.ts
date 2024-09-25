@@ -7,7 +7,7 @@ import Spacer from "./Spacer";
 import TestimonialsSection from "./TestimonalsSection";
 import FaqSection from "./FaqSection";
 import LoadingSpinner from "./LoadingSpinner";
-
+import BannerImage from "./BannerImage";
 
 // Sliders
 import SliderComponent from "./SliderComponent";
@@ -52,4 +52,4 @@ import CtnSection from "./CtnSection";
 
 
 
-export {Navbar, Footer, GeneralSlider, Container, Section, Spacer, ExploreCard, CarCard1, LetGetCarFeatureCard, ExclusiveCard, TestimonialsSection, FaqSection, SearchPopup, BuyCarFilters, CarCard2, SliderComponent, CarsSlider, Sorter, CarDetailsSlider, DateTimeSelector, ItemCard, HowItWorks, AboutUsSection, SectionPoints, CtnSection, LoadingSpinner, FeatureCard, CarRentCard}
+export {Navbar, Footer, GeneralSlider, Container, Section, Spacer, ExploreCard, CarCard1, LetGetCarFeatureCard, ExclusiveCard, TestimonialsSection, FaqSection, SearchPopup, BuyCarFilters, CarCard2, SliderComponent, CarsSlider, Sorter, CarDetailsSlider, DateTimeSelector, ItemCard, HowItWorks, AboutUsSection, SectionPoints, CtnSection, LoadingSpinner, FeatureCard, CarRentCard, BannerImage}

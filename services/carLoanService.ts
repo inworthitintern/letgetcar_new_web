@@ -9,6 +9,9 @@ const carLoanService = {
             data: sendingData
         });
         return data 
+    },
+    showBuyCarLoans: async () => {
+        
     }
 }
 

@@ -20,9 +20,15 @@ import LargeSearchBlock from "@/components/common/LargeSearchBlock";
 import { getHomePageData } from "@/GlobalRedux/Features/home/homeSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/GlobalRedux/store";
-import { LoadingSpinner } from "@/components/common";
+import {
+  BannerImage,
+  LoadingSpinner,
+  Section,
+  Container,
+} from "@/components/common";
 import { useRouter } from "next/navigation";
 import { rentCarLimousineImage, slide1Image } from "@/constants/images";
+import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
 
 const HomeWrapper: React.FC = () => {
   const dispatch = useDispatch();
@@ -33,6 +39,16 @@ const HomeWrapper: React.FC = () => {
   useEffect(() => {
     dispatch(getHomePageData({}));
   }, []);
+
+  const { banners } = useSelector((state: RootState) => state.banner);
+
+  useEffect(() => {
+    dispatch(getBanners({ type: "buycar" }));
+  }, []);
+
+  const topBanner = banners?.filter((banner) => banner.priority === 1);
+  const middleBanner = banners?.filter((banner) => banner.priority === 2);
+  const bottomBanner = banners?.filter((banner) => banner.priority === 3);
 
   console.log(homeData, "heyyy");
   return (
@@ -81,12 +97,46 @@ const HomeWrapper: React.FC = () => {
               bodyTypes={homeData[1].data}
               categories={homeData[2].data}
             />
+            {topBanner?.length > 0 && (
+              <>
+                {topBanner?.map((cur) => (
+                  <Section key={cur.id}>
+                    <Container>
+                      <div
+                        className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                      >
+                        {cur?.images?.map((img: string) => (
+                          <BannerImage img={img} />
+                        ))}
+                      </div>
+                    </Container>
+                  </Section>
+                ))}
+              </>
+            )}
 
             <LetgetCarExploreSection />
 
             {/* <RecentlyViewedSection /> */}
 
             <RecommentedCarsSection carsData={[...homeData[3].data.data]} />
+            {middleBanner?.length > 0 && (
+              <>
+                {middleBanner?.map((cur) => (
+                  <Section key={cur.id}>
+                    <Container>
+                      <div
+                        className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                      >
+                        {cur?.images?.map((img: string) => (
+                          <BannerImage img={img} />
+                        ))}
+                      </div>
+                    </Container>
+                  </Section>
+                ))}
+              </>
+            )}
 
             <LetgetcarsTrustedSection carsData={[...homeData[4].data.data]} />
 
@@ -99,6 +149,24 @@ const HomeWrapper: React.FC = () => {
             <HomeTestimonailsSection />
 
             <LetGetCarExclusiveSection />
+
+            {bottomBanner?.length > 0 && (
+              <>
+                {bottomBanner?.map((cur) => (
+                  <Section key={cur.id}>
+                    <Container>
+                      <div
+                        className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                      >
+                        {cur?.images?.map((img: string) => (
+                          <BannerImage img={img} />
+                        ))}
+                      </div>
+                    </Container>
+                  </Section>
+                ))}
+              </>
+            )}
 
             <HomeFaqSection />
             {/* Home Filter */}

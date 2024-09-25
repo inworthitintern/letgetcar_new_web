@@ -2,6 +2,7 @@
 
 import {
   AboutUsSection,
+  BannerImage,
   CarCard1,
   CarCard2,
   CarRentCard,
@@ -28,6 +29,10 @@ import React, { useEffect, useState } from "react";
 import RentCarBookingForm from "./RentCarBookingForm";
 import { FilledLocationIcon } from "@/constants/icons";
 import { hireDriverEx } from "@/constants/images";
+import { RentCarCategories } from ".";
+import { useDispatch, useSelector } from "react-redux";
+import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
+import { RootState } from "@/GlobalRedux/store";
 
 const howItWorksContents = [
   {
@@ -55,6 +60,18 @@ const RentCarLimousineWrapper = () => {
   const [selectedCar, setSelectedCar] = useState({});
 
   const [loading, setLoading] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const { banners } = useSelector((state: RootState) => state.banner);
+
+  useEffect(() => {
+    dispatch(getBanners({ type: "rentcar" }));
+  }, []);
+
+  const topBanner = banners?.filter((banner) => banner.priority === 1);
+  const middleBanner = banners?.filter((banner) => banner.priority === 2);
+  const bottomBanner = banners?.filter((banner) => banner.priority === 3);
 
   const getCarsData = async () => {
     setLoading(true);
@@ -148,8 +165,32 @@ const RentCarLimousineWrapper = () => {
           />
         </div>
       </Container>
+
+      <Section>
+        <Container>
+          <RentCarCategories />
+        </Container>
+      </Section>
+      {topBanner?.length > 0 && (
+        <>
+          {topBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
+
       {!loading && rentCarsData?.data?.length && (
-        <Section>
+        <Section bgType="gray">
           <Container>
             <Heading text="Available Rent Cars" type="h3" />
             <Spacer spacing="lg" />
@@ -157,20 +198,10 @@ const RentCarLimousineWrapper = () => {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {rentCarsData.data.map((cur) => (
                 <CarRentCard
-                  brand={cur.brand}
-                  kmsDriven={cur.driven_kms}
-                  id={cur.id}
-                  imageUrl={cur.images[0].url}
-                  location={cur.situated_location}
-                  name={cur.name}
-                  price={cur.price_per_day}
-                  status={cur.status}
-                  transmission={cur.transmission}
-                  year={cur.year}
                   key={cur.id}
+                  car={cur}
                   setBookingOpen={setBookingOpen}
                   setSelectedCar={setSelectedCar}
-                  type={cur.type}
                 />
               ))}
             </div>
@@ -178,8 +209,26 @@ const RentCarLimousineWrapper = () => {
         </Section>
       )}
 
+      {middleBanner?.length > 0 && (
+        <>
+          {middleBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
+
       {!loading && limousineData?.data?.length && (
-        <Section bgType="gray">
+        <Section>
           <Container>
             <Heading text="Available Limousine Cars" type="h3" />
             <Spacer spacing="lg" />
@@ -187,20 +236,21 @@ const RentCarLimousineWrapper = () => {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {limousineData.data.map((cur) => (
                 <CarRentCard
-                  brand={cur.brand}
-                  kmsDriven={cur.driven_kms}
-                  id={cur.id}
-                  imageUrl={cur.images[0].url}
-                  location={cur.situated_location}
-                  name={cur.name}
-                  price={cur.price_per_day}
-                  status={cur.status}
-                  transmission={cur.transmission}
-                  year={cur.year}
+                  // brand={cur.brand}
+                  // kmsDriven={cur.driven_kms}
+                  // id={cur.id}
+                  // imageUrl={cur.images[0].url}
+                  // location={cur.situated_location}
+                  // name={cur.name}
+                  // price={cur.price_per_day}
+                  // status={cur.status}
+                  // transmission={cur.transmission}
+                  // year={cur.year}
+                  car={cur}
                   key={cur.id}
                   setBookingOpen={setBookingOpen}
                   setSelectedCar={setSelectedCar}
-                  type={cur.type}
+                  // type={cur.type}
                 />
               ))}
             </div>
@@ -261,6 +311,24 @@ const RentCarLimousineWrapper = () => {
           />
         </Container>
       </Section>
+
+      {bottomBanner?.length > 0 && (
+        <>
+          {bottomBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
 
       <Section bgType="gray">
         <Container>

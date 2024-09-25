@@ -312,9 +312,9 @@ const CustomNavbar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  useEffect(() => {
-    dispatch(getProfileDetails());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getProfileDetails());
+  // }, []);
 
   return (
     <Navbar
@@ -393,7 +393,7 @@ const CustomNavbar = () => {
 
             {user ? (
               <Link
-                href="#"
+                href="/profile"
                 className="flex items-center text-dark hover:text-primary-text"
               >
                 <ProfileIcon height={20} width={20} />

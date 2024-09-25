@@ -2,6 +2,7 @@
 
 import {
   AboutUsSection,
+  BannerImage,
   Container,
   CtnSection,
   FaqSection,
@@ -24,12 +25,14 @@ import {
   sellcarEnterDetailsImg,
   sellcarInspectionImg,
 } from "@/constants/images";
+import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
 import { RootState } from "@/GlobalRedux/store";
 import { Card, List } from "flowbite-react";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 
 const howItWorksContents = [
@@ -53,6 +56,8 @@ const howItWorksContents = [
 const SellCarScreen = () => {
   const [openSellCarForm, setOpenSellCarForm] = useState(false);
   const { user } = useSelector((state: RootState) => state.auth);
+
+  const dispatch = useDispatch();
   const router = useRouter();
 
   const onSellCarBtnHandler = async () => {
@@ -63,6 +68,16 @@ const SellCarScreen = () => {
       router.push("/login");
     }
   };
+
+  const { banners } = useSelector((state: RootState) => state.banner);
+
+  useEffect(() => {
+    dispatch(getBanners({ type: "sellcar" }));
+  }, []);
+
+  const topBanner = banners?.filter((banner) => banner.priority === 1);
+  const middleBanner = banners?.filter((banner) => banner.priority === 2);
+  const bottomBanner = banners?.filter((banner) => banner.priority === 3);
 
   return (
     <div>
@@ -134,6 +149,24 @@ const SellCarScreen = () => {
 
       <SellCarFormModal setOpen={setOpenSellCarForm} open={openSellCarForm} />
 
+      {topBanner?.length > 0 && (
+        <>
+          {topBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
+
       <Section bgType="gray">
         <AboutUsSection
           img={hireDriverEx}
@@ -142,31 +175,6 @@ const SellCarScreen = () => {
         />
       </Section>
 
-      {/* <Section>
-        <Container>
-          <div className="grid grid-cols-2 gap-4">
-            <img src={hireDriveAboutusImg.src} alt="hire Driver" />
-            <div>
-              <Heading
-                text="Hire a Safe driver Dubai Most Trusted Private Driver Service in UAE"
-                type="h4"
-                textAlign="left"
-              />
-              <Spacer spacing="sm" />
-              <NormalText
-                size="sm"
-                color="gray"
-                text="Are you not in a position to drive your car? Hiring a safe driver Dubai is the best thing to do if you are in Dubai and Awesome Drive is the best safe Driver Company. Awesome Drive welcomes you to a chauffeur-driven service. It is a driver company operating in Dubai."
-              />
-              <NormalText
-                size="sm"
-                color="gray"
-                text="When you are in search of hiring a  driver in Dubai then awesome drive is your one stop solution. We have a lot of experience that provides an innovative and unique chauffeur service to the people in the UAE public. When you are looking for a safe driver who is reliable and can take you to your loved ones and with comfort, we have the best private drivers you will find anywhere in Dubai. We are specialists when it comes to offering safe driver services. We will not let you down in your hunt for the best driver service in Dubai."
-              />
-            </div>
-          </div>
-        </Container>
-      </Section> */}
       <Section>
         <Container>
           <SectionPoints
@@ -186,6 +194,23 @@ const SellCarScreen = () => {
       <Section bgType="gray">
         <HowItWorks data={howItWorksContents} />
       </Section>
+      {middleBanner?.length > 0 && (
+        <>
+          {middleBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
 
       {/* 
       <Section bgType="primary">
@@ -220,6 +245,24 @@ const SellCarScreen = () => {
           <TestimonialsSection />
         </Container>
       </Section>
+
+      {bottomBanner?.length > 0 && (
+        <>
+          {bottomBanner?.map((cur) => (
+            <Section key={cur.id}>
+              <Container>
+                <div
+                  className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                >
+                  {cur?.images?.map((img: string) => (
+                    <BannerImage img={img} />
+                  ))}
+                </div>
+              </Container>
+            </Section>
+          ))}
+        </>
+      )}
 
       <Container className="mb-9">
         <FaqSection />

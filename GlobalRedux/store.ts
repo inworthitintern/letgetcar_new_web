@@ -4,6 +4,7 @@ import counterReducer from './Features/counter/counterSlice'
 import authReducer from './Features/auth/authSlice'
 import homeReducer from './Features/home/homeSlice'
 import buyCarModelReducer  from "./Features/buyCarModel/buyCarSlice";
+import bannerReducer  from "./Features/banners/bannerSlice";
 
 
 export const store = configureStore({
@@ -11,7 +12,8 @@ export const store = configureStore({
         counter: counterReducer,
         auth: authReducer,
         home: homeReducer,
-        buyCarModel: buyCarModelReducer
+        buyCarModel: buyCarModelReducer,
+        banner: bannerReducer
     }
 })
 

@@ -11,8 +11,11 @@ const AuthManager = ({ children }: { children: React.ReactNode }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getProfileDetails());
-  }, []);
+    // Only fetch profile if no user data exists
+    if (!user) {
+      dispatch(getProfileDetails());
+    }
+  }, [dispatch, user]); // Only trigger when user is null
 
   if (loading && !user) {
     return <LoadingSpinner />;

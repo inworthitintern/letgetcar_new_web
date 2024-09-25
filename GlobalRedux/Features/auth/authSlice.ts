@@ -7,6 +7,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { AUTH_TOKEN } from "@/constants/variables";
 import authService from "@/services/authService";
 import { toast } from "react-toastify";
+import { RootState } from "@/GlobalRedux/store";
 
 
 interface User {
@@ -84,8 +85,10 @@ export const otpVerification = createAsyncThunk(
 
 export const getProfileDetails = createAsyncThunk(
   "auth/currentUser",
-  async (_, { dispatch, rejectWithValue }) => {
+  async (_, { dispatch, getState, rejectWithValue }) => {
     
+    const state = getState();
+
     try {
       const userData = await authService.getProfileDetails()
 
@@ -101,13 +104,13 @@ export const getProfileDetails = createAsyncThunk(
 
 export const updateProfileDetails = createAsyncThunk(
   "auth/updateuser",
-  async ({sendingData, router}:any, { dispatch, rejectWithValue }) => {
+  async ({sendingData, router, redirect}:any, { dispatch, rejectWithValue }) => {
     
     try {
       const userData = await authService.updateProfileDetails(sendingData)
 
       if(userData) {
-        router.replace('/')
+        redirect && router.replace('/')
 
         return userData
       }
