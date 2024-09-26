@@ -11,7 +11,11 @@ const carLoanService = {
         return data 
     },
     showBuyCarLoans: async () => {
-        
+        const {data} = await fetchApi({
+            url: `/user-buycar-loan`,
+            method: "get",
+        });
+        return data
     }
 }
 

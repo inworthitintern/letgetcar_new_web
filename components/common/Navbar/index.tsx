@@ -409,22 +409,32 @@ const CustomNavbar = () => {
               </Link>
             )}
           </div>
-          {user && (
-            <Dropdown
-              label=""
-              dismissOnClick={false}
-              renderTrigger={() => (
-                <div className="flex items-center pl-4">
-                  <HamburgerIcon height={20} width={20} />
-                </div>
-              )}
-            >
-              <Dropdown.Item>
-                <Link href="/garagebooking" className="block px-4 py-2 text-sm">
-                  Garage Booking
-                </Link>
-              </Dropdown.Item>
-              <Dropdown.Item
+          {/* {user && ( */}
+          <Dropdown
+            label=""
+            dismissOnClick={false}
+            renderTrigger={() => (
+              <div className="flex items-center pl-4">
+                <HamburgerIcon height={20} width={20} />
+              </div>
+            )}
+          >
+            <Dropdown.Item>
+              <Link href="/garagebooking" className="block px-4 py-2 text-sm">
+                Garage Booking
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link href="/aboutus" className="block px-4 py-2 text-sm">
+                About Us
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link href="/contactus" className="block px-4 py-2 text-sm">
+                Contact Us
+              </Link>
+            </Dropdown.Item>
+            {/* <Dropdown.Item
                 onClick={() => {
                   if (typeof window !== "undefined") {
                     window.localStorage.removeItem(AUTH_TOKEN);
@@ -436,9 +446,9 @@ const CustomNavbar = () => {
                 <Link href="#" className="block px-4 py-2 text-sm">
                   Sign out
                 </Link>
-              </Dropdown.Item>
-            </Dropdown>
-          )}
+              </Dropdown.Item> */}
+          </Dropdown>
+          {/* )} */}
         </div>
       </div>
 

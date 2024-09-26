@@ -120,7 +120,7 @@
 
 import { Container, Section } from "@/components/common";
 import { AuthDetailsForm } from "@/components/pages/auth-details";
-import { ProfileSection } from "@/components/pages/profile";
+import { LoansSection, ProfileSection } from "@/components/pages/profile";
 import { AUTH_TOKEN } from "@/constants/variables";
 import { setLogout } from "@/GlobalRedux/Features/auth/authSlice";
 import { RootState } from "@/GlobalRedux/store";
@@ -140,7 +140,7 @@ const ProfilePage = () => {
   const sections = [
     { key: "profile", label: "Profile Update" },
     // { key: "wishlist", label: "Wishlist" },
-    { key: "bookings", label: "Booking Center" },
+    // { key: "bookings", label: "Booking Center" },
     { key: "loans", label: "Loans" },
     { key: "logout", label: "Logout" },
   ];
@@ -198,22 +198,15 @@ const ProfilePage = () => {
                     </p>
                   </div>
                 )} */}
-
+                {/* 
                 {selectedSection === "bookings" && (
                   <div>
                     <h2 className="text-2xl font-bold mb-4">Booking Center</h2>
                     <p className="text-gray-600">No bookings made yet.</p>
                   </div>
-                )}
+                )} */}
 
-                {selectedSection === "loans" && (
-                  <div>
-                    <h2 className="text-2xl font-bold mb-4">Loans</h2>
-                    <p className="text-gray-600">
-                      No loan applications submitted yet.
-                    </p>
-                  </div>
-                )}
+                {selectedSection === "loans" && <LoansSection />}
 
                 {selectedSection === "logout" && (
                   <div>
