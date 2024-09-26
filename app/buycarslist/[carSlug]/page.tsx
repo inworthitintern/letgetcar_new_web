@@ -5,7 +5,7 @@ import { BuyCarDetailsWrapper } from "@/components/pages/buycarsdetails";
 // Return a list of `params` to populate the [slug] dynamic segment
 export async function generateStaticParams() {
   const posts = await fetch(
-    "https://swm.bestbuysolutions.org/api/buycars/model/public"
+    "https://lgc.hashitsolutions.com/api/buycars/model/public"
   ).then((res) => res.json());
 
   return posts.data.data.map((post: any) => ({
