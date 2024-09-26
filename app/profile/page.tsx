@@ -121,10 +121,21 @@
 import { Container, Section } from "@/components/common";
 import { AuthDetailsForm } from "@/components/pages/auth-details";
 import { ProfileSection } from "@/components/pages/profile";
-import React, { useState } from "react";
+import { AUTH_TOKEN } from "@/constants/variables";
+import { setLogout } from "@/GlobalRedux/Features/auth/authSlice";
+import { RootState } from "@/GlobalRedux/store";
+import { useRouter } from "next/navigation";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProfilePage = () => {
+  const router = useRouter();
   const [selectedSection, setSelectedSection] = useState("profile");
+
+  const { user, loading } = useSelector((state: RootState) => state.auth);
+
+  const dispatch = useDispatch();
 
   const sections = [
     { key: "profile", label: "Profile Update" },
@@ -133,6 +144,12 @@ const ProfilePage = () => {
     { key: "loans", label: "Loans" },
     { key: "logout", label: "Logout" },
   ];
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.push("/login");
+    }
+  }, [user, loading]);
 
   return (
     <Section>
@@ -204,7 +221,16 @@ const ProfilePage = () => {
                     <p className="text-gray-600">
                       Are you sure you want to logout?
                     </p>
-                    <button className="mt-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-500 transition duration-200">
+                    <button
+                      className="mt-4 px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-500 transition duration-200"
+                      onClick={() => {
+                        if (typeof window !== "undefined") {
+                          window.localStorage.removeItem(AUTH_TOKEN);
+                          toast.success("Logout Success");
+                          dispatch(setLogout());
+                        }
+                      }}
+                    >
                       Confirm Logout
                     </button>
                   </div>

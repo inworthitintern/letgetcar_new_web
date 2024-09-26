@@ -4,7 +4,6 @@ import { Container, Section } from "@/components/common";
 import { Heading } from "@/components/UI";
 import policyServices from "@/services/policyService";
 import React, { useEffect, useState } from "react";
-import ReactHtmlParser from "react-html-parser";
 
 interface IPoliciesWrapper {
   policyType: string;
@@ -29,7 +28,9 @@ const PoliciesWrapper: React.FC<IPoliciesWrapper> = ({ policyType }) => {
 
   return (
     <Section className="mt-10">
-      <Container>{ReactHtmlParser(policy)}</Container>
+      <Container>
+        {<div dangerouslySetInnerHTML={{ __html: policy }}></div>}
+      </Container>
     </Section>
   );
 };

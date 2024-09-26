@@ -1,5 +1,5 @@
 import { RootState } from "@/GlobalRedux/store";
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const ProfileSection = () => {

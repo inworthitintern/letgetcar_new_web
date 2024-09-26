@@ -32,7 +32,7 @@ interface AuthState {
 
 
 export const initialState: AuthState = {
-  loading: false,
+  loading: true,
   token: typeof window !== "undefined" ? window.localStorage.getItem(AUTH_TOKEN) : null, // Check if window is available
   user: null,
   pageLoading: true,
