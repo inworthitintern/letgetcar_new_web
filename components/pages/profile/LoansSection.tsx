@@ -14,6 +14,7 @@ interface Loan {
   salary_certificate: string;
   visa_page: string;
   created_at: string;
+  error_message: string;
 }
 
 const LoansSection = () => {
@@ -92,6 +93,15 @@ const LoansSection = () => {
               Visa Page
             </a>
           </div>
+          {loan.error_message && (
+            <p className="text-gray-500 text-sm mt-4">
+              <span>Reason For Rejection:</span>{" "}
+              <span className="text-red-800 font-semibold">
+                {loan.error_message}
+              </span>
+            </p>
+          )}
+
           <p className="text-gray-500 text-sm mt-4">
             <strong>Submitted on:</strong>{" "}
             {new Date(loan.created_at).toLocaleDateString()}
