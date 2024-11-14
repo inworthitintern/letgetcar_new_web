@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const unauthorizedCode = [400, 401, 403]
 
-const API_BASE_URL = 'https://lgc.hashitsolutions.com/api'
+const API_BASE_URL = 'https://lgc.visapro-uae.com/api'
 
 const service = axios.create({
   baseURL: API_BASE_URL,

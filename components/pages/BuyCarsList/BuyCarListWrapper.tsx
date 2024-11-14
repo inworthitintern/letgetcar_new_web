@@ -91,19 +91,19 @@ const BuyCarsList: React.FC = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
                       {buyCarLists?.data?.map((car, index) => (
                         <CarCard2
-                          id={car.id}
-                          wishlistedId={car.wishlist_model_id}
+                          id={car?.id}
+                          wishlistedId={car?.wishlist_model_id}
                           key={index}
-                          name={car.name}
-                          booked={car.status === "Booked"}
-                          emi={car.emi_price}
+                          name={car?.name}
+                          booked={car?.status === "Booked"}
+                          emi={car?.emi_price}
                           imageUrl={
-                            car.images?.length > 0 ? car.images[0].url : null
+                            car?.images?.length > 0 ? car.images[0].url : null
                           }
-                          location={car.location.name}
-                          newCar={car.is_new_car === 1}
-                          price={car.sale_price}
-                          slug={car.slug}
+                          location={car?.location?.name}
+                          newCar={car?.is_new_car === 1}
+                          price={car?.sale_price}
+                          slug={car?.slug}
                         />
                       ))}
                     </div>
