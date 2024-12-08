@@ -1,53 +1,126 @@
 "use client";
 
-// pages/index.tsx
 import React, { useEffect, useState } from "react";
-
 import {
   BuyCarFilters,
   CarCard2,
   Container,
   LoadingSpinner,
   Section,
-  Sorter,
   Spacer,
 } from "@/components/common";
 import { Button, Heading, NormalText } from "@/components/UI";
-import { SortIcon } from "@/constants/icons";
-import { Card, Dropdown } from "flowbite-react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/GlobalRedux/store";
-import { getBuyCarModels } from "@/GlobalRedux/Features/buyCarModel/buyCarSlice";
+import {
+  getBuyCarModels,
+  setCurrentPage,
+} from "@/GlobalRedux/Features/buyCarModel/buyCarSlice";
 import { useRouter } from "next/navigation";
 
 const BuyCarsList: React.FC = () => {
-  const [apiParameter, setApiParameters] = useState("");
+  const [apiParameter, setApiParameters] = useState<object | string>({});
   const router = useRouter();
 
   const dispatch = useDispatch();
-
-  const { buyCarLists, loading } = useSelector(
-    (state: RootState) => state.buyCarModel
-  );
-
+  const { buyCarLists, loading, currentPage, totalPages, totalCount } =
+    useSelector((state: RootState) => state.buyCarModel);
   const { user } = useSelector((state: RootState) => state.auth);
 
-  // const [sortedValue, setSortedValue] = useState("Best Matches");
-
-  //   Add API CALL
+  // Fetch data when the page or filters change
   useEffect(() => {
-    if (user) {
-      dispatch(getBuyCarModels({ filters: apiParameter, isLoggedIn: true }));
-    } else {
-      dispatch(getBuyCarModels({ filters: apiParameter, isLoggedIn: false }));
+    dispatch(
+      getBuyCarModels({
+        filters: apiParameter,
+        isLoggedIn: !!user,
+        page: currentPage,
+      })
+    );
+  }, [apiParameter, currentPage, user, dispatch]);
+
+  // Handle page change with scroll-to-top
+  const handlePageChange = (page: number) => {
+    if (page > 0 && page <= totalPages) {
+      dispatch(setCurrentPage(page));
+      // Scroll to top smoothly
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }, [apiParameter, user]);
+  };
 
-  console.log(buyCarLists, "heloooooo");
+  // Render pagination buttons
+  const renderPagination = () => {
+    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
-  const resetFilters = () => {
-    router.replace(`?`);
-    setApiParameters("");
+    return (
+      <div className="flex justify-center items-center space-x-2 mt-6">
+        {/* First Page Button */}
+        <button
+          onClick={() => handlePageChange(1)}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 border rounded ${
+            currentPage === 1
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-gray-200 hover:bg-gray-300"
+          }`}
+        >
+          &laquo;
+        </button>
+
+        {/* Previous Page Button */}
+        <button
+          onClick={() => handlePageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className={`px-4 py-2 border rounded ${
+            currentPage === 1
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-gray-200 hover:bg-gray-300"
+          }`}
+        >
+          &lsaquo;
+        </button>
+
+        {/* Page Numbers */}
+        {pages.map((page) => (
+          <button
+            key={page}
+            onClick={() => handlePageChange(page)}
+            className={`px-4 py-2 border rounded ${
+              page === currentPage
+                ? "bg-primary text-dark"
+                : "bg-gray-200 hover:bg-gray-300"
+            }`}
+          >
+            {page}
+          </button>
+        ))}
+
+        {/* Next Page Button */}
+        <button
+          onClick={() => handlePageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 border rounded ${
+            currentPage === totalPages
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-gray-200 hover:bg-gray-300"
+          }`}
+        >
+          &rsaquo;
+        </button>
+
+        {/* Last Page Button */}
+        <button
+          onClick={() => handlePageChange(totalPages)}
+          disabled={currentPage === totalPages}
+          className={`px-4 py-2 border rounded ${
+            currentPage === totalPages
+              ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+              : "bg-gray-200 hover:bg-gray-300"
+          }`}
+        >
+          &raquo;
+        </button>
+      </div>
+    );
   };
 
   return (
@@ -65,74 +138,50 @@ const BuyCarsList: React.FC = () => {
             <div className="w-full lg:w-3/4">
               <div className="flex items-center justify-between">
                 <Heading
-                  text={`${buyCarLists?.total || 0} Available Cars`}
+                  text={`${totalCount || 0} Available Cars`}
                   type="h4"
                   fontWeight="bold"
                   textAlign="left"
                 />
-
-                {/* <Sorter
-                  setSortedValue={setSortedValue}
-                  sortedValue={sortedValue}
-                /> */}
               </div>
 
               <Spacer spacing="sm" />
               <NormalText
                 size="sm"
                 color="gray"
-                text="Explore an array of inspected used cars in dubai - we offer 1058 top-quality vehicles. Whether you prefer , we've got your match in dubai. Plus, we have hundreds of second-hand cars in other states, shipped to dubai for FREE. Select from SUV, SEDAN,"
+                text="Explore an array of inspected used cars in Dubai - we offer top-quality vehicles."
               />
 
               <Spacer spacing="sm" />
-              <>
-                {!loading && buyCarLists?.data?.length > 0 ? (
-                  <>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                      {buyCarLists?.data?.map((car, index) => (
-                        <CarCard2
-                          id={car?.id}
-                          wishlistedId={car?.wishlist_model_id}
-                          key={index}
-                          name={car?.name}
-                          booked={car?.status === "Booked"}
-                          emi={car?.emi_price}
-                          imageUrl={
-                            car?.images?.length > 0 ? car.images[0].url : null
-                          }
-                          location={car?.location?.name}
-                          newCar={car?.is_new_car === 1}
-                          price={car?.sale_price}
-                          slug={car?.slug}
-                        />
-                      ))}
-                    </div>
-                  </>
-                ) : loading ? (
-                  <LoadingSpinner />
-                ) : (
-                  <Card className="mt-8">
-                    <NormalText
-                      text="OOPS.. No Result or Something went wrong"
-                      size="lg"
-                      fontWeight="semiBold"
+              {loading ? (
+                <LoadingSpinner />
+              ) : !loading && buyCarLists?.length > 0 ? (
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+                  {buyCarLists?.map((car: any, index: number) => (
+                    <CarCard2
+                      key={index}
+                      id={car?.id}
+                      wishlistedId={car?.wishlist_model_id}
+                      name={car?.name}
+                      booked={car?.status === "Booked"}
+                      emi={car?.emi_price}
+                      imageUrl={
+                        car?.images?.length > 0 ? car.images[0].url : null
+                      }
+                      location={car?.location?.name}
+                      newCar={car?.is_new_car === 1}
+                      price={car?.sale_price}
+                      slug={car?.slug}
                     />
-                    <Button text="Load Other Cars" onClick={resetFilters} />
-                  </Card>
-                )}
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center">
+                  <p>No cars found. Try adjusting your filters.</p>
+                </div>
+              )}
 
-                {!loading &&
-                buyCarLists?.data?.length > 0 &&
-                apiParameter?.length ? (
-                  <div className="flex justify-center mt-8">
-                    <Button
-                      text="Load All Cars"
-                      onClick={resetFilters}
-                      type="dark"
-                    />
-                  </div>
-                ) : null}
-              </>
+              {renderPagination()}
             </div>
           </div>
         </div>
