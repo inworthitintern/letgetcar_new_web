@@ -18,27 +18,35 @@ const SliderComponent: React.FC<ISliderComponent> = ({
 
   const settings = {
     dots: false,
-    infinite: items.length > 10, // Only make it infinite if there are more than 10 itemss
+    infinite: items.length > 3, // Adjust for mobile
     speed: 500,
-    slidesToShow: Math.min(10, items.length), // Show as many slides as there are itemss if less than 10
-    slidesToScroll: Math.min(10, items.length), // Scroll as many slides as there are itemss if less than 10
+    slidesToShow: Math.min(10, items.length), // Default for larger screens
+    slidesToScroll: Math.min(10, items.length),
     nextArrow: <SampleNextArrow />,
-    prevArrow: <SamplePrevArrow className="hidden" />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1024, // Tablets and medium devices
         settings: {
-          slidesToShow: items.length > 10 ? 10 : items.length,
-          slidesToScroll: items.length > 10 ? 10 : items.length,
-          infinite: items.length > 10, // Adjust infinite for this breakpoint as well
+          slidesToShow: Math.min(5, items.length),
+          slidesToScroll: Math.min(5, items.length),
+          infinite: items.length > 5,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768, // Small tablets
         settings: {
-          slidesToShow: 4,
-          slidesToScroll: 4,
-          infinite: items.length > 4, // Adjust infinite for this breakpoint as well
+          slidesToShow: Math.min(4, items.length),
+          slidesToScroll: Math.min(4, items.length),
+          infinite: items.length > 4,
+        },
+      },
+      {
+        breakpoint: 480, // Mobile devices
+        settings: {
+          slidesToShow: Math.min(3, items.length), // Show 3 items
+          slidesToScroll: Math.min(3, items.length), // Scroll 3 items
+          infinite: items.length > 3, // Infinite scroll for mobile if items > 3
         },
       },
     ],
@@ -57,10 +65,8 @@ const SliderComponent: React.FC<ISliderComponent> = ({
               style={{ height: "60px", objectFit: "contain" }}
               src={item.image}
               alt="image"
-              //   height={40}
-              //   width={90}
             />
-            <span>{item.name}</span>
+            <span className="text-sm text-center">{item.name}</span>
           </div>
         </div>
       ))}

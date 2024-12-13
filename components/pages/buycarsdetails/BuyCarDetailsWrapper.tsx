@@ -143,7 +143,9 @@ const CarDetailsWrapper: React.FC<ICarDetailsWrapper> = ({ carSlug }) => {
             <Container>
               <div className="grid grid-cols-12 gap-8 h-full">
                 <div className="col-span-12 lg:col-span-8">
-                  <CarDetailsSlider images={buyCarDetails?.images} />
+                  {buyCarDetails?.images?.length > 0 && (
+                    <CarDetailsSlider images={buyCarDetails?.images} />
+                  )}
 
                   <div className="block lg:hidden">
                     <div className="sticky top-28">

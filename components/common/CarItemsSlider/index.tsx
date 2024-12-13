@@ -38,78 +38,86 @@ const CarDetailsSlider: React.FC<ICarDetailsSliderProps> = ({ images }) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: images.length > 5 ? 5 : images.length,
-          slidesToScroll: images.length > 5 ? 5 : images.length,
-          infinite: images.length > 5, // Adjust infinite for this breakpoint as well
+          slidesToShow: images && images.length > 5 ? 5 : images.length,
+          slidesToScroll: images && images.length > 5 ? 5 : images.length,
+          infinite: images && images.length > 5, // Adjust infinite for this breakpoint as well
         },
       },
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: images.length > 3 ? 3 : images.length,
-          slidesToScroll: images.length > 3 ? 3 : images.length,
-          infinite: images.length > 3, // Adjust infinite for this breakpoint as well
+          slidesToShow: images && images.length > 3 ? 3 : images.length,
+          slidesToScroll: images && images.length > 3 ? 3 : images.length,
+          infinite: images && images.length > 3, // Adjust infinite for this breakpoint as well
         },
       },
     ],
   };
 
-  console.log;
-
   return (
     <div className="w-full">
-      <Slider
-        {...settingsMain}
-        ref={(slider) => setNav1(slider)}
-        className="main-slider"
-      >
-        {images.map((image, index) => (
-          <div key={index} className="relative w-full h-96">
-            <NormalText
-              className="py-2 px-4 bg-primary absolute right-0 rounded-lg m-2"
-              text={image.text}
-              size="sm"
-              color="dark"
-              fontWeight="semiBold"
-              textAlign="left"
-            />
-            <img
-              src={image.url}
-              style={{ height: "100%", width: "100%", objectFit: "cover" }}
-              alt={`Car image ${index + 1}`}
-              //   layout="fill"
-              //   objectFit="cover"
-              className="rounded-lg"
-            />
-          </div>
-        ))}
-      </Slider>
-      <Slider
-        {...settingsThumbs}
-        ref={(slider) => setNav2(slider)}
-        className="thumb-slider mt-4"
-      >
-        {images.map((image, index) => (
-          <div key={index} className="px-2">
-            <div className="relative w-full h-20 cursor-pointer">
-              <img
-                src={image.url}
-                alt={`Car thumbnail ${index + 1}`}
-                style={{ height: "100%", width: "100%", objectFit: "cover" }}
-                // layout="fill"
-                // objectFit="cover"
-                className="rounded-lg"
-              />
-              <NormalText
-                text={image.text}
-                size="xs"
-                color="gray"
-                textAlign="left"
-              />
-            </div>
-          </div>
-        ))}
-      </Slider>
+      {images?.length > 0 && (
+        <>
+          <Slider
+            {...settingsMain}
+            ref={(slider) => setNav1(slider)}
+            className="main-slider"
+          >
+            {images.map((image, index) => (
+              <div key={index} className="relative w-full h-96">
+                <NormalText
+                  className="py-2 px-4 bg-primary absolute right-0 rounded-lg m-2"
+                  text={image.text}
+                  size="sm"
+                  color="dark"
+                  fontWeight="semiBold"
+                  textAlign="left"
+                />
+                <img
+                  src={image.url}
+                  style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                  alt={`Car image ${index + 1}`}
+                  //   layout="fill"
+                  //   objectFit="cover"
+                  className="rounded-lg"
+                />
+              </div>
+            ))}
+          </Slider>
+          {images?.length > 0 && (
+            <Slider
+              {...settingsThumbs}
+              ref={(slider) => setNav2(slider)}
+              className="thumb-slider mt-4"
+            >
+              {images.map((image, index) => (
+                <div key={index} className="px-2">
+                  <div className="relative w-full h-20 cursor-pointer">
+                    <img
+                      src={image.url}
+                      alt={`Car thumbnail ${index + 1}`}
+                      style={{
+                        height: "100%",
+                        width: "100%",
+                        objectFit: "cover",
+                      }}
+                      // layout="fill"
+                      // objectFit="cover"
+                      className="rounded-lg"
+                    />
+                    <NormalText
+                      text={image.text}
+                      size="xs"
+                      color="gray"
+                      textAlign="left"
+                    />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          )}
+        </>
+      )}
     </div>
   );
 };
