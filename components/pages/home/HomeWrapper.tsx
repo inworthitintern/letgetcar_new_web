@@ -148,7 +148,7 @@ const HomeWrapper: React.FC = () => {
 
             <HomeTestimonailsSection />
 
-            <LetGetCarExclusiveSection />
+            {/* <LetGetCarExclusiveSection /> */}
 
             {bottomBanner?.length > 0 && (
               <>

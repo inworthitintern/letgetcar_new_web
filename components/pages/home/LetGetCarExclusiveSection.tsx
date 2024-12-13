@@ -22,21 +22,21 @@ const LetGetCarExclusiveSection: React.FC = () => {
       link: "/garagebooking",
       img: luxuarycarEx,
     },
-    {
-      name: "Loan Calculator",
-      link: "/carloan",
-      img: loanCalculatorEx,
-    },
+    // {
+    //   name: "Loan Calculator",
+    //   link: "/carloan",
+    //   img: loanCalculatorEx,
+    // },
     {
       name: "Car Subscription",
       link: "#",
       img: carSubscriptionEx,
     },
-    {
-      name: "Renew Your Car Insurance",
-      link: "#",
-      img: carInsuranceEx,
-    },
+    // {
+    //   name: "Renew Your Car Insurance",
+    //   link: "#",
+    //   img: carInsuranceEx,
+    // },
     {
       name: "Sell Your Cars",
       link: "/sellcar",
