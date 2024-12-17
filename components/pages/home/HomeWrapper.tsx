@@ -27,7 +27,12 @@ import {
   Container,
 } from "@/components/common";
 import { useRouter } from "next/navigation";
-import { rentCarLimousineImage, slide1Image } from "@/constants/images";
+import {
+  rentCarLimousineImage,
+  slide1Image,
+  slideTwoImage,
+  slide3Image,
+} from "@/constants/images";
 import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
 
 const HomeWrapper: React.FC = () => {
@@ -70,7 +75,7 @@ const HomeWrapper: React.FC = () => {
                 />
 
                 <HeroSliderSection
-                  image={rentCarLimousineImage}
+                  image={slideTwoImage}
                   headingFirst="RENT OUT YOUR DESIRED"
                   headingLast="CAR NOW"
                   paragraph="Select from a wide range of vehicles and limousines to suit your needs and preferences. Whether for a special event or everyday use, we offer flexible rental options to ensure you get the perfect ride."
@@ -79,7 +84,7 @@ const HomeWrapper: React.FC = () => {
                   btnOnClick={() => router.push("/rentcar-limousine")}
                 />
                 <HeroSliderSection
-                  image={slide1Image}
+                  image={slide3Image}
                   headingFirst="DOWNLOAD OUR APP FOR "
                   headingLast="MORE DISCOUNTS"
                   paragraph="Unlock special offers and additional savings by downloading our app. Stay updated with the latest deals, manage your bookings effortlessly, and enjoy a seamless experience right at your fingertips."

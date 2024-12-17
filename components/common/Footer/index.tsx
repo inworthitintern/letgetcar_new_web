@@ -1,8 +1,8 @@
-// components/Footer.js
-
 import React from "react";
 import Link from "next/link";
 import Container from "../Container";
+import { logoBlack } from "@/constants/images"; // Ensure this path is correct
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -12,6 +12,15 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Who we are section */}
             <div>
+              <div className="flex flex-col items-center md:items-start">
+                <Image
+                  src={logoBlack}
+                  alt="LetGetCar Logo"
+                  width={160} // Adjust size as needed
+                  height={60}
+                  className="mb-4"
+                />
+              </div>
               <h4 className="text-lg font-bold mb-4">Who we are?</h4>
               <p className="text-gray-400 mb-4">
                 LetGetCar is your all-in-one automotive platform offering a

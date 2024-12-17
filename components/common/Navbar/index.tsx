@@ -326,7 +326,7 @@ const CustomNavbar = () => {
         <Link href="/" className="flex items-center">
           <img
             src={logo.src}
-            style={{ width: "40px", objectFit: "cover" }}
+            style={{ width: "120px", objectFit: "cover" }}
             alt="Logo"
           />
         </Link>
@@ -373,10 +373,10 @@ const CustomNavbar = () => {
             Rent Car & Limousine
           </Link>
           <Link
-            href="/carloan"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+            href="/carmart"
+            className="py-1 px-3 text-dark hover:text-primary-text font-bold"
           >
-            Finance
+            Car Mart
           </Link>
           <Link
             href="/hiredriver"
@@ -422,6 +422,11 @@ const CustomNavbar = () => {
             <Dropdown.Item>
               <Link href="/garagebooking" className="block px-4 py-2 text-sm">
                 Garage Booking
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link href="/finance" className="block px-4 py-2 text-sm">
+                Finance
               </Link>
             </Dropdown.Item>
             <Dropdown.Item>
