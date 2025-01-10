@@ -322,11 +322,11 @@ const CustomNavbar = () => {
       rounded={false}
       className="bg-white dark:bg-gray-900 fixed top-0 w-full z-50 border-b dark:border-gray-700"
     >
-      <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto p-4">
+      <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
         <Link href="/" className="flex items-center">
           <img
             src={logo.src}
-            style={{ width: "120px", objectFit: "cover" }}
+            style={{ width: "160px", objectFit: "cover" }}
             alt="Logo"
           />
         </Link>
@@ -372,17 +372,30 @@ const CustomNavbar = () => {
           >
             Rent Car & Limousine
           </Link>
+
           <Link
             href="/carmart"
-            className="py-1 px-3 text-dark hover:text-primary-text font-bold"
+            className="relative flex items-center gap-2 py-1 px-3 text-primary-text font-bold"
           >
+            {/* Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={2}
+              stroke="currentColor"
+              className="w-5 h-5 text-primary"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3.75 9h16.5m-16.5 6.75h16.5M6 3h12l1.5 6H4.5L6 3zm2.25 18a2.25 2.25 0 104.5 0M12 21a2.25 2.25 0 104.5 0"
+              />
+            </svg>
+            {/* Text */}
             Car Mart
-          </Link>
-          <Link
-            href="/hiredriver"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
-          >
-            Hire Driver
+            {/* Underline */}
+            {/* <span className="absolute left-0 bottom-0 w-full h-1 bg-primary rounded-full"></span> */}
           </Link>
           <div className="flex items-center space-x-8">
             <Link href="/wishlist">
@@ -422,6 +435,11 @@ const CustomNavbar = () => {
             <Dropdown.Item>
               <Link href="/garagebooking" className="block px-4 py-2 text-sm">
                 Garage Booking
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link href="/hiredriver" className="block px-4 py-2 text-sm">
+                Hire Driver
               </Link>
             </Dropdown.Item>
             <Dropdown.Item>

@@ -47,6 +47,7 @@ const CarsSlider = ({ carsData }) => {
             image={item?.images?.length > 0 ? item.images[0]?.url : null}
             name={item.name}
             price={item.sale_price}
+            trusted_badge={item.trusted_badge}
           />
         </div>
       ))}

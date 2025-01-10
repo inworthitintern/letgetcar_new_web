@@ -15,6 +15,7 @@ import {
   LetgetCarExploreSection,
   ExploreCarFilterSection,
   HeroSliderSection,
+  CarMartSection,
 } from ".";
 import LargeSearchBlock from "@/components/common/LargeSearchBlock";
 import { getHomePageData } from "@/GlobalRedux/Features/home/homeSlice";
@@ -55,7 +56,28 @@ const HomeWrapper: React.FC = () => {
   const middleBanner = banners?.filter((banner) => banner.priority === 2);
   const bottomBanner = banners?.filter((banner) => banner.priority === 3);
 
-  console.log(homeData, "heyyy");
+  const CartMart = [
+    {
+      image:
+        "https://res.cloudinary.com/dntrefeat/image/upload/v1735361242/hiygnfs97wudxrnpvqzq.jpg",
+      title: "Engine Oil",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dntrefeat/image/upload/v1735361310/acpddoz2xc4zr0la7ck6.jpg",
+      title: "Carburator",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dntrefeat/image/upload/v1735361421/malpvehun88iepjtj4ek.jpg",
+      title: "Air Filters",
+    },
+    {
+      image:
+        "https://res.cloudinary.com/dntrefeat/image/upload/v1735361506/mq6y6iihy90mh0wtzdha.jpg",
+      title: "Clutch Disc",
+    },
+  ];
   return (
     <>
       {loading ? (
@@ -96,6 +118,9 @@ const HomeWrapper: React.FC = () => {
             </div>
 
             <LargeSearchBlock />
+            <Section>
+              <CarMartSection categories={CartMart} />
+            </Section>
 
             <ExploreCarFilterSection
               brands={homeData[0].data}

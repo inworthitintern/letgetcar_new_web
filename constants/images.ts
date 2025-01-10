@@ -1,4 +1,4 @@
-import slide1Image from "../public/images/slide-1.jpg";
+import slide1Image from "../public/images/slide-1.png";
 import carImage from "../public/images/car.png";
 import onlineBookingImage from "../public/images/online-booking.png";
 import presenceBgImage from "../public/images/presence-bg.jpg";
