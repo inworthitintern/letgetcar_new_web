@@ -62,6 +62,7 @@
 "use client";
 
 import { NormalText } from "@/components/UI";
+import { BadgeIcon } from "@/constants/icons";
 import { useRouter } from "next/navigation";
 import React from "react";
 
@@ -85,23 +86,25 @@ const CarCard1: React.FC<ICarCard1Props> = ({
   const router = useRouter();
 
   // Render the badge based on trusted_badge value
-  // const renderBadge = () => {
-  //   if (trusted_badge === "1") {
-  //     return (
-  //       <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
-  //         ✓
-  //       </div>
-  //     );
-  //   } else if (trusted_badge === "2") {
-  //     return (
-  //       <div className="px-3 py-1 bg-green-500 text-white rounded-full flex items-center gap-1 text-sm font-bold shadow-lg">
-  //         <span>✓</span>
-  //         <span>✓</span>
-  //       </div>
-  //     );
-  //   }
-  //   return null;
-  // };
+  const renderBadge = () => {
+    if (trusted_badge === "1") {
+      return (
+        <div className="w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold shadow-lg">
+          ✓
+        </div>
+      );
+    } else if (trusted_badge === "2") {
+      return (
+        <div className="px-3 py-1 bg-green-500 text-white rounded-full flex items-center gap-1 text-sm font-bold shadow-lg">
+          <span>✓</span>
+          <span>✓</span>
+        </div>
+      );
+    }
+    return null;
+  };
+
+  console.log(trusted_badge, "hell");
 
   return (
     <div
@@ -119,9 +122,15 @@ const CarCard1: React.FC<ICarCard1Props> = ({
         />
 
         {/* Badge */}
-        {/* {trusted_badge && (
-          <div className="absolute top-2 right-2">{renderBadge()}</div>
-        )} */}
+        {trusted_badge === "1" && (
+          <img
+            src={BadgeIcon}
+            alt="car"
+            // height={135}
+            // style={{ objectFit: "cover" }}
+            // className="transform transition-transform duration-300 ease-in-out group-hover:scale-110"
+          />
+        )}
       </div>
       <div className="py-3 px-4 flex flex-col gap-2">
         <NormalText text={name} textAlign="left" />
