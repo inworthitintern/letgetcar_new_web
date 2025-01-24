@@ -75,7 +75,7 @@ const CarLoan = () => {
   return (
     <div>
       <div className="h-[60vh] bg-primary flex flex-col justify-center items-center">
-        <Heading text="Why get loan from CARS24?" type="h3" className="mt-6" />
+        <Heading text="Why get loan from LetGetCar?" type="h3" className="mt-6" />
 
         <div className="flex justify-between gap-16 mt-4">
           <NormalText text="Zero downpayment" />
@@ -148,6 +148,10 @@ const CarLoan = () => {
             ]}
             // desc="Awesome Drive provides monthly driver service in Dubai. A professional driver with many years of experience will take you any corner of the city.we are registered with Dubai Roads and Transport Authority (RTA) to outsource private, personal & corporate Drivers to Customer. with an honest objective to assist everybody to reach their destination,safety,comfortably and above all, cost-effectively"
           />
+          <Spacer spacing="md" />
+          <div>
+            <Button text="Apply Car Loan Now" onClick={applyCarLoan} />
+          </div>
         </Container>
       </Section>
 

@@ -113,3 +113,37 @@ html {
   border-radius: 20px; /* roundness of the scroll thumb */
   /* creates padding around scroll thumb */
 }
+
+/* Whatsapp */
+
+.whatsapp-icon {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  /* font-size: 24px; */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  text-align: center;
+  transition: background-color 0.3s ease;
+}
+
+.whatsapp-icon i {
+  display: inline-block;
+  line-height: 1; /* Resets any line-height issues */
+  font-size: 30px;
+}
+.whatsapp-icon:hover i {
+  color: #fff;
+}
+
+.whatsapp-icon:hover {
+  background-color: #1ebe5c;
+}

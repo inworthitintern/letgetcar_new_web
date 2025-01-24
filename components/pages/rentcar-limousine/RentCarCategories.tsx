@@ -25,6 +25,16 @@ const CarCategories = () => {
       image:
         "https://images.pexels.com/photos/164634/pexels-photo-164634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
+    {
+      title: "Hire a Driver",
+      image:
+        "https://www.driveronhire.com/banner-daily-driver.jpg",
+    },
+    {
+      title: "Car Tuning",
+      image:
+        "https://tuning.themerex.net/splash/src/img/hero/1.jpg",
+    },
   ];
 
   return (
