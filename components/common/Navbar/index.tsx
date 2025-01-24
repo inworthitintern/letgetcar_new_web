@@ -304,6 +304,7 @@ import { toast } from "react-toastify";
 
 const CustomNavbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState("");
   const dispatch = useDispatch();
 
   const { user } = useSelector((state: RootState) => state.auth);
@@ -311,6 +312,13 @@ const CustomNavbar = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  useEffect(() => {
+    // Access window.location only in the browser
+    if (typeof window !== "undefined") {
+      setCurrentPath(window.location.href);
+    }
+  }, []);
 
   // useEffect(() => {
   //   dispatch(getProfileDetails());
@@ -349,26 +357,42 @@ const CustomNavbar = () => {
             Home
           </Link>
           <Link
-            href="/buycarslist?is_new_car=1"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+              href="/buycarslist?is_new_car=1"
+              className={`py-1 px-3 rounded font-normal ${
+                currentPath.includes("/buycarslist?is_new_car=1")
+                  ? "text-primary"
+                  : "text-gray-75 hover:text-primary-text"
+              }`}
           >
             Buy New Car
           </Link>
           <Link
-            href="/buycarslist?is_new_car=0"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+           href="/buycarslist?is_new_car=0"
+           className={`py-1 px-3 rounded font-normal ${
+             currentPath.includes("/buycarslist?is_new_car=0")
+               ? "text-primary"
+               : "text-gray-75 hover:text-primary-text"
+           }`}
           >
             Buy Used Car
           </Link>
           <Link
-            href="/sellcar"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+             href="/sellcar"
+             className={`py-1 px-3 rounded font-normal ${
+               currentPath.includes("/sellcar")
+                 ? "text-primary"
+                 : "text-gray-75 hover:text-primary-text"
+             }`}
           >
             Sell Car
           </Link>
           <Link
-            href="/rentcar-limousine"
-            className="py-1 px-3 text-gray-75 hover:text-primary-text"
+             href="/rentcar-limousine"
+             className={`py-1 px-3 rounded font-normal ${
+               currentPath.includes("/rentcar-limousine")
+                 ? "text-primary"
+                 : "text-gray-75 hover:text-primary-text"
+             }`}
           >
             Rent Car & Limousine
           </Link>

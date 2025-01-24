@@ -110,14 +110,44 @@ const RentCarLimousineWrapper = () => {
     <>
       <div
         style={{
-          backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url(${rentCarLimousineImage.src})`,
           backgroundSize: "cover", // Ensure the image covers the whole div
           backgroundPosition: "center", // Center the background image
-          backgroundRepeat: "no-repeat", // Ensure the image does not repeat
+          // backgroundRepeat: "no-repeat", // Ensure the image does not repeat
           height: "100vh", // You can adjust this as needed (e.g., 100vh for full viewport height)
           width: "100%", // Ensure it takes full width
         }}
       >
+        <video 
+        autoPlay
+        muted
+        loop
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          zIndex: -2, 
+        }}
+        >
+          <source
+            src="https://purplesevencars.com/wp-content/uploads/2023/11/p7cars-video.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video tag.
+        </video>
+        <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          background: "rgba(0, 0, 0, 0.5)",
+          zIndex: -1,
+        }}
+        ></div>
         <Container>
           <div className="h-screen max-w-screen-xl flex flex-wrap items-center mx-auto p-4">
             <div>

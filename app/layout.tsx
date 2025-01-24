@@ -34,6 +34,12 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
+        <link
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+          rel="stylesheet"
+        />
+
+
         {/* <link
           href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
           rel="stylesheet"
@@ -46,6 +52,10 @@ export default function RootLayout({
           <Navbar />
           <AuthManager>{children}</AuthManager>
           <Footer />
+          
+          <a href="https://wa.me/+971543711445" className="whatsapp-icon" target="_blank">
+              <i className="fab fa-whatsapp"></i>
+          </a>
         </Providers>
         {/* <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script> */}
       </body>

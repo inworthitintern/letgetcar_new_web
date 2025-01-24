@@ -91,6 +91,14 @@ const Footer = () => {
                     Garage Booking
                   </Link>
                 </li>
+                <li className="mb-2">
+                  <Link
+                    href="/insurance"
+                    className="hover:text-white transition"
+                  >
+                    Insurance
+                  </Link>
+                </li>
               </ul>
             </div>
 
