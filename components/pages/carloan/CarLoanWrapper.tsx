@@ -183,6 +183,13 @@ const CarLoan = () => {
 
       {/* <Section> */}
       <Container>
+        <Heading 
+        text="What our customers are saying"
+        type="h2"
+        textAlign="left"
+        color="dark"
+        fontWeight="bold"
+        />
         <TestimonialsSection />
       </Container>
       {/* </Section> */}

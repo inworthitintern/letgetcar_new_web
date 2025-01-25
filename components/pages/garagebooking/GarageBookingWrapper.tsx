@@ -28,9 +28,32 @@ import {
 import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
 import { RootState } from "@/GlobalRedux/store";
 import { List } from "flowbite-react";
+import Image from "next/image";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+const tuningDescription = [
+  "At Purple Seven Cars, we transcend the ordinary with our integrated tuning workshop in Dubai, dedicated to perfecting the performance and aesthetics of your premium vehicle.",
+  "Trust Purple Seven Cars to transform your already premium vehicle into a unique masterpiece, embodying the opulence that defines Dubai’s automotive landscape.",
+];
+
+const rentalDescription = [
+  "We offer premium car rental services in Dubai, ensuring you experience the city in comfort and style.",
+  "Choose from a wide range of vehicles tailored to suit your preferences, whether for business or leisure.",
+];
+
+const tuningImages = [
+  { src: "/images/steering-wheel.jpg", alt: "Steering Wheel" },
+  { src: "/images/white-car.jpg", alt: "White Car" },
+  { src: "/images/car-interior.jpg", alt: "Car Interior" },
+];
+
+const rentalImages = [
+  { src: "/images/luxury-car.jpg", alt: "Luxury Car" },
+  { src: "/images/suv.jpg", alt: "SUV" },
+  { src: "/images/sedan.jpg", alt: "Sedan" },
+];
 
 const howItWorksContents = [
   {
@@ -51,6 +74,7 @@ const howItWorksContents = [
 ];
 
 const GarageBookingWrapper = () => {
+  const [isFormOpen, setIsFormOpen] = useState(false);
   const { banners } = useSelector((state: RootState) => state.banner);
   const dispatch = useDispatch();
 
@@ -61,6 +85,15 @@ const GarageBookingWrapper = () => {
   const topBanner = banners?.filter((banner) => banner.priority === 1);
   const middleBanner = banners?.filter((banner) => banner.priority === 2);
   const bottomBanner = banners?.filter((banner) => banner.priority === 3);
+
+  const openForm = () => {
+    setIsFormOpen(true); // Open the form
+  };
+
+  const closeForm = () => {
+    setIsFormOpen(false); // Close the form
+  };
+
   return (
     <div>
       <div
@@ -121,6 +154,7 @@ const GarageBookingWrapper = () => {
         </Container>
       </Section>
 
+
       {topBanner?.length > 0 && (
         <>
           {topBanner?.map((cur) => (
@@ -178,6 +212,208 @@ const GarageBookingWrapper = () => {
         </Container>
       </Section>
 
+      <Section bgType="gray" className="-mb-20">
+  <Container>
+    <div className="text-center mb-8">
+      <Heading
+        text="TUNING"
+        type="h2"
+        color="primary"
+        fontWeight="bold"
+        textAlign="center"
+        className="mb-8"
+      />
+
+      <NormalText
+        text="At LetGetCar, we transcend the ordinary with our integrated tuning workshop in Dubai, dedicated to perfecting the performance and aesthetics of your premium vehicle. From bespoke interior modifications to precision engine upgrades, our skilled technicians ensure that your car not only meets but exceeds the highest standards of luxury."
+        type="p"
+        textAlign="left"
+      />
+
+      <NormalText
+        text="Trust LetGetCar to transform your already premium vehicle into a unique masterpiece, embodying the opulence that defines Dubai’s automotive landscape. In a city that thrives on exclusivity, our luxury tuning services set your car apart as a symbol of individuality and refined taste."
+        type="p"
+        textAlign="left"
+        className="mt-6"
+      />
+
+      <Button text="Book Appointment" type="primary" className="mt-10" />
+    </div>
+  </Container>
+
+  
+  <div className="w-full">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+    <div className="relative w-full h-[450px]">
+        <Image
+          src="/images/tuning-img2.webp"
+          alt="Steering Wheel"
+          layout="fill" 
+          objectFit="cover"
+          // className="rounded-lg shadow-lg"
+        />
+      </div>
+      <div className="relative w-full h-[450px]">
+        <Image
+          src="/images/tuning-img.webp"
+          alt="White Car"
+          layout="fill"
+          objectFit="cover"
+          // className="rounded-lg shadow-lg"
+        />
+      </div>
+      <div className="relative w-full h-[450px]">
+        <Image
+          src="/images/tuning-img3.webp"
+          alt="Car Interior"
+          layout="fill"
+          objectFit="cover"
+          // className="rounded-lg shadow-lg"
+        />
+      </div>
+    </div>
+  </div>
+
+  {/* Painting */}
+  <Container>
+    <div className="text-center mb-8 mt-20">
+      <Heading
+        text="PAINTING"
+        type="h2"
+        color="primary"
+        fontWeight="bold"
+        textAlign="center"
+        className="mb-8"
+      />
+
+      <NormalText
+        text="Make a bold statement on Dubai’s luxurious roads by customizing your premium vehicle’s exterior with LetGetCars exclusive painting services. Choose from a palette of vibrant colors or opt for a sophisticated matte finish to enhance the aesthetic allure of your car. Employing cutting-edge techniques, our expert team ensures a flawless and enduring result."
+        type="p"
+        textAlign="left"
+      />
+
+      <NormalText
+        text="Whether you desire a complete color overhaul or a subtle touch-up, LetGetCar brings your vision to life with an unparalleled level of craftsmanship. In a metropolis synonymous with luxury, our bespoke painting services ensure your premium car stands out as a true work of art."
+        type="p"
+        textAlign="left"
+        className="mt-6"
+      />
+
+      <Button text="Book Appointment" type="primary" className="mt-10" />
+    </div>
+  </Container>
+
+  
+  <div className="w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20">
+    <div className="relative w-full md:h-[600px] h-[400px]">
+        <Image
+          src="/images/painting-img1.webp"
+          alt="Steering Wheel"
+          layout="fill" 
+          objectFit="cover"
+          // className="rounded-lg shadow-lg"
+        />
+      </div>
+      <div className="relative w-full md:h-[600px] h-[400px]">
+        <Image
+          src="/images/painting-img2.webp"
+          alt="White Car"
+          layout="fill"
+          objectFit="cover"
+          // className="rounded-lg shadow-lg"
+        />
+      </div>
+      
+    </div>
+  </div>
+
+  {/* Wrapping */}
+  <Container>
+    <div className="text-center mb-8 mt-20">
+      <Heading
+        text="WRAPPING"
+        type="h2"
+        color="primary"
+        fontWeight="bold"
+        textAlign="center"
+        className="mb-8"
+      />
+
+      <NormalText
+        text="Express your individuality on Dubai’s exclusive streets with LetGetCar's professional wrapping services. Elevate the appearance of your premium car with a custom wrap that reflects your unique style. Choose from a curated selection of high-quality materials and finishes, ensuring a perfect blend of elegance and distinction."
+        type="p"
+        textAlign="left"
+      />
+
+      <NormalText
+        text="Our skilled team guarantees precision in every detail, providing a protective and visually stunning wrap that turns heads and embodies the essence of Dubai’s premium automotive scene. In a city where every detail matters, our premium wrapping services make your car an unmistakable symbol of sophistication and exclusivity."
+        type="p"
+        textAlign="left"
+        className="mt-6"
+      />
+
+      <Button text="Book Appointment" type="primary" className="mt-10" />
+    </div>
+  </Container>
+
+  
+  <div className="w-full">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-20">
+    <div className="relative w-full md:h-[600px] h-[400px]">
+        <Image
+          src="/images/wrapping-img1.jpg"
+          alt="Steering Wheel"
+          layout="fill" 
+          objectFit="cover"
+          // className="rounded-lg shadow-lg"
+        />
+      </div>
+      <div className="relative w-full md:h-[600px] h-[400px]">
+        <Image
+          src="/images/wrapping-img2.jpg"
+          alt="White Car"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+      
+    </div>
+  </div>
+
+  <Container>
+    <div className="text-center mb-8 mt-20">
+      <Heading
+        text="ARE YOU GET ENOUGH ?!"
+        type="h2"
+        color="primary"
+        fontWeight="bold"
+        textAlign="center"
+        className="mb-8"
+      />
+
+      <NormalText
+        text="At LetGetCar, we redefine luxury in Dubai’s automotive landscape, offering not just cars but experiences that epitomize exclusivity and opulence. Experience the unparalleled blend of performance and prestige with our premium car rental, tuning, painting, and wrapping services."
+        type="p"
+        textAlign="left"
+      />
+
+      <NormalText
+        text="Your journey with LetGetCar is not just a drive – it’s an indulgence in the extraordinary."
+        type="p"
+        textAlign="left"
+        className="mt-6"
+      />
+
+      <Button text="Book Appointment" type="primary" className="mt-10" />
+    </div>
+  </Container>
+
+  
+</Section>
+
+
+
       <Section>
         <CtnSection
           ctnText="Download Our App Now"
@@ -206,6 +442,13 @@ const GarageBookingWrapper = () => {
 
       <Section>
         <Container>
+          <Heading 
+          text="What our customers are saying"
+          type="h2"
+          textAlign="left"
+          color="dark"
+          fontWeight="bold"
+          />
           <TestimonialsSection />
         </Container>
       </Section>
