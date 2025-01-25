@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 import { Container, Spacer } from "@/components/common";
 import { Heading, NormalText, Button } from "@/components/UI";
@@ -58,6 +59,7 @@ const CarMartCategorySection: React.FC<ICarMartCategorySectionProps> = ({
 
         {/* Call-to-Action Button */}
         <div className="flex justify-center">
+          <Link href="https://lgccarmart.meatado.com">
           <Button
             text="View Cart Mart"
             className="w-fit"
@@ -65,6 +67,7 @@ const CarMartCategorySection: React.FC<ICarMartCategorySectionProps> = ({
 
             //   onClick={carBookingCheckoutHandler}
           />
+          </Link>
         </div>
       </div>
     </Container>

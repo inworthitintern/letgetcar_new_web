@@ -398,7 +398,7 @@ const CustomNavbar = () => {
           </Link>
 
           <Link
-            href="/carmart"
+            href="https://lgccarmart.meatado.com"
             className="relative flex items-center gap-2 py-1 px-3 text-primary-text font-bold"
           >
             {/* Icon */}
@@ -467,8 +467,13 @@ const CustomNavbar = () => {
               </Link>
             </Dropdown.Item>
             <Dropdown.Item>
-              <Link href="/finance" className="block px-4 py-2 text-sm">
+              <Link href="/carloan" className="block px-4 py-2 text-sm">
                 Finance
+              </Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link href="/insurance" className="block px-4 py-2 text-sm">
+                Insurance
               </Link>
             </Dropdown.Item>
             <Dropdown.Item>
