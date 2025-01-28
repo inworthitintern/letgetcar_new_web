@@ -282,6 +282,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { Navbar, Dropdown, Button } from "flowbite-react";
 import Link from "next/link";
 import {
@@ -313,12 +314,22 @@ const CustomNavbar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  
+
   useEffect(() => {
-    // Access window.location only in the browser
     if (typeof window !== "undefined") {
-      setCurrentPath(window.location.href);
+      setCurrentPath(window.location.pathname); // Update the current path
     }
-  }, []);
+  }, []); // Runs only on the client side
+
+  const isActive = (path: string) => currentPath === path;
+
+  // useEffect(() => {
+    
+  //   if (typeof window !== "undefined") {
+  //     setCurrentPath(window.location.href);
+  //   }
+  // }, []);
 
   // useEffect(() => {
   //   dispatch(getProfileDetails());
@@ -357,32 +368,30 @@ const CustomNavbar = () => {
             Home
           </Link>
           <Link
-              href="/buycarslist?is_new_car=1"
-              className={`py-1 px-3 rounded font-normal ${
-                currentPath.includes("/buycarslist?is_new_car=1")
-                  ? "text-primary"
-                  : "text-gray-75 hover:text-primary-text"
-              }`}
+            href="/buycarslist?is_new_car=1"
+            className={`py-1 px-3 rounded font-medium ${
+              isActive("/buycarslist?is_new_car=1")
+                ? "text-primary"
+                : "text-gray-75 hover:text-primary"
+            }`}
           >
             Buy New Car
           </Link>
           <Link
-           href="/buycarslist?is_new_car=0"
-           className={`py-1 px-3 rounded font-normal ${
-             currentPath.includes("/buycarslist?is_new_car=0")
-               ? "text-primary"
-               : "text-gray-75 hover:text-primary-text"
-           }`}
+            href="/buycarslist?is_new_car=0"
+            className={`py-1 px-3 rounded font-medium ${
+              isActive("/buycarslist?is_new_car=0")
+                ? "text-primary"
+                : "text-gray-75 hover:text-primary"
+            }`}
           >
             Buy Used Car
           </Link>
           <Link
-             href="/sellcar"
-             className={`py-1 px-3 rounded font-normal ${
-               currentPath.includes("/sellcar")
-                 ? "text-primary"
-                 : "text-gray-75 hover:text-primary-text"
-             }`}
+            href="/sellcar"
+            className={`py-1 px-3 rounded font-medium ${
+              isActive("/sellcar") ? "text-primary" : "text-gray-75 hover:text-primary"
+            }`}
           >
             Sell Car
           </Link>
