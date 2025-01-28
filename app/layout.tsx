@@ -6,6 +6,7 @@ import { Providers } from "@/GlobalRedux/provider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import AuthManager from "@/utils/AuthManager";
+import { Suspense } from "react";
 
 // const inter = Inter({ subsets: ["latin"] });
 
@@ -40,7 +41,6 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
-
         {/* <link
           href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
           rel="stylesheet"
@@ -50,12 +50,18 @@ export default function RootLayout({
       <body>
         <Providers>
           <ToastContainer />
-          <Navbar />
+          <Suspense fallback={<div>Loading...</div>}>
+            <Navbar />
+          </Suspense>
           <AuthManager>{children}</AuthManager>
           <Footer />
-          
-          <a href="https://wa.me/+971543711445" className="whatsapp-icon" target="_blank">
-              <i className="fab fa-whatsapp"></i>
+
+          <a
+            href="https://wa.me/+971543711445"
+            className="whatsapp-icon"
+            target="_blank"
+          >
+            <i className="fab fa-whatsapp"></i>
           </a>
         </Providers>
         {/* <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script> */}
