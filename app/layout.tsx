@@ -50,7 +50,7 @@ export default function RootLayout({
       <body>
         <Providers>
           <ToastContainer />
-          <Suspense fallback={<div>Loading...</div>}>
+          <Suspense fallback={<div></div>}>
             <Navbar />
           </Suspense>
           <AuthManager>{children}</AuthManager>

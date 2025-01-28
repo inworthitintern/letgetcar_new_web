@@ -3,7 +3,7 @@ import { BuyCarListWrapper } from "@/components/pages/BuyCarsList";
 
 const BuyCarList = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<div></div>}>
       <BuyCarListWrapper />
     </Suspense>
   );
