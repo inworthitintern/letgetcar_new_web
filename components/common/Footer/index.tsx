@@ -88,7 +88,7 @@ const Footer = () => {
                     href="/garagebooking"
                     className="hover:text-white transition"
                   >
-                    Garage Booking
+                    Garage Booking & Modification
                   </Link>
                 </li>
                 <li className="mb-2">

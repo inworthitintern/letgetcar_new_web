@@ -57,19 +57,16 @@ const howItWorksContents = [
   },
 ];
 
-
 const validationSchema = Yup.object({
   birth_date: Yup.date().required("Date of birth is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
   phone: Yup.string()
-  .matches(/^\d+$/, "Phone number must contain only digits")
-  .required("Phone number is required"),
+    .matches(/^\d+$/, "Phone number must contain only digits")
+    .required("Phone number is required"),
 });
 
-
-
 const InsuranceCarScreen = () => {
-  const [isModalOpen, setModalOpen] = useState(false)
+  const [isModalOpen, setModalOpen] = useState(false);
   const [openSellCarForm, setOpenSellCarForm] = useState(false);
   const { user } = useSelector((state: RootState) => state.auth);
 
@@ -101,7 +98,7 @@ const InsuranceCarScreen = () => {
     initialValues: {
       birth_date: "",
       email: "",
-    phone: "",
+      phone: "",
     },
     validationSchema,
     onSubmit: (values) => {
@@ -131,7 +128,7 @@ const InsuranceCarScreen = () => {
                 {/* Sell Any Car Online in <span className="text-primary">UAE</span> */}
               </h1>
               <p className="text-sm md:text-base text-white font-normal  py-6">
-              We insure your car and assure your convenience
+                We insure your car and assure your convenience
               </p>
               <Button
                 text={"Get a quote"}
@@ -157,13 +154,21 @@ const InsuranceCarScreen = () => {
             </button>
 
             {/* Modal Content */}
-            <h2 className="text-2xl font-bold mb-4">Get Your Car Insurance Quote</h2>
+            <h2 className="text-2xl font-bold mb-4">
+              Get Your Car Insurance Quote
+            </h2>
             <form onSubmit={formik.handleSubmit} className="space-y-6">
               {/* Car Details */}
               <div>
-                <label className="block text-sm font-medium mb-1">What car do you drive?</label>
+                <label className="block text-sm font-medium mb-1">
+                  What car do you drive?
+                </label>
                 <div className="grid grid-cols-2 gap-4">
-                  <TextInput type="text" placeholder="Enter your Make, Model, Trim" shadow />
+                  <TextInput
+                    type="text"
+                    placeholder="Enter your Make, Model, Trim"
+                    shadow
+                  />
                   <Select>
                     <option>Model Year</option>
                     <option>2025</option>
@@ -174,7 +179,9 @@ const InsuranceCarScreen = () => {
 
               {/* Personal Information */}
               <div>
-                <label className="block text-sm font-medium mb-1">Tell us about yourself</label>
+                <label className="block text-sm font-medium mb-1">
+                  Tell us about yourself
+                </label>
                 <div className="grid grid-cols-2 gap-4">
                   <TextInput type="text" placeholder="Your Full Name" shadow />
                   <Select>
@@ -202,10 +209,12 @@ const InsuranceCarScreen = () => {
                       shadow
                     />
                     {formik.touched.birth_date && formik.errors.birth_date ? (
-                      <div className="text-red-500 text-sm">{formik.errors.birth_date}</div>
+                      <div className="text-red-500 text-sm">
+                        {formik.errors.birth_date}
+                      </div>
                     ) : null}
                   </div>
-                
+
                   {/* Email */}
                   <div>
                     <label
@@ -225,7 +234,9 @@ const InsuranceCarScreen = () => {
                       shadow
                     />
                     {formik.touched.email && formik.errors.email ? (
-                      <div className="text-red-500 text-sm">{formik.errors.email}</div>
+                      <div className="text-red-500 text-sm">
+                        {formik.errors.email}
+                      </div>
                     ) : null}
                   </div>
 
@@ -238,7 +249,9 @@ const InsuranceCarScreen = () => {
                       Phone Number
                     </label>
                     <div className="flex">
-                      <span className="px-4 bg-gray-200 border rounded-l">+971</span>
+                      <span className="px-4 bg-gray-200 border rounded-l">
+                        +971
+                      </span>
                       <TextInput
                         type="text"
                         name="phone"
@@ -252,19 +265,19 @@ const InsuranceCarScreen = () => {
                       />
                     </div>
                     {formik.touched.phone && formik.errors.phone ? (
-                      <div className="text-red-500 text-sm">{formik.errors.phone}</div>
+                      <div className="text-red-500 text-sm">
+                        {formik.errors.phone}
+                      </div>
                     ) : null}
                   </div>
                 </div>
-                  
-                  
               </div>
-             
+
               {/* <div className="w-full">
                 <TextInput type="email" placeholder="Your Email" shadow />
                 
               </div> */}
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <Select>
                   <option>Emirate of Registration</option>
@@ -274,595 +287,1045 @@ const InsuranceCarScreen = () => {
                 </Select>
               </div>
               <Button
-              text="View quotes"
-              type="primary"
-              onClick={() => console.log("Motor Executive Quote")}
-              className="mt-10"
+                text="View quotes"
+                type="primary"
+                onClick={() => console.log("Motor Executive Quote")}
+                className="mt-10"
               />
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
-    )}
+      )}
 
-    <Section>
-    <Container>
-    <div>
-      <div className="flex justify-center items-center">
-      <h1 className="text-primary font-bold text-4xl md:text-6xl">Choose the right cover for you</h1>
-      </div>
-    <div className="grid grid-cols-1 md:grid-cols-3 md:gap-56 gap-20 md:mt-24 mt-10">
-      {/* Motor Executive */}
-      <div className="flex flex-col justify-center items-center h-full w-96">
-        
-        <h3 className="text-xl font-bold mt-4 mb-20">Motor Executive</h3>
-        <ul className="space-y-6">
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Document Handling</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Vehicle Inspection</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Ambulance Cost</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Third party liability for property damage</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Using Your Car in Oman</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">No Claims Discount</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Driving Another Car</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Emergency Medical Expenses</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Emergency Repairs</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Garage and/or valet Parking</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Basic Cover</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Possessions</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Injury</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Third Party Liability for Family/Passengers</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg  text-gray-500 dark:text-gray-400">Taxy Fares</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Loss or Damage to Your Vehicle</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Lock Replacement</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Off Road Cover</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Perils of Nature</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">New Vehicle Replacement</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Windscreen Protection</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Accident Benefit - Driver</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Accident Benefit - Passenger</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Using Your Car In GCC Countries</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Temporary Rent-A-Car</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">No Claims Discount Protection</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Agency Repairs</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Breakdown Recovery</span>
-          </li>
-          
-        </ul>
-        <Button
-        onClick={toggleModal}
-        text="Get a Quote"
-        type="primary"
-        
-        className="mt-10"
-        />
-      </div>
+      <Section>
+        <Container>
+          <div>
+            <div className="flex justify-center items-center">
+              <h1 className="font-bold text-4xl md:text-5xl">
+                Choose the right cover for you
+              </h1>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 md:gap-56 gap-20 md:mt-24 mt-10">
+              {/* Motor Executive */}
+              <div className="flex flex-col justify-center items-center h-full w-96">
+                <h3 className="text-xl font-bold mt-4 mb-20">
+                  Motor Executive
+                </h3>
+                <ul className="space-y-6">
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Document Handling
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Vehicle Inspection
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Ambulance Cost
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Third party liability for property damage
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Using Your Car in Oman
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      No Claims Discount
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Driving Another Car
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Emergency Medical Expenses
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Emergency Repairs
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Garage and/or valet Parking
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Basic Cover
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Possessions
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Injury
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Third Party Liability for Family/Passengers
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg  text-gray-500 dark:text-gray-400">
+                      Taxy Fares
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Loss or Damage to Your Vehicle
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Lock Replacement
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Off Road Cover
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Perils of Nature
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      New Vehicle Replacement
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Windscreen Protection
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Accident Benefit - Driver
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Accident Benefit - Passenger
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Using Your Car In GCC Countries
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Temporary Rent-A-Car
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      No Claims Discount Protection
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Agency Repairs
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Breakdown Recovery
+                    </span>
+                  </li>
+                </ul>
+                <Button
+                  onClick={toggleModal}
+                  text="Get a Quote"
+                  type="primary"
+                  className="mt-10"
+                />
+              </div>
 
-      {/* Motor Smart */}
-      <div className="flex flex-col items-center h-full w-96">
-        
-        <h3 className="text-xl font-bold mt-4 mb-20">Motor Smart</h3>
-        <ul className="space-y-6">
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Document Handling</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Vehicle Inspection</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Ambulance Cost</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Third party liability for property damage</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Using Your Car in Oman</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">No Claims Discount</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Driving Another Car</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Emergency Medical Expenses</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Emergency Repairs</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Garage and/or valet Parking</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Basic Cover</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Possessions</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Injury</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Third Party Liability for Family/Passengers</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Taxy Fares</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Loss or Damage to Your Vehicle</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Lock Replacement</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Off Road Cover</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Perils of Nature</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">New Vehicle Replacement</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Windscreen Protection</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Accident Benefit - Passenger</span>
-          </li>
-          {/* <li className="flex items-center">
+              {/* Motor Smart */}
+              <div className="flex flex-col items-center h-full w-96">
+                <h3 className="text-xl font-bold mt-4 mb-20">Motor Smart</h3>
+                <ul className="space-y-6">
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Document Handling
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Vehicle Inspection
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Ambulance Cost
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Third party liability for property damage
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Using Your Car in Oman
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      No Claims Discount
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Driving Another Car
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Emergency Medical Expenses
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Emergency Repairs
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Garage and/or valet Parking
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Basic Cover
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Possessions
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Injury
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Third Party Liability for Family/Passengers
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Taxy Fares
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Loss or Damage to Your Vehicle
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Lock Replacement
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Off Road Cover
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Perils of Nature
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      New Vehicle Replacement
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Windscreen Protection
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Accident Benefit - Passenger
+                    </span>
+                  </li>
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -917,22 +1380,20 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Breakdown Recovery</span>
           </li> */}
-          
-        </ul>
-        <Button
-        onClick={toggleModal}
-        text="Get a Quote"
-        type="primary"
-        className="mt-10"
-        />
-      </div>
+                </ul>
+                <Button
+                  onClick={toggleModal}
+                  text="Get a Quote"
+                  type="primary"
+                  className="mt-10"
+                />
+              </div>
 
-      {/* Motor Value */}
-      <div className="flex flex-col items-center h-full w-96">
-        
-        <h3 className="text-xl font-bold mt-4 mb-20">Motor Value</h3>
-        <ul className="space-y-6">
-          {/* <li className="flex items-center">
+              {/* Motor Value */}
+              <div className="flex flex-col items-center h-full w-96">
+                <h3 className="text-xl font-bold mt-4 mb-20">Motor Value</h3>
+                <ul className="space-y-6">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -943,7 +1404,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Document Handling</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -954,51 +1415,87 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Vehicle Inspection</span>
           </li> */}
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Ambulance Cost</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Third party liability for property damage</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Using Your Car in Oman</span>
-          </li>
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">No Claims Discount</span>
-          </li>
-          {/* <li className="flex items-center">
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Ambulance Cost
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Third party liability for property damage
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Using Your Car in Oman
+                    </span>
+                  </li>
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      No Claims Discount
+                    </span>
+                  </li>
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1009,7 +1506,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Driving Another Car</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1020,7 +1517,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Emergency Medical Expenses</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1031,7 +1528,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Emergency Repairs</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1042,18 +1539,27 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Garage and/or valet Parking</span>
           </li> */}
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Basic Cover</span>
-          </li>
-          {/* <li className="flex items-center">
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Basic Cover
+                    </span>
+                  </li>
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1064,7 +1570,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Personal Possessions</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1075,7 +1581,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Personal Injury</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1086,7 +1592,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Third Party Liability for Family/Passengers</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1097,7 +1603,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Taxy Fares</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1108,7 +1614,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Loss or Damage to Your Vehicle</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1119,18 +1625,27 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Lock Replacement</span>
           </li> */}
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Off Road Cover</span>
-          </li>
-          {/* <li className="flex items-center">
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Off Road Cover
+                    </span>
+                  </li>
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1141,7 +1656,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Perils of Nature</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1152,7 +1667,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">New Vehicle Replacement</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1163,18 +1678,27 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Windscreen Protection</span>
           </li> */}
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">Personal Accident Benefit - Passenger</span>
-          </li>
-          {/* <li className="flex items-center">
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      Personal Accident Benefit - Passenger
+                    </span>
+                  </li>
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1185,7 +1709,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Using Your Car In GCC Countries</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1196,18 +1720,27 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Temporary Rent-A-Car</span>
           </li> */}
-          <li className="flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
-              <path
-                d="M46.42,45.18l-9.5,5.14-5,2.71..."
-                stroke="#FF6B00"
-                strokeMiterlimit="10"
-                strokeWidth="1.26"
-              ></path>
-            </svg>
-            <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">No Claims Discount</span>
-          </li>
-          {/* <li className="flex items-center">
+                  <li className="flex items-center">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      fill="none"
+                      viewBox="0 0 61.45 61.45"
+                      className="text-orange-500"
+                    >
+                      <path
+                        d="M46.42,45.18l-9.5,5.14-5,2.71..."
+                        stroke="#FF6B00"
+                        strokeMiterlimit="10"
+                        strokeWidth="1.26"
+                      ></path>
+                    </svg>
+                    <span className="ml-3 text-lg text-gray-500 dark:text-gray-400">
+                      No Claims Discount
+                    </span>
+                  </li>
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1218,7 +1751,7 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Agency Repairs</span>
           </li> */}
-          {/* <li className="flex items-center">
+                  {/* <li className="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 61.45 61.45" className="text-orange-500">
               <path
                 d="M46.42,45.18l-9.5,5.14-5,2.71..."
@@ -1229,24 +1762,18 @@ const InsuranceCarScreen = () => {
             </svg>
             <span className="ml-3 text-lg">Breakdown Recovery</span>
           </li> */}
-          
-        </ul>
-        <Button
-        onClick={toggleModal}
-        text="Get a Quote"
-        type="primary"
-        className="mt-10"
-        />
-      </div>
-    </div>
-    </div>
-  </Container>
-</Section>
-
-
-      
-
-     
+                </ul>
+                <Button
+                  onClick={toggleModal}
+                  text="Get a Quote"
+                  type="primary"
+                  className="mt-10"
+                />
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       {/* 
       <Section bgType="primary">
@@ -1267,9 +1794,6 @@ const InsuranceCarScreen = () => {
           />
         </Container>
       </Section> */}
-
-      
-
 
       {bottomBanner?.length > 0 && (
         <>
