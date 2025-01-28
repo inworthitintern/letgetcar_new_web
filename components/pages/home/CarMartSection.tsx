@@ -35,7 +35,9 @@ const CarMartCategorySection: React.FC<ICarMartCategorySectionProps> = ({
             <div
               key={index}
               className="cursor-pointer relative group h-64 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
-              onClick={() => router.push("/carmart")}
+              onClick={() =>
+                (window.location.href = "https://lgccarmart.meatado.com")
+              }
             >
               {/* Background Image */}
               <Image
@@ -60,13 +62,13 @@ const CarMartCategorySection: React.FC<ICarMartCategorySectionProps> = ({
         {/* Call-to-Action Button */}
         <div className="flex justify-center">
           <Link href="https://lgccarmart.meatado.com">
-          <Button
-            text="View Cart Mart"
-            className="w-fit"
-            htmlType="submit"
+            <Button
+              text="View Cart Mart"
+              className="w-fit"
+              htmlType="submit"
 
-            //   onClick={carBookingCheckoutHandler}
-          />
+              //   onClick={carBookingCheckoutHandler}
+            />
           </Link>
         </div>
       </div>
