@@ -282,7 +282,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { Navbar, Dropdown, Button } from "flowbite-react";
 import Link from "next/link";
 import {
@@ -303,6 +302,8 @@ import { logo } from "@/constants/images";
 import { AUTH_TOKEN } from "@/constants/variables";
 import { toast } from "react-toastify";
 
+import { usePathname, useSearchParams } from "next/navigation";
+
 const CustomNavbar = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState("");
@@ -310,26 +311,24 @@ const CustomNavbar = () => {
 
   const { user } = useSelector((state: RootState) => state.auth);
 
+  const pathname = usePathname(); // Gets the pathname, e.g., "/buycarslist"
+  const searchParams = useSearchParams(); // Gets the query string, e.g., "?is_new_car=0"
+
+  // Combine the pathname and search params
+  const fullPath = `${pathname}${searchParams ? "?" + searchParams : ""}`;
+
+  console.log(fullPath, "helloo");
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  
-
   useEffect(() => {
+    // Access window.location only in the browser
     if (typeof window !== "undefined") {
-      setCurrentPath(window.location.pathname); // Update the current path
+      setCurrentPath(fullPath);
     }
-  }, []); // Runs only on the client side
-
-  const isActive = (path: string) => currentPath === path;
-
-  // useEffect(() => {
-    
-  //   if (typeof window !== "undefined") {
-  //     setCurrentPath(window.location.href);
-  //   }
-  // }, []);
+  }, [fullPath]);
 
   // useEffect(() => {
   //   dispatch(getProfileDetails());
@@ -362,46 +361,56 @@ const CustomNavbar = () => {
         <div className="hidden md:flex md:space-x-4">
           <Link
             href="/"
-            className="py-1 px-3 text-dark bg-primary rounded hover:bg-opacity-70 font-medium"
+            className={`py-1 px-3 rounded font-normal 
+              ${
+                currentPath.includes("/")
+                  ? "text-dark bg-primary"
+                  : "text-gray-75 hover:text-primary-text"
+              }
+            `}
             aria-current="page"
           >
             Home
           </Link>
           <Link
             href="/buycarslist?is_new_car=1"
-            className={`py-1 px-3 rounded font-medium ${
-              isActive("/buycarslist?is_new_car=1")
-                ? "text-primary"
-                : "text-gray-75 hover:text-primary"
-            }`}
+            className={`py-1 px-3 rounded font-normal 
+              ${
+                currentPath.includes("/buycarslist?is_new_car=1")
+                  ? "text-dark bg-primary"
+                  : "text-gray-75 hover:text-primary-text"
+              }
+            `}
           >
             Buy New Car
           </Link>
           <Link
             href="/buycarslist?is_new_car=0"
-            className={`py-1 px-3 rounded font-medium ${
-              isActive("/buycarslist?is_new_car=0")
-                ? "text-primary"
-                : "text-gray-75 hover:text-primary"
+            className={`py-1 px-3 rounded font-normal ${
+              currentPath.includes("/buycarslist?is_new_car=0")
+                ? "text-dark bg-primary"
+                : "text-gray-75 hover:text-primary-text"
             }`}
           >
             Buy Used Car
           </Link>
           <Link
             href="/sellcar"
-            className={`py-1 px-3 rounded font-medium ${
-              isActive("/sellcar") ? "text-primary" : "text-gray-75 hover:text-primary"
+            className={`py-1 px-3 rounded font-normal ${
+              currentPath.includes("/sellcar")
+                ? "text-dark bg-primary"
+                : "text-gray-75 hover:text-primary-text"
             }`}
           >
             Sell Car
           </Link>
           <Link
-             href="/rentcar-limousine"
-             className={`py-1 px-3 rounded font-normal ${
-               currentPath.includes("/rentcar-limousine")
-                 ? "text-primary"
-                 : "text-gray-75 hover:text-primary-text"
-             }`}
+            href="/rentcar-limousine"
+            className={`py-1 px-3 rounded font-normal ${
+              currentPath.includes("/rentcar-limousine")
+                ? "text-dark bg-primary"
+                : "text-gray-75 hover:text-primary-text"
+            }`}
           >
             Rent Car & Limousine
           </Link>
@@ -467,7 +476,7 @@ const CustomNavbar = () => {
           >
             <Dropdown.Item>
               <Link href="/garagebooking" className="block px-4 py-2 text-sm">
-                Garage Booking
+                Garage Booking & Modification
               </Link>
             </Dropdown.Item>
             <Dropdown.Item>
