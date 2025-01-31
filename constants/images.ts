@@ -20,7 +20,9 @@ import garageBookingImage from "../public/images/garagebookingbg.jpg";
 import rentCarLimousineImage from "../public/images/rentcar-limousine-bg.jpg";
 import slide3Image from "../public/images/slide-3.jpg";
 import slideTwoImage from "../public/images/slide-2.jpg";
-import logo from "../public/letgetcar-logo.png";
+import logo from "../public/images/letgercar-new-logo.jpeg";
+import carmartLogo from "../public/images/carmart-logo.jpeg";
+import homeIcon from "../public/images/home-icon.png";
 import logoBlack from "../public/letgetcar-logo-black.png";
 
 // EX
@@ -59,6 +61,8 @@ export {
   garageBookingImage,
   rentCarLimousineImage,
   logo,
+  carmartLogo,
+  homeIcon,
   logoBlack,
   carInsuranceEx,
   carSubscriptionEx,

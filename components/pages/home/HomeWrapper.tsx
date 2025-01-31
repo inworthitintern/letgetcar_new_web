@@ -26,6 +26,7 @@ import {
   LoadingSpinner,
   Section,
   Container,
+  CtnSection,
 } from "@/components/common";
 import { useRouter } from "next/navigation";
 import {
@@ -118,15 +119,17 @@ const HomeWrapper: React.FC = () => {
             </div>
 
             <LargeSearchBlock />
-            <Section>
-              <CarMartSection categories={CartMart} />
-            </Section>
+            
 
             <ExploreCarFilterSection
               brands={homeData[0].data}
               bodyTypes={homeData[1].data}
               categories={homeData[2].data}
             />
+
+            <Section>
+              <CarMartSection categories={CartMart} />
+            </Section>
             {topBanner?.length > 0 && (
               <>
                 {topBanner?.map((cur) => (
@@ -146,6 +149,16 @@ const HomeWrapper: React.FC = () => {
             )}
 
             <LetgetCarExploreSection />
+
+            {topBanner?.length > 0 && topBanner[0]?.images?.length > 0 && (
+              <Section key={topBanner[0].id}>
+                <Container>
+                  <div className="grid grid-cols-1 lg:grid-cols-1">
+                    <BannerImage img={topBanner[0].images[0]} />
+                  </div>
+                </Container>
+              </Section>
+            )}
 
             {/* <RecentlyViewedSection /> */}
 
@@ -172,11 +185,31 @@ const HomeWrapper: React.FC = () => {
 
             <NewArrivalsSection carsData={[...homeData[5].data.data]} />
 
+            {topBanner?.length > 0 && (
+              <>
+                {topBanner?.map((cur) => (
+                  <Section key={cur.id}>
+                    <Container>
+                      <div
+                        className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                      >
+                        {cur?.images?.map((img: string) => (
+                          <BannerImage img={img} />
+                        ))}
+                      </div>
+                    </Container>
+                  </Section>
+                ))}
+              </>
+            )}
+
             <LetGetCarFeaturesSection />
 
             <PresenceLocationsSection />
 
             <HomeTestimonailsSection />
+
+           
 
             {/* <LetGetCarExclusiveSection /> */}
 
@@ -200,6 +233,26 @@ const HomeWrapper: React.FC = () => {
 
             <HomeFaqSection />
             {/* Home Filter */}
+
+            {topBanner?.length > 0 && topBanner[0]?.images?.length > 0 && (
+              <Section key={topBanner[0].id}>
+                <Container>
+                  <div className="grid grid-cols-1 lg:grid-cols-1">
+                    <BannerImage img={topBanner[0].images[0]} />
+                  </div>
+                </Container>
+              </Section>
+            )}
+
+            <Section bgType="primary">
+            <Container>
+              <CtnSection
+                ctnText="Download Our App Now"
+                desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
+                title="Get Your Personal Car Application"
+              />
+            </Container>
+            </Section>
           </div>
         )
       )}

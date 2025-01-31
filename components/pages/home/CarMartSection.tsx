@@ -5,6 +5,7 @@ import { Container, Spacer } from "@/components/common";
 import { Heading, NormalText, Button } from "@/components/UI";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { carmartLogo } from "@/constants/images";
 
 interface ICarMartCategorySectionProps {
   categories: { image: string; title: string }[];
@@ -19,7 +20,16 @@ const CarMartCategorySection: React.FC<ICarMartCategorySectionProps> = ({
     <Container>
       <div className="text-center">
         {/* Section Heading */}
-        <Heading text="Car Mart Categories" type="h3" />
+        {/* Section Heading with Logo */}
+        <div className="flex items-center justify-center gap-3">
+          <Heading text="Car Mart" type="h3" />
+          <img 
+          src={carmartLogo.src}
+          style={{ width: "160px", objectFit: "cover" }}
+          alt="Logo"
+          />
+        </div>
+
         <Spacer spacing="sm" />
         <NormalText
           size="md"
