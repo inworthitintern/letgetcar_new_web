@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Container from "../Container";
-import { logoBlack } from "@/constants/images"; // Ensure this path is correct
+import { carmartLogo, logoBlack } from "@/constants/images"; // Ensure this path is correct
 import Image from "next/image";
 
 const Footer = () => {
@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="bg-black text-white py-10 z-10 relative">
       <Container>
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {/* Who we are section */}
             <div>
               <div className="flex flex-col items-center md:items-start">
@@ -114,6 +114,38 @@ const Footer = () => {
                 <li className="mb-2">KIA</li>
               </ul>
             </div>
+
+            {/* Car Mart */}
+            <div>
+              <div className="flex flex-col items-center md:items-start">
+                <Link href="https://lgccarmart.meatado.com">
+                <Image
+                  src={carmartLogo}
+                  alt="LetGetCar Logo"
+                  width={160} // Adjust size as needed
+                  height={60}
+                  className="mb-4"
+                /></Link>
+              </div>
+              <div>
+              <h4 className="text-lg font-bold mb-4">Products</h4>
+              <ul className="text-gray-400">
+                <li className="mb-2">Auto Parts</li>
+                <li className="mb-2">Interior Accessories</li>
+                <li className="mb-2">Exterior Accessories</li>
+                <li className="mb-2">Truck</li>
+                <li className="mb-2">Tools</li>
+                <li className="mb-2">Chemicals</li>
+                <li className="mb-2">Performance</li>
+              </ul>
+            </div>
+              <div>
+                <h5 className="text-lg font-bold mb-2">Contact</h5>
+                <p className="text-gray-400">hello@letgetcar.com</p>
+                <p className="text-gray-400">(800) 060-0730</p>
+              </div>
+            </div>
+
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center mt-10 border-t border-gray-700 pt-4">

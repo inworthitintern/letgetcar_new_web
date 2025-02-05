@@ -298,7 +298,8 @@ import {
   setLogout,
   signOut,
 } from "@/GlobalRedux/Features/auth/authSlice";
-import { logo } from "@/constants/images";
+import { homeIcon, logo } from "@/constants/images";
+import { carmartLogo } from "@/constants/images";
 import { AUTH_TOKEN } from "@/constants/variables";
 import { toast } from "react-toastify";
 
@@ -359,19 +360,28 @@ const CustomNavbar = () => {
         </div>
 
         <div className="hidden md:flex md:space-x-4">
-          <Link
+        <Link
             href="/"
-            className={`py-1 px-3 rounded font-normal 
+            className={`py-1 px-3 rounded font-normal
               ${
                 currentPath.includes("/")
-                  ? "text-dark bg-primary"
+                  ? "text-dark"
                   : "text-gray-75 hover:text-primary-text"
-              }
+              } 
+              
             `}
             aria-current="page"
           >
-            Home
+            <img
+            src={homeIcon.src}
+            style={{ width: "60px", objectFit: "cover" }}
+            alt="Logo"
+          />
           </Link>
+        </div>
+
+        <div className="hidden md:flex md:space-x-4">
+          
           <Link
             href="/buycarslist?is_new_car=1"
             className={`py-1 px-3 rounded font-normal 
@@ -415,30 +425,19 @@ const CustomNavbar = () => {
             Rent Car & Limousine
           </Link>
 
-          <Link
-            href="https://lgccarmart.meatado.com"
-            className="relative flex items-center gap-2 py-1 px-3 text-primary-text font-bold"
-          >
-            {/* Icon */}
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="w-5 h-5 text-primary"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M3.75 9h16.5m-16.5 6.75h16.5M6 3h12l1.5 6H4.5L6 3zm2.25 18a2.25 2.25 0 104.5 0M12 21a2.25 2.25 0 104.5 0"
-              />
-            </svg>
-            {/* Text */}
-            Car Mart
-            {/* Underline */}
-            {/* <span className="absolute left-0 bottom-0 w-full h-1 bg-primary rounded-full"></span> */}
-          </Link>
+          
+          
+        </div>
+        <div className="hidden md:flex md:space-x-4">
+          <div className="relative flex items-center gap-2 py-1">
+          <Link href="https://lgccarmart.meatado.com" className="flex items-center">
+          <img
+            src={carmartLogo.src}
+            style={{ width: "160px", objectFit: "cover" }}
+            alt="Logo"
+          />
+        </Link>
+          </div>
           <div className="flex items-center space-x-8">
             <Link href="/wishlist">
               <HeartOutlinedIcon height={20} width={20} />
