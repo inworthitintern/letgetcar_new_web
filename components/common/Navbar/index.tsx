@@ -296,7 +296,7 @@ import { RootState } from "@/GlobalRedux/store";
 import {
   getProfileDetails,
   setLogout,
-  signOut,
+  // signOut,
 } from "@/GlobalRedux/Features/auth/authSlice";
 import { homeIcon, logo } from "@/constants/images";
 import { carmartLogo } from "@/constants/images";
@@ -360,28 +360,28 @@ const CustomNavbar = () => {
         </div>
 
         <div className="hidden md:flex md:space-x-4">
-        <Link
+          <Link
             href="/"
             className={`py-1 px-3 rounded font-normal
               ${
                 currentPath.includes("/")
-                  ? "text-dark"
+                  ? "text-dark bg-primary"
                   : "text-gray-75 hover:text-primary-text"
               } 
               
             `}
             aria-current="page"
           >
-            <img
+            Home
+            {/* <img
             src={homeIcon.src}
             style={{ width: "60px", objectFit: "cover" }}
             alt="Logo"
-          />
+          /> */}
           </Link>
         </div>
 
         <div className="hidden md:flex md:space-x-4">
-          
           <Link
             href="/buycarslist?is_new_car=1"
             className={`py-1 px-3 rounded font-normal 
@@ -424,19 +424,19 @@ const CustomNavbar = () => {
           >
             Rent Car & Limousine
           </Link>
-
-          
-          
         </div>
         <div className="hidden md:flex md:space-x-4">
           <div className="relative flex items-center gap-2 py-1">
-          <Link href="https://lgccarmart.meatado.com" className="flex items-center">
-          <img
-            src={carmartLogo.src}
-            style={{ width: "160px", objectFit: "cover" }}
-            alt="Logo"
-          />
-        </Link>
+            <Link
+              href="https://lgccarmart.meatado.com"
+              className="flex items-center"
+            >
+              <img
+                src={carmartLogo.src}
+                style={{ width: "160px", objectFit: "cover" }}
+                alt="Logo"
+              />
+            </Link>
           </div>
           <div className="flex items-center space-x-8">
             <Link href="/wishlist">

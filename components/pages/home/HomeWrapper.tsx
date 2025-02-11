@@ -119,7 +119,6 @@ const HomeWrapper: React.FC = () => {
             </div>
 
             <LargeSearchBlock />
-            
 
             <ExploreCarFilterSection
               brands={homeData[0].data}
@@ -136,7 +135,7 @@ const HomeWrapper: React.FC = () => {
                   <Section key={cur.id}>
                     <Container>
                       <div
-                        className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                        className={`grid grid-cols-1 gap-6 lg:grid-cols-${cur?.images?.length}`}
                       >
                         {cur?.images?.map((img: string) => (
                           <BannerImage img={img} />
@@ -191,7 +190,7 @@ const HomeWrapper: React.FC = () => {
                   <Section key={cur.id}>
                     <Container>
                       <div
-                        className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                        className={`grid gap-6 grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
                       >
                         {cur?.images?.map((img: string) => (
                           <BannerImage img={img} />
@@ -208,8 +207,6 @@ const HomeWrapper: React.FC = () => {
             <PresenceLocationsSection />
 
             <HomeTestimonailsSection />
-
-           
 
             {/* <LetGetCarExclusiveSection /> */}
 
@@ -245,13 +242,13 @@ const HomeWrapper: React.FC = () => {
             )}
 
             <Section bgType="primary">
-            <Container>
-              <CtnSection
-                ctnText="Download Our App Now"
-                desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
-                title="Get Your Personal Car Application"
-              />
-            </Container>
+              <Container>
+                <CtnSection
+                  ctnText="Download Our App Now"
+                  desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
+                  title="Get Your Personal Car Application"
+                />
+              </Container>
             </Section>
           </div>
         )

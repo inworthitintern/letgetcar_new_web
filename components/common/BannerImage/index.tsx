@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const BannerImage = ({ img }: { img: string }) => {
   return (
-    <div style={{ width: "100%", height: 200, position: "relative" }}>
+    <div style={{ width: "100%", height: 300, position: "relative" }}>
       <Image
         src={img}
         alt="banners"

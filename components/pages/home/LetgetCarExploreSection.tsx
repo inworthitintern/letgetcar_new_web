@@ -14,7 +14,7 @@ import React from "react";
 
 const LetgetCarExploreSection = () => {
   return (
-    <Section bgType="gray">
+    <Section bgType="white">
       <Container>
         <Heading
           text="Explore Letgetcar"

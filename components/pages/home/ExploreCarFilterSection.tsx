@@ -31,7 +31,7 @@ const ExploreCarFilterSection: React.FC<IExploreCarFilterSectionProps> = ({
   const router = useRouter();
 
   return (
-    <Section bgType="gray">
+    <Section bgType="white">
       <Container>
         <Heading
           text="Why Wait! Explore Car With Ease"
