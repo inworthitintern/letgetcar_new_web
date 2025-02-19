@@ -18,7 +18,7 @@ const Section: React.FC<ISectionProps> = ({
           ? "bg-white"
           : bgType === "primary"
           ? "bg-primary"
-          : "bg-gray-5"
+          : "bg-gray-50"
       } ${className}`}
     >
       {children}

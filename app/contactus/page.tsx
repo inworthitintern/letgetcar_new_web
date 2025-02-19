@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Card } from "flowbite-react";
 import { Button } from "@/components/UI";
@@ -61,7 +63,7 @@ const ContactUs = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-16">
+      {/* <section className="py-16">
         <h2 className="text-3xl font-bold text-center mb-8">Find Us Here</h2>
         <div className="w-full h-96">
           <iframe
@@ -70,6 +72,64 @@ const ContactUs = () => {
             loading="lazy"
             allowFullScreen
           ></iframe>
+        </div>
+      </section> */}
+
+      <section className="py-16 bg-gray-100">
+        <h2 className="text-3xl font-bold text-center mb-8">Find Us Here</h2>
+        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+          {/* Location Map */}
+          <div className="h-96">
+            <iframe
+              className="w-full h-full rounded-lg shadow-lg"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8350014711765!2d144.9577284158969!3d-37.817209742438344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0x5045675218ce700!2sMelbourne%20VIC%2C%20Australia!5e0!3m2!1sen!2sin!4v1636478426890!5m2!1sen!2sin"
+              loading="lazy"
+              allowFullScreen
+            ></iframe>
+          </div>
+
+          {/* Contact Form */}
+          <div className="bg-white p-8 rounded-lg shadow-lg">
+            <h3 className="text-2xl font-semibold mb-6">Enquiry Form</h3>
+            <form onSubmit={(e) => e.preventDefault()}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Name
+                </label>
+                <input
+                  type="text"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Your Name"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Your Email"
+                />
+              </div>
+
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">
+                  Message
+                </label>
+                <textarea
+                  className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                  placeholder="Your Message"
+                  rows="4"
+                ></textarea>
+              </div>
+
+              <div className="mt-6">
+                <Button text="Submit" htmlType="submit" />
+              </div>
+            </form>
+          </div>
         </div>
       </section>
 

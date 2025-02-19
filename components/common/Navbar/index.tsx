@@ -288,6 +288,7 @@ import {
   HamburgerIcon,
   HeartOutlinedIcon,
   ProfileIcon,
+  HomeSvg,
   SearchIcon,
 } from "@/components/svgs";
 import SearchPopup from "../SearchPopup";
@@ -362,17 +363,15 @@ const CustomNavbar = () => {
         <div className="hidden md:flex md:space-x-4">
           <Link
             href="/"
-            className={`py-1 px-3 rounded font-normal
-              ${
-                currentPath.includes("/")
-                  ? "text-dark bg-primary"
-                  : "text-gray-75 hover:text-primary-text"
-              } 
-              
-            `}
+            className={`py-1 px-3 rounded font-normal text-primary-text`}
+            // ${
+            //   currentPath.includes("/")
+            //     ? "text-dark bg-primary"
+            //     : "text-gray-75 hover:text-primary-text"
+            // }
             aria-current="page"
           >
-            Home
+            <HomeSvg className="w-8 h-8" />
             {/* <img
             src={homeIcon.src}
             style={{ width: "60px", objectFit: "cover" }}

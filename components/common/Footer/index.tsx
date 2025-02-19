@@ -119,37 +119,38 @@ const Footer = () => {
             <div>
               <div className="flex flex-col items-center md:items-start">
                 <Link href="https://lgccarmart.meatado.com">
-                <Image
-                  src={carmartLogo}
-                  alt="LetGetCar Logo"
-                  width={160} // Adjust size as needed
-                  height={60}
-                  className="mb-4"
-                /></Link>
+                  <Image
+                    src={carmartLogo}
+                    alt="LetGetCar Logo"
+                    width={160} // Adjust size as needed
+                    height={60}
+                    className="mb-4"
+                  />
+                </Link>
               </div>
               <div>
-              <h4 className="text-lg font-bold mb-4">Products</h4>
-              <ul className="text-gray-400">
-                <li className="mb-2">Auto Parts</li>
-                <li className="mb-2">Interior Accessories</li>
-                <li className="mb-2">Exterior Accessories</li>
-                <li className="mb-2">Truck</li>
-                <li className="mb-2">Tools</li>
-                <li className="mb-2">Chemicals</li>
-                <li className="mb-2">Performance</li>
-              </ul>
-            </div>
+                <h4 className="text-lg font-bold mb-4">Products</h4>
+                <ul className="text-gray-400">
+                  <li className="mb-2">Auto Parts</li>
+                  <li className="mb-2">Interior Accessories</li>
+                  <li className="mb-2">Exterior Accessories</li>
+                  <li className="mb-2">Tools</li>
+                  <li className="mb-2">Chemicals</li>
+                  <li className="mb-2">Performance</li>
+                </ul>
+              </div>
               <div>
                 <h5 className="text-lg font-bold mb-2">Contact</h5>
-                <p className="text-gray-400">hello@letgetcar.com</p>
+                <p className="text-gray-400">carmart@letgetcar.com</p>
                 <p className="text-gray-400">(800) 060-0730</p>
               </div>
             </div>
-
           </div>
 
           <div className="flex flex-col md:flex-row justify-between items-center mt-10 border-t border-gray-700 pt-4">
-            <p className="text-gray-400">&copy; 2024 All Rights Reserved</p>
+            <p className="text-gray-400">
+              &copy; 2025 letgetcar All Rights Reserved
+            </p>
             <div className="flex space-x-4 mt-4 md:mt-0">
               <Link
                 href="/policies/privacy_policy"

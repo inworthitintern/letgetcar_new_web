@@ -28,7 +28,7 @@ const CarMartCategorySection: React.FC<ICarMartCategorySectionProps> = ({
               style={{ width: "160px", objectFit: "cover" }}
               alt="Logo"
             />
-            <Heading text="Car Mart" type="h3" />
+            {/* <Heading text="Car Mart" type="h3" /> */}
           </div>
 
           <Spacer spacing="sm" />

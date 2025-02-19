@@ -2,6 +2,7 @@
 
 import {
   AboutUsSection,
+  AppDownloadSection,
   BannerImage,
   Container,
   CtnSection,
@@ -232,12 +233,13 @@ const SellCarScreen = () => {
         </Container>
       </Section> */}
 
-      <Section>
-        <CtnSection
+      <Section bgType="primary">
+        {/* <CtnSection
           ctnText="Download Our App Now"
           desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
           title="Download From Playstore"
-        />
+        /> */}
+        <AppDownloadSection />
       </Section>
 
       <Section>

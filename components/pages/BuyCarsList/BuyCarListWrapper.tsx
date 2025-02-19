@@ -411,6 +411,7 @@
 
 import React, { useEffect, useState } from "react";
 import {
+  BannerImage,
   BuyCarFilters,
   CarCard2,
   Container,
@@ -425,9 +426,17 @@ import {
   getBuyCarModels,
   setCurrentPage,
 } from "@/GlobalRedux/Features/buyCarModel/buyCarSlice";
+import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
 
 const BuyCarsList: React.FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const { banners } = useSelector((state: RootState) => state.banner);
+  const topBanner = banners?.filter((banner) => banner.priority === 1);
+  // const bottomBanner = banners?.filter((banner) => banner.priority === 3);
+
+  useEffect(() => {
+    dispatch(getBanners({ type: "buycar" }));
+  }, []);
 
   const toggleFilterPanel = () => {
     setIsFilterOpen(!isFilterOpen);
@@ -582,6 +591,24 @@ const BuyCarsList: React.FC = () => {
               )}
 
               {renderPagination()}
+
+              {topBanner?.length > 0 && (
+                <>
+                  {topBanner?.map((cur) => (
+                    <Section key={cur.id}>
+                      <Container>
+                        <div
+                          className={`grid grid-cols-1 gap-6 lg:grid-cols-${cur?.images?.length}`}
+                        >
+                          {cur?.images?.map((img: string) => (
+                            <BannerImage img={img} />
+                          ))}
+                        </div>
+                      </Container>
+                    </Section>
+                  ))}
+                </>
+              )}
             </div>
           </div>
         </div>

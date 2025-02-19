@@ -27,6 +27,7 @@ import {
   Section,
   Container,
   CtnSection,
+  AppDownloadSection,
 } from "@/components/common";
 import { useRouter } from "next/navigation";
 import {
@@ -243,11 +244,12 @@ const HomeWrapper: React.FC = () => {
 
             <Section bgType="primary">
               <Container>
-                <CtnSection
+                <AppDownloadSection />
+                {/* <CtnSection
                   ctnText="Download Our App Now"
                   desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
                   title="Get Your Personal Car Application"
-                />
+                /> */}
               </Container>
             </Section>
           </div>

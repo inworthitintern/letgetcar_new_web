@@ -21,7 +21,7 @@ import rentCarLimousineImage from "../public/images/rentcar-limousine-bg.jpg";
 import slide3Image from "../public/images/slide-3.jpg";
 import slideTwoImage from "../public/images/slide-2.jpg";
 import logo from "../public/images/letgercar-new-logo.jpeg";
-import carmartLogo from "../public/images/carmart-logo.jpeg";
+import carmartLogo from "../public/images/carmart-logo.png";
 import homeIcon from "../public/images/home-icon.png";
 import logoBlack from "../public/letgetcar-logo-black.png";
 
@@ -32,6 +32,7 @@ import carInsuranceEx from "../public/images/car-insurance-ex.jpg";
 import loanCalculatorEx from "../public/images/loan-calculator-ex.jpg";
 import sellCarEx from "../public/images/sell-car-ex.jpg";
 import carSubscriptionEx from "../public/images/car-subscription-ex.jpg";
+import appDownload from "../public/images/app-download.png";
 
 // Sellcar
 
@@ -75,4 +76,5 @@ export {
   sellcarInspectionImg,
   slideTwoImage,
   slide3Image,
+  appDownload,
 };

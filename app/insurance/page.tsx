@@ -9,6 +9,7 @@ import {
   CtnSection,
   FaqSection,
   HowItWorks,
+  InsuranceFAQ,
   ItemCard,
   LetGetCarFeatureCard,
   Section,
@@ -1814,7 +1815,7 @@ const InsuranceCarScreen = () => {
       )}
 
       <Container className="mb-9">
-        <FaqSection />
+        <InsuranceFAQ />
       </Container>
     </div>
   );
