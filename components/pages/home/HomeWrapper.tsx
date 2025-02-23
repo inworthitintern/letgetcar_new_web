@@ -35,8 +35,10 @@ import {
   slide1Image,
   slideTwoImage,
   slide3Image,
+  franchiseBannerImage,
 } from "@/constants/images";
 import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
+import Image from "next/image";
 
 const HomeWrapper: React.FC = () => {
   const dispatch = useDispatch();
@@ -231,6 +233,13 @@ const HomeWrapper: React.FC = () => {
 
             <HomeFaqSection />
             {/* Home Filter */}
+
+            <Image
+              src={franchiseBannerImage}
+              alt="banner"
+              height={250}
+              style={{ width: "100%" }}
+            />
 
             {topBanner?.length > 0 && topBanner[0]?.images?.length > 0 && (
               <Section key={topBanner[0].id}>

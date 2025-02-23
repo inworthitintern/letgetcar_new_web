@@ -427,7 +427,7 @@ const CustomNavbar = () => {
         <div className="hidden md:flex md:space-x-4">
           <div className="relative flex items-center gap-2 py-1">
             <Link
-              href="https://lgccarmart.meatado.com"
+              href="https://cartmart.planetprouae.com"
               className="flex items-center"
             >
               <img

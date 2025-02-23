@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Container from "../Container";
-import { carmartLogo, logoBlack } from "@/constants/images"; // Ensure this path is correct
+import { carmartLogoYellow, logoBlack } from "@/constants/images"; // Ensure this path is correct
 import Image from "next/image";
 
 const Footer = () => {
@@ -120,7 +120,7 @@ const Footer = () => {
               <div className="flex flex-col items-center md:items-start">
                 <Link href="https://lgccarmart.meatado.com">
                   <Image
-                    src={carmartLogo}
+                    src={carmartLogoYellow}
                     alt="LetGetCar Logo"
                     width={160} // Adjust size as needed
                     height={60}
