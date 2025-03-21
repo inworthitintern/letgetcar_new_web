@@ -1,7 +1,15 @@
 "use client";
 
-import { Carousel } from "flowbite-react";
-import React, { useEffect } from "react";
+import {
+  Button,
+  Carousel,
+  FileInput,
+  Label,
+  Modal,
+  Textarea,
+  TextInput,
+} from "flowbite-react";
+import React, { useEffect, useState } from "react";
 import {
   HomeFaqSection,
   HomeTestimonailsSection,
@@ -41,6 +49,8 @@ import { getBanners } from "@/GlobalRedux/Features/banners/bannerSlice";
 import Image from "next/image";
 
 const HomeWrapper: React.FC = () => {
+  const [openModal, setOpenModal] = useState(false);
+
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -134,18 +144,16 @@ const HomeWrapper: React.FC = () => {
             </Section>
             {topBanner?.length > 0 && (
               <>
-                {topBanner?.map((cur) => (
-                  <Section key={cur.id}>
-                    <Container>
-                      <div
-                        className={`grid grid-cols-1 gap-6 lg:grid-cols-${cur?.images?.length}`}
-                      >
-                        {cur?.images?.map((img: string) => (
-                          <BannerImage img={img} />
-                        ))}
-                      </div>
-                    </Container>
-                  </Section>
+                {topBanner?.map((cur, i) => (
+                  <Container key={i}>
+                    <div
+                      className={`grid grid-cols-1 gap-6 lg:grid-cols-${cur?.images?.length}`}
+                    >
+                      {cur?.images?.map((img: string) => (
+                        <BannerImage img={img} />
+                      ))}
+                    </div>
+                  </Container>
                 ))}
               </>
             )}
@@ -216,17 +224,15 @@ const HomeWrapper: React.FC = () => {
             {bottomBanner?.length > 0 && (
               <>
                 {bottomBanner?.map((cur) => (
-                  <Section key={cur.id}>
-                    <Container>
-                      <div
-                        className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
-                      >
-                        {cur?.images?.map((img: string) => (
-                          <BannerImage img={img} />
-                        ))}
-                      </div>
-                    </Container>
-                  </Section>
+                  <Container>
+                    <div
+                      className={`grid grid-cols-1 lg:grid-cols-${cur?.images?.length}`}
+                    >
+                      {cur?.images?.map((img: string) => (
+                        <BannerImage img={img} />
+                      ))}
+                    </div>
+                  </Container>
                 ))}
               </>
             )}
@@ -239,6 +245,7 @@ const HomeWrapper: React.FC = () => {
               alt="banner"
               height={250}
               style={{ width: "100%" }}
+              onClick={() => setOpenModal(true)}
             />
 
             {topBanner?.length > 0 && topBanner[0]?.images?.length > 0 && (
@@ -254,16 +261,105 @@ const HomeWrapper: React.FC = () => {
             <Section bgType="primary">
               <Container>
                 <AppDownloadSection />
-                {/* <CtnSection
-                  ctnText="Download Our App Now"
-                  desc="Get exclusive offers, manage your bookings, and access our full range of services right from your phone. Download now for a seamless experience and special discounts!"
-                  title="Get Your Personal Car Application"
-                /> */}
               </Container>
             </Section>
           </div>
         )
       )}
+
+      <Modal
+        show={openModal}
+        size="lg"
+        onClose={() => setOpenModal(false)}
+        popup
+      >
+        <Modal.Header />
+        <Modal.Body>
+          <h3 className="text-xl font-semibold mb-4">Franchise Enquiry</h3>
+          <form
+            className="space-y-4"
+            onSubmit={() =>
+              alert("Your application submission is done. will contact you")
+            }
+          >
+            <div>
+              <Label htmlFor="name" value="Full Name" />
+              <TextInput
+                id="name"
+                type="text"
+                placeholder="John Doe"
+                required
+                // value={name}
+                // onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="email" value="Email" />
+              <TextInput
+                id="email"
+                type="email"
+                placeholder="john@example.com"
+                required
+                // value={email}
+                // onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="phone" value="Phone Number" />
+              <TextInput
+                id="phone"
+                type="tel"
+                placeholder="+1234567890"
+                required
+                // value={phone}
+                // onChange={(e) => setPhone(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="company" value="Company Representation" />
+              <TextInput
+                id="company"
+                type="text"
+                placeholder="Company Name"
+                // value={company}
+                // onChange={(e) => setCompany(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="designation" value="Designation" />
+              <TextInput
+                id="designation"
+                type="text"
+                placeholder="Manager, CEO, etc."
+                // value={designation}
+                // onChange={(e) => setDesignation(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="bodyComment" value="Comment" />
+              <Textarea
+                id="bodyComment"
+                placeholder="Write your message..."
+                rows={3}
+                // value={bodyComment}
+                // onChange={(e) => setBodyComment(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="documents" value="Upload Documents" />
+              <FileInput
+                id="documents"
+                // onChange={(e) => setDocument(e.target.files?.[0] ?? null)}
+              />
+            </div>
+            <div className="w-full pt-4">
+              <Button type="submit" className="w-full bg-primary">
+                Submit Enquiry
+              </Button>
+            </div>
+          </form>
+        </Modal.Body>
+      </Modal>
     </>
   );
 };
